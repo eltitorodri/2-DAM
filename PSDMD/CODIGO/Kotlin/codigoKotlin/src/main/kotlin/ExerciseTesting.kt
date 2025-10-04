@@ -1,6 +1,6 @@
 package org.example
 
-
+//EJERCICIO 1
 fun variables_numericos() {
 
     val nombre: String = "Jose" //val es para algo inmutable
@@ -17,18 +17,70 @@ fun variables_numericos() {
     println("El resultado de la division: ${numero1 / numero2}")
 }
 
-fun conversion_tipos() {
+//EJERCICIO 2
+fun conversion_tipos () {
 
-    var numeroDouble: Double = 1.34
+    var variableDouble: Double = 2.334
 
-    var numeroInt = numeroDouble.toInt()
+    var deDoubleaInteger = variableDouble.toInt()
 
-    println("El numero de")
+    println("Este era el numero en double: $variableDouble ")
+    println("Este es el numero una vez pasado a int: $deDoubleaInteger")
+
+}
+
+//EJERCICIO 3
+fun numeros_legibles () {
+
+    var numeroGrande: Int = 1_000_000
+
+    println("Este es el numero con guiones bajos: $numeroGrande")
+
+}
+
+//EJERCICIO 4
+fun cadena_interpolacion() {
+
+    var nombre:String = "Jose"
+    var apellido:String = "Fuentes"
+
+    println("Esta es la interpolacion: ${nombre} ${apellido}")
+
+    val mensajeMultilinea = """
+        Hola, me llamo $nombre $apellido.
+        !Te saludo bb!
+        """.trimIndent() //trimIndent() se usa para eliminar la sangria es decir para que no salga full a la derecha el texto
+    println( mensajeMultilinea)
+
+}
+
+//EJERCICIO 5
+fun condicionales_simples() {
+
+    println("Escribe un número (positivo/negativo/cero)")
+    val numeroUsuario = readLine()?.toIntOrNull()
+
+    if (numeroUsuario == null) {
+        println("No ingresaste un numerito valido.")
+        return
+    }
+
+    if (numeroUsuario == 0) {
+        println("El nunmero del usuario es cero.")
+    } else if (numeroUsuario % 2 == 0) {
+        println("El numero $numeroUsuario es par.")
+    } else (
+        println("El numero $numeroUsuario es impar")
+    )
 
 }
 
 fun main() {
 
     variables_numericos()
+    conversion_tipos()
+    numeros_legibles()
+    cadena_interpolacion()
+    condicionales_simples()
 
 }
