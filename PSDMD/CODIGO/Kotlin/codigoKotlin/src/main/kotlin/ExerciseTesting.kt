@@ -178,11 +178,91 @@ fun bucles_rangos () {
 
 }
 
+
+
 //EJERCICIO 11
-fun do_while () {
+fun do_while() {
 
+    println()
 
+    var numero = 0
+    var numero2= 5
 
+    while (numero <= 5) {
+        print("|  $numero")
+        numero++
+    }
+
+    println()
+
+    do {
+        print("|  $numero2")
+        numero2--
+    } while (numero2 >= 0)
+
+}
+
+//EJERCICIO 12
+fun suma () {
+
+    println()
+
+    println("Ingresa el primer numero: ")
+    val primerInput = readLine()?.toIntOrNull() ?: 0
+
+    println("Ingresa el segundo numero: ")
+    val segundoInput = readLine()?.toIntOrNull() ?: 0
+
+    println("La suma de ambos numeros es ${primerInput + segundoInput}.")
+
+}
+
+//EJERCICIO 13
+fun saludarConArgs(nombre: String = "invitado") {
+
+    println(nombre)
+
+}
+
+fun saludarSinArgs () {
+
+    val nombre: String = "invitado"
+    println(nombre)
+
+}
+
+//EJERCICIO 14
+fun funcion_compacto(temperatura: Double): Boolean = temperatura > 25
+
+//EJERCICIO 15
+fun filtros_listas() {
+
+    val listaNumeros: List<Int> = listOf(1,2,3,4,5,6,7,8,9,10)
+
+    val pares = listaNumeros.filter { it % 2 == 0 }
+    println("Numeros pares son: $pares")
+
+    val multiplicados = listaNumeros.map{ it * 2 }
+    println("Multiplicados son: $multiplicados")
+
+}
+
+//EJERCICIO 15
+fun lambda() {
+
+    println("Ingresa un numero: ")
+    val input = readLine()?.toIntOrNull() ?: 0
+
+    val cuadrado: (Int) -> Int = { it * it }
+
+    println("El cuadrado de $input es ${cuadrado(input)}")
+
+}
+
+//EJERCICIO 16
+fun orden_superior(lista: List<Int>, funcion: (Int) -> Int) {
+    val resultado = lista.map(funcion)
+    println("Resultado: $resultado")
 }
 
 fun main() {
@@ -197,5 +277,15 @@ fun main() {
     listas()
     arrays()
     bucles_rangos()
+    do_while()
+    suma()
+    saludarConArgs()
+    saludarSinArgs()
+    funcion_compacto(22.3)
+    filtros_listas()
+    lambda()
+    val numeros = listOf(1, 2, 3, 4, 5)
+    val duplicar: (Int) -> Int = { it * 2 }
+    orden_superior(numeros, duplicar)
 
 }
