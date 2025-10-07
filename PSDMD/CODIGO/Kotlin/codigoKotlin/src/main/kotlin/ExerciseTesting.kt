@@ -265,6 +265,36 @@ fun orden_superior(lista: List<Int>, funcion: (Int) -> Int) {
     println("Resultado: $resultado")
 }
 
+//ULTIMO EJERCICIO
+fun ultimoExercise() {
+
+    val listaPersona = mutableListOf<Persona>()
+
+    println("¿Cuantas personas vas a poner?")
+    val n = readLine()?.toIntOrNull() ?: 0
+
+    for (i in 1..n) {
+
+        println("Escribe el nombre de la persona $i")
+        val nombre = readLine()?: "Unknown"
+
+        println("Escribe ahora la edad de esa persona")
+        val edad = readLine()?.toIntOrNull() ?: 0
+
+        val persona = Persona(nombre,edad)
+        listaPersona.add(persona)
+
+    }
+
+    val listaFinal: List<Persona> = listaPersona.filter { it.edad >= 18 }.sortedBy { it.edad }
+
+    println("==============")
+    println("La lista final")
+    println("==============")
+    listaFinal.forEach { println(it) }
+
+}
+
 fun main() {
 
     variables_numericos()
@@ -287,5 +317,31 @@ fun main() {
     val numeros = listOf(1, 2, 3, 4, 5)
     val duplicar: (Int) -> Int = { it * 2 }
     orden_superior(numeros, duplicar)
+
+    val persona1 = Persona(nombre = "Rodrigo", edad = 25)
+    val persona2 = Persona(edad = 30)
+
+    println("Persona 1: $persona1")
+    println("Persona 2: $persona2")
+
+    println()
+
+    val miCoche = Coche("Toyota", "Yaris GR", 2025)
+    println(miCoche)
+
+    val miAnimal = Animal()
+    miAnimal.sonido()
+
+    val miPerrito = Perro()
+    miPerrito.sonido()
+
+    val miPez = Pez("Nemo")
+    miPez.nadar()
+
+    val robot = RobotCaminante()
+    val persona5 = Persona2(robot)
+    persona5.caminar()
+
+    ultimoExercise()
 
 }
