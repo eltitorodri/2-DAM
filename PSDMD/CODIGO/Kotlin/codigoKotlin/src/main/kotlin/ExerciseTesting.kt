@@ -77,6 +77,7 @@ fun condicionales_simples() {
 
 }
 
+//EJERCICIO 6
 fun condicional_when () {
     println("Escribe un numero del 1-7")
     val numeroUsuario = readLine()?.toIntOrNull()
@@ -99,6 +100,7 @@ fun condicional_when () {
     }
 }
 
+//EJERCICIO 7
 fun nubalidad () {
 
     var telefono:String? = null //Declaro una variable que tiene la posibilidad de ser nula
@@ -109,6 +111,7 @@ fun nubalidad () {
 
 }
 
+//EJERCICIO 8
 fun listas() {
 
     var listaInmutable: List<String> = listOf("amarillo", "azul", "rosa", "rojo", "morado") //Lista inmutable
@@ -141,6 +144,7 @@ fun listas() {
     }
 }
 
+//EJERCICIO 9
 fun arrays() {
 
     var arrayEnteros: Array<Int> = arrayOf(1,2,3,4,5)
@@ -153,6 +157,7 @@ fun arrays() {
 
 }
 
+//EJERCICIO 10
 fun bucles_rangos () {
 
     for (i in 1..10) {
@@ -170,6 +175,13 @@ fun bucles_rangos () {
     for (i in 2..20 step 2) {
         print(" - $i")
     }
+
+}
+
+//EJERCICIO 11
+fun do_while () {
+
+
 
 }
 
