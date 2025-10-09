@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {IonicModule} from "@ionic/angular";
+import {LogoConFondoComponent} from "../logo-con-fondo/logo-con-fondo.component";
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,9 @@ import {IonicModule} from "@ionic/angular";
   styleUrls: ['./home.component.scss'],
   standalone: true,
   imports: [
-    IonicModule
+    IonicModule,
+    LogoConFondoComponent,
+
   ]
 })
 
