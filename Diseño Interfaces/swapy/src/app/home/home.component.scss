@@ -1,12 +1,12 @@
 
-ion-range {
-  width: 50%;
-  --bar-height: 12px;
-  --knob-size: 20px;
-}
-
-.rising-volume {
-  display: flex;
-  text-align: center;
-  justify-content: center;
+:host {
+  display: block;
+  min-height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    #DAD4E3 0%,
+    #DAD4E3 25%,
+    #CABBD3 50%,
+    #9D9CD4 100%
+  );
 }
