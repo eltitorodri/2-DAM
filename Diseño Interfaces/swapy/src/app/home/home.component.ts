@@ -10,7 +10,6 @@ import {LogoConFondoComponent} from "../logo-con-fondo/logo-con-fondo.component"
   imports: [
     IonicModule,
     LogoConFondoComponent,
-
   ]
 })
 

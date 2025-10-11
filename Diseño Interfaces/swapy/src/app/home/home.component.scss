@@ -1,12 +1,88 @@
-:host {
-  display: block;
-  min-height: 100vh;
-  background: linear-gradient(
-    to bottom,
-    #DAD4E3 0%,
-    #DAD4E3 25%,
-    #CABBD3 50%,
-    #9D9CD4 100%
-  );
+.email-item {
+  position: absolute;
+  top: 27%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  --background: transparent;
 }
 
+.email-item ion-input {
+  --border-color: black;
+  --highlight-color-focused: #0050c7;
+  --border-radius: 8px;
+}
+
+.icono-derecha {
+  width: 24px;    
+  height: 24px;  
+  margin-right: 8px; 
+  cursor: pointer;   
+}
+
+.password-item {
+
+    position: absolute;
+    top: 37%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width: 70%;
+    --background: transparent;
+
+}
+
+.password-item ion-input {
+
+    --border-color: black;
+    --highlight-color-focused: #0050c7;
+    --border-radius: 8px;
+
+}
+
+.forgot-password {
+    position: absolute;
+    top: 40%; 
+    left: 18.3%; 
+    font-size: 0.8rem;
+    color: #0050c7; 
+    cursor: pointer; 
+}
+
+
+.container {
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-button {
+  background-color: #9890E3;
+  border: 2px solid #000000;
+  border-radius: 16px;
+  padding: 16px 48px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: rgba(152, 144, 227, 0.9);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  .login-text {
+    font-family: 'Source Serif Pro', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #000000;
+  }
+
+  .login-icon {
+    font-size: 28px;
+    color: #000000;
+  }
+}

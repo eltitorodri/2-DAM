@@ -1,3 +1,21 @@
 <app-logo-con-fondo></app-logo-con-fondo>
 
-<ion-input label="Outline input" label-placement="floating" fill="outline" placeholder="Enter text"></ion-input>
+<ion-item class="email-item">
+  <ion-input
+    label="Correo electrónico"
+    label-placement="floating"
+    fill="outline"
+    placeholder="rbernal.....@gmail.com">
+  </ion-input>
+
+    <img src="assets/icon/email-icon.png" slot="end" class="icono-derecha">
+
+</ion-item>
+
+<ion-item class="password-item">
+    <ion-input type="password" label="Password" value="KeepWorking">
+    <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+    </ion-input>
+</ion-item>
+
+<p class="forgot-password">¿Olvidaste tu contraseña?</p>
