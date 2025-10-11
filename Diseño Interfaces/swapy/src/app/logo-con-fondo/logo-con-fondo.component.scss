@@ -1,0 +1,21 @@
+.logoHeader {
+  width: 250px;
+  height: auto;
+  border-radius: 32px;
+  margin-bottom: 17px;
+}
+
+.rectangle {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #FFFFFF;
+  width: 250px;
+  height: 160px;
+  border-radius: 32px;
+  box-shadow: 4px 4px 15px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,3 +1,3 @@
 package org.example
 
-class Persona2(caminante: Caminante) : Caminante by caminante
+class Persona2(caminante: RobotCaminante) : Caminante by caminante
