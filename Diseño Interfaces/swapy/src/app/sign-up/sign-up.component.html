@@ -62,13 +62,11 @@
         </ion-checkbox>
       </div>
     </div>
+    <button class="submit-button" (click)="onSubmit()">
+      Sign Up
+      <img src="assets/icon/login-icon.png" alt="arrow" class="arrow-icon">
+    </button>
 
-    <ion-button
-      expand="block"
-      [disabled]="!isFormValid"
-      class="submit-button"
-      (click)="onSubmit()">
-      Registrarse
-    </ion-button>
   </div>
 </ion-content>
+
