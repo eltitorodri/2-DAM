@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {IonicModule} from "@ionic/angular";
 import {LogoConFondoComponent} from "../logo-con-fondo/logo-con-fondo.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,10 +15,12 @@ import {LogoConFondoComponent} from "../logo-con-fondo/logo-con-fondo.component"
 })
 export class LoginComponent  implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {}
 
-  
+  isARegistro() {
+    this.router.navigate(['/sign-up'])
+  }
 
 }
