@@ -2,6 +2,16 @@
 
 <ion-content [fullscreen]="true">
   <div class="form-container">
+
+    <ion-item class="name-item">
+      <ion-input
+        label="Nombre Completo"
+        label-placement="floating"
+        placeholder="Tu nombre completo">
+      </ion-input>
+      <img src="assets/icon/nombre.png" slot="end" class="icono-derecha-pequeña">
+    </ion-item>
+
     <ion-item class="email-item">
       <ion-input
         label="Email"
@@ -10,6 +20,15 @@
         [(ngModel)]="email">
       </ion-input>
       <img src="assets/icon/email-icon.png" slot="end" class="icono-derecha-pequeña">
+    </ion-item>
+
+    <ion-item class="nickname-item">
+      <ion-input
+        label="Nickname"
+        label-placement="floating"
+        placeholder="Tu apodo o alias">
+      </ion-input>
+      <img src="assets/icon/usuario.png" slot="end" class="icono-derecha-pequeña">
     </ion-item>
 
     <ion-item class="password-item">
@@ -64,7 +83,6 @@
     </div>
     <button class="submit-button" (click)="onSubmit()">
       Sign Up
-      <img src="assets/icon/login-icon.png" alt="arrow" class="arrow-icon">
     </button>
 
   </div>
