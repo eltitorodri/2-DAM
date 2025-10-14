@@ -34,7 +34,7 @@ ion-item {
 
   ion-input {
     --border-color: rgb(0, 0, 0);
-    --highlight-color-focused: #6483b3;
+    --highlight-color-focused: #3365af;
   }
 }
 
@@ -94,7 +94,7 @@ ion-item {
   gap: 25px;
   transition: all 0.3s ease;
   position: absolute;
-  top: 50%;
+  top: 110%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 60%;
@@ -105,9 +105,10 @@ ion-item {
   align-items: center;
 }
 
-.arrow-icon {
-  width: 37px;
-  height: 37px;
-  object-fit: contain;
+.name-item,
+.nickname-item {
+  ion-input {
+    --highlight-color-focused: #1a6bad;
+  }
 }
 
