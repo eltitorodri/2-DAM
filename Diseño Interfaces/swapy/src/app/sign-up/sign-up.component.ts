@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { LogoConFondoComponent } from "../logo-con-fondo/logo-con-fondo.component";
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,6 +16,8 @@ import { FormsModule } from '@angular/forms';
   ]
 })
 export class SignUpComponent {
+
+  constructor(private router: Router) { }
 
   email: string = '';
   password: string = '';
@@ -39,6 +42,7 @@ export class SignUpComponent {
 
   onSubmit() {
     if (this.isFormValid) {
+      this.router.navigate(['/login'])
       console.log('Formulario válido', {
         email: this.email,
         password: this.password
