@@ -112,3 +112,41 @@ ion-item {
   }
 }
 
+.auth-links-bottom {
+  position: absolute;
+  top: 93.6%;
+  left: 51%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 35px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 2px;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 42px;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  a {
+    color: #1a1a1a;
+    font-size: 15px;
+    font-family: 'Source Serif Pro', serif;
+    font-weight: 400;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    line-height: 1.4;
+    text-align: center;
+    z-index: 1;
+
+    &:hover {
+      opacity: 0.7;
+      text-decoration: underline;
+    }
+  }
+}

@@ -20,7 +20,7 @@
 
 <p class="forgot-password">¿Olvidaste tu contraseña?</p>
 
-<button class="login-button" (click)="isARegistro()">
+<button class="login-button" (click)="isALogin()">
   Log In 
   <img src="assets/icon/login-icon.png" alt="arrow" class="arrow-icon">
 </button>
@@ -46,7 +46,7 @@
 
 <div class="account-text">
   <p>Don't have an account? </p>
-  <a href="#" class="auth-link">Create one</a>
+  <a (click)="isARegistro()" class="auth-link">Create one</a>
 </div>
 
 <div class="auth-links-bottom">
