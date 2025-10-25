@@ -8,5 +8,6 @@ add_executable(PSP main.c
         examen6.c
         examen4.c
         actividad1practica2.c
-        Actividad6_Practica1.c)
+        Actividad6_Practica1.c
+        "Practica 1/Actividad1.c")
 add_executable(PSP1 process6.c)
