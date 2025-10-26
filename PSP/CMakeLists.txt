@@ -13,5 +13,12 @@ add_executable(PSP main.c
         "Practica 1/Actividad2.c"
         "Practica 1/Actividad3.c"
         "Practica 1/Actividad5.c"
-        "Practica 1/Actividad6.c")
+        "Practica 1/Actividad6.c"
+        "Practica 2/Actividad 1.c"
+        "Practica 2/Actividad 2.c"
+        "Practica 2/Actividad 2.c"
+        "Practica 2/Actividad 4.c"
+        "Examen/Actvidad 4.c"
+        "Examen/Actividad 6.c"
+        "Examen/Actividad 7.c")
 add_executable(PSP1 process6.c)
