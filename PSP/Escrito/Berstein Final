@@ -1,0 +1,2 @@
+Los conjuntos (...), (...) y (...) son los unicos que cumplen las 3 reglas de Berstein, pero al existir una dependecia entre A y B, los bloques no pueden ejecutarse
+sin riesgo e interferencia ya que B deberia ejecutarse despues de A

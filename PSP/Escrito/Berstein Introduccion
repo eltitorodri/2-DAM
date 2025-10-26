@@ -1,0 +1,10 @@
+Bernstein definio unas condiciones para ver si dos conjuntos de isntrucciones pueden ejecutarse concurrentemente. Los dos conjuntos son:
+
+    - Conjunto de escritura: formado por instrucciones que cuenten con variables a las que se accede en modo escritura
+    - Conjunto de lectura: formado por instrucciones que cuentan con variables a las que se accede en modo lectura
+
+Para que se pueda ejecutar concurrentemente se debe cumplir 3 condiciones:
+
+    1. La interseccion entre las variables de lectura (Li) y las variables escrituras (Ej) debe estar vacio
+    2. La interseccion entre las variables de escritura (Lj) y las variables lectura (Ei) debe estar vacio
+    3. La interseccion entre las variables de escritura (Li) y las variables escritura (Ej) debe estar vacio
