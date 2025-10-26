@@ -1,0 +1,5 @@
+La ejecución no siempre dará el mismo resultado en términos del orden. Esto se debe a
+que los hilos en Java ejecutan en paralelo, y la impresión de números
+puede variar en el orden en que aparecen en la consola. A veces, los números pares se
+imprimen antes que los impares o viceversa, dependiendo de cómo el sistema operativo
+programe los hilos en el tiempo de ejecución.
