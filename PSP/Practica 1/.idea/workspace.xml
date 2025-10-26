@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BackendCodeEditorMiscSettings">
+    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
+    <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
+    <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4691c57-5c6f-477d-9660-0af843f67886" name="Changes" comment="" />
+    <list default="true" id="b4691c57-5c6f-477d-9660-0af843f67886" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Concurrente JAVA/Concurrente JAVA.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/Practica 1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/PSP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/PSP.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,9 +30,9 @@
     <option name="minorVersion" value="2.3" />
     <option name="productBranch" value="Classic" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="34ZVDUEqcYXE7nyDZvw7xeLrTWV" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -37,6 +48,7 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -49,6 +61,7 @@
       <option name="presentableId" value="Default" />
       <updated>1761420961712</updated>
       <workItem from="1761420962758" duration="5000" />
+      <workItem from="1761470225171" duration="36000" />
     </task>
     <servers />
   </component>
