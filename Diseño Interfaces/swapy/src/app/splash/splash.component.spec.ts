@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { NavegationBarComponent } from './navegation-bar.component';
+import { SplashComponent } from './splash.component';
 
-describe('NavegationBarComponent', () => {
-  let component: NavegationBarComponent;
-  let fixture: ComponentFixture<NavegationBarComponent>;
+describe('SplashComponent', () => {
+  let component: SplashComponent;
+  let fixture: ComponentFixture<SplashComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [NavegationBarComponent],
+      imports: [SplashComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(NavegationBarComponent);
+    fixture = TestBed.createComponent(SplashComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
