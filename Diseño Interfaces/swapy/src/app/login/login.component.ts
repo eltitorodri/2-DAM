@@ -24,7 +24,7 @@ export class LoginComponent  implements OnInit {
   }
 
   isALogin() {
-    this.router.navigate(['/navegation-bar'])
+    this.router.navigate(['/home'])
   }
 
 }
