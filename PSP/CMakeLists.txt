@@ -20,5 +20,8 @@ add_executable(PSP main.c
         "Practica 2/Actividad 4.c"
         "Examen/Actvidad 4.c"
         "Examen/Actividad 6.c"
-        "Examen/Actividad 7.c")
+        "Examen/Actividad 7.c"
+        Examen2025_Rodrigo/Director_Gerente.c
+        Examen2025_Rodrigo/Fork.c
+        Examen2025_Rodrigo/Señales.c)
 add_executable(PSP1 process6.c)
