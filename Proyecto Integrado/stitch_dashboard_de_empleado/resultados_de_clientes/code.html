@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vareon Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#584df5",
+                        "background-light": "#f6f5f8",
+                        "background-dark": "#111022",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark font-display group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="flex items-center p-4 pb-2 justify-between sticky top-0 bg-background-light dark:bg-background-dark z-10">
+<div class="flex size-12 shrink-0 items-center text-primary dark:text-white" data-icon="PatreonLogo" data-size="24px" data-weight="regular">
+<span class="material-symbols-outlined text-4xl">
+                    all_inclusive
+                </span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 ml-2">Vareon</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 w-10 bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-white gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<div class="text-slate-900 dark:text-white" data-icon="UserCircle" data-size="24px" data-weight="regular">
+<span class="material-symbols-outlined">
+                            person
+                        </span>
+</div>
+</button>
+</div>
+</div>
+<!-- Headline Text -->
+<h1 class="text-slate-900 dark:text-white tracking-light text-[32px] font-bold leading-tight px-4 text-left pb-3 pt-6">Hola, Cliente</h1>
+<!-- Stats / Hero Card -->
+<div class="flex flex-wrap gap-4 p-4">
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#1C1B33] shadow-sm">
+<p class="text-slate-600 dark:text-slate-300 text-base font-medium leading-normal">Procesos Completados Hoy</p>
+<p class="text-slate-900 dark:text-white tracking-light text-2xl font-bold leading-tight">235</p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#1C1B33] shadow-sm">
+<p class="text-slate-600 dark:text-slate-300 text-base font-medium leading-normal">Ahorro Estimado</p>
+<p class="text-slate-900 dark:text-white tracking-light text-2xl font-bold leading-tight">$1,250</p>
+</div>
+</div>
+<!-- Chips / Date Range Selector -->
+<div class="flex gap-3 px-4 py-3 overflow-x-auto">
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary pl-4 pr-4 cursor-pointer">
+<p class="text-white text-sm font-medium leading-normal">Hoy</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-200 dark:bg-[#1C1B33] pl-4 pr-4 cursor-pointer">
+<p class="text-slate-800 dark:text-white text-sm font-medium leading-normal">Últimos 7 días</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-200 dark:bg-[#1C1B33] pl-4 pr-4 cursor-pointer">
+<p class="text-slate-800 dark:text-white text-sm font-medium leading-normal">Este Mes</p>
+</div>
+</div>
+<!-- Section Header -->
+<h2 class="text-slate-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Rendimiento de tus Agentes</h2>
+<!-- Agent Cards List -->
+<div class="flex flex-col gap-4 px-4 pb-24">
+<!-- Agent Card 1 -->
+<div class="flex flex-col gap-4 rounded-xl p-4 bg-white dark:bg-[#1C1B33] shadow-sm cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<div class="flex-1">
+<p class="text-slate-900 dark:text-white font-bold text-lg">Agente de Facturación</p>
+<div class="flex items-center gap-1.5">
+<div class="size-2 rounded-full bg-green-500"></div>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Activo</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500">chevron_right</span>
+</div>
+<div>
+<p class="text-slate-600 dark:text-slate-300 text-sm">Facturas procesadas</p>
+<p class="text-slate-900 dark:text-white text-2xl font-bold">150</p>
+</div>
+<div>
+<img alt="A line chart showing an upward trend, representing daily activity." class="w-full h-auto" data-alt="A line chart showing an upward trend, representing daily activity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCw0K1CAUrBFJi1Y56p9xBDk-i9Hv83U_sKlGbCoyMg9PqggyTAhqtOlTpBuckpmV3oRi6xyKpGGUWX8oLe2nQsr38A0kxib4Q2YpePfsIq2aPtmivoGyvd1oxv6_CYB0Diw2BTz5rVrdpkLJTgc4fq_3YXQ38W57RY7q0ENNbEkWQp0MmvGfBtfJ_qN1HIDi2DhG-4pHKZubpYqZgHTC-7NVE7DAyQsCwgd3Slcqg88uOFA4b3IfnGU4BKl0NyL6b6PuutYMh0-vI"/>
+</div>
+</div>
+<!-- Agent Card 2 -->
+<div class="flex flex-col gap-4 rounded-xl p-4 bg-white dark:bg-[#1C1B33] shadow-sm cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined">support_agent</span>
+</div>
+<div class="flex-1">
+<p class="text-slate-900 dark:text-white font-bold text-lg">Agente de Soporte</p>
+<div class="flex items-center gap-1.5">
+<div class="size-2 rounded-full bg-green-500"></div>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Activo</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500">chevron_right</span>
+</div>
+<div>
+<p class="text-slate-600 dark:text-slate-300 text-sm">Tickets resueltos</p>
+<p class="text-slate-900 dark:text-white text-2xl font-bold">85</p>
+</div>
+<div>
+<img alt="A line chart showing a stable trend, representing response times." class="w-full h-auto" data-alt="A line chart showing a stable trend, representing response times." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSsdx3hW9oPmKT65sxGrp7yo0ZyulM3eMjdi0Utw34ANjCoR-JlNpEOD6u0WRDf_5J85WLAFbI3Rk3uMO_DgetEychz4MCTJuyq1aDgFnSdfs5LrkBguGl2OKcz6YndIVDOGgku35N9uTp5OR6ITx2NHs01LracuX-j6CMDFHX3OUeAWG_H40uQAXxc6vekZmOBMqGyBcrFhb7dEUHSjk-xs0LhfFj0PNfeJB8cCUV4KeHjkni_OLzqtv0ZV9YoRkhKnvYzZ8_AR0"/>
+</div>
+</div>
+<!-- Agent Card 3 -->
+<div class="flex flex-col gap-4 rounded-xl p-4 bg-white dark:bg-[#1C1B33] shadow-sm cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined">lab_profile</span>
+</div>
+<div class="flex-1">
+<p class="text-slate-900 dark:text-white font-bold text-lg">Agente de Reportes</p>
+<div class="flex items-center gap-1.5">
+<div class="size-2 rounded-full bg-amber-500"></div>
+<p class="text-slate-500 dark:text-slate-400 text-sm">En Pausa</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500">chevron_right</span>
+</div>
+<div>
+<p class="text-slate-600 dark:text-slate-300 text-sm">Última ejecución</p>
+<p class="text-slate-900 dark:text-white text-lg font-bold">Hace 3 días</p>
+</div>
+</div>
+</div>
+<!-- Floating Action Button / Bottom Bar -->
+<div class="fixed bottom-0 left-0 right-0 p-4 bg-transparent">
+<div class="max-w-md mx-auto">
+<button class="w-full flex h-14 items-center justify-center gap-2 rounded-xl bg-primary px-6 text-white text-lg font-bold shadow-[0_4px_14px_rgba(88,77,245,0.4)] transition-transform hover:scale-[1.02] active:scale-[0.98]">
+                    Ver Reportes Completos
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>
