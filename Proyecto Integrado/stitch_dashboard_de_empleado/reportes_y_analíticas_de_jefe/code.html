@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vareon - Reports &amp; Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#8A2BE2", // Vibrant Purple
+            "background-light": "#f6f5f8",
+            "background-dark": "#121212", // Deep Black / Dark Charcoal
+            "surface-dark": "#1E1E1E", // Dark Gray for cards
+            "surface-light": "#FFFFFF",
+          },
+          fontFamily: {
+            "display": ["Space Grotesk", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem", // increased default for a softer look
+            "lg": "0.75rem",
+            "xl": "1rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="flex-1 pb-24">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-10 flex items-center bg-background-light/80 dark:bg-background-dark/80 p-4 pb-2 justify-between backdrop-blur-sm">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/20 text-primary">
+<svg aria-label="Vareon logo" fill="none" height="24" role="img" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M2 7L12 12L22 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M12 12V22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h1 class="text-black dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Reports &amp; Analytics</h1>
+<div class="flex w-10 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 bg-transparent text-black dark:text-white gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined text-3xl">account_circle</span>
+</button>
+</div>
+</header>
+<!-- SegmentedButtons -->
+<div class="flex px-4 py-3">
+<div class="flex h-10 flex-1 items-center justify-center rounded-lg bg-surface-light dark:bg-surface-dark p-1 shadow-sm">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-2 has-[:checked]:bg-primary has-[:checked]:shadow-[0_1px_3px_rgba(138,43,226,0.3)] has-[:checked]:text-white text-gray-500 dark:text-gray-400 text-sm font-medium leading-normal transition-colors">
+<span class="truncate">Last 24h</span>
+<input class="invisible w-0" name="date-range-filter" type="radio" value="Last 24h"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-2 has-[:checked]:bg-primary has-[:checked]:shadow-[0_1px_3px_rgba(138,43,226,0.3)] has-[:checked]:text-white text-gray-500 dark:text-gray-400 text-sm font-medium leading-normal transition-colors">
+<span class="truncate">Last 7 Days</span>
+<input checked="" class="invisible w-0" name="date-range-filter" type="radio" value="Last 7 Days"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-2 has-[:checked]:bg-primary has-[:checked]:shadow-[0_1px_3px_rgba(138,43,226,0.3)] has-[:checked]:text-white text-gray-500 dark:text-gray-400 text-sm font-medium leading-normal transition-colors">
+<span class="truncate">Last 30 Days</span>
+<input class="invisible w-0" name="date-range-filter" type="radio" value="Last 30 Days"/>
+</label>
+</div>
+</div>
+<!-- Stats -->
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4 p-4">
+<div class="flex flex-col gap-2 rounded-xl bg-surface-light dark:bg-surface-dark p-4 shadow-sm">
+<p class="text-gray-600 dark:text-gray-300 text-sm font-medium leading-normal">Agents Active</p>
+<p class="text-black dark:text-white tracking-tight text-3xl font-bold leading-tight">12</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl bg-surface-light dark:bg-surface-dark p-4 shadow-sm">
+<p class="text-gray-600 dark:text-gray-300 text-sm font-medium leading-normal">Automations</p>
+<p class="text-black dark:text-white tracking-tight text-3xl font-bold leading-tight">1,482</p>
+</div>
+<div class="col-span-2 flex flex-col gap-2 rounded-xl bg-surface-light dark:bg-surface-dark p-4 shadow-sm">
+<p class="text-gray-600 dark:text-gray-300 text-sm font-medium leading-normal">Hours Saved</p>
+<p class="text-black dark:text-white tracking-tight text-3xl font-bold leading-tight">216h</p>
+</div>
+</div>
+<!-- Charts -->
+<div class="flex flex-col gap-4 px-4">
+<!-- Performance Chart -->
+<div class="flex w-full flex-col gap-2 rounded-xl bg-surface-light dark:bg-surface-dark p-4 shadow-sm">
+<p class="text-black dark:text-white text-base font-medium leading-normal">Agent Performance Trend</p>
+<p class="text-black dark:text-white tracking-tight text-[32px] font-bold leading-tight truncate">98.2% <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Success Rate</span></p>
+<div class="flex gap-1.5 items-center">
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">Last 7 Days</p>
+<p class="text-green-500 text-sm font-medium leading-normal flex items-center"><span class="material-symbols-outlined text-base">arrow_upward</span>+1.5%</p>
+</div>
+<div class="flex min-h-[180px] flex-1 flex-col gap-4 py-4">
+<svg fill="none" height="148" preserveaspectratio="none" viewbox="-3 0 478 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="chart-gradient" x1="236" x2="236" y1="1" y2="149">
+<stop stop-color="#8A2BE2" stop-opacity="0.25"></stop>
+<stop offset="1" stop-color="#8A2BE2" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25V149H0V109Z" fill="url(#chart-gradient)"></path>
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25" stroke="#8A2BE2" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+</div>
+</div>
+<!-- Productivity Chart -->
+<div class="flex w-full flex-col gap-2 rounded-xl bg-surface-light dark:bg-surface-dark p-4 shadow-sm">
+<p class="text-black dark:text-white text-base font-medium leading-normal">Top Performing Automations</p>
+<p class="text-black dark:text-white tracking-tight text-[32px] font-bold leading-tight truncate">312 <span class="text-sm font-medium text-gray-500 dark:text-gray-400">runs</span></p>
+<div class="flex gap-1.5 items-center">
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">Last 7 Days</p>
+<p class="text-green-500 text-sm font-medium leading-normal flex items-center"><span class="material-symbols-outlined text-base">arrow_upward</span>+12%</p>
+</div>
+<div class="grid min-h-[180px] grid-flow-col gap-4 grid-rows-[1fr_auto] items-end justify-items-center pt-4">
+<div class="flex flex-col items-center gap-2 w-full h-full justify-end">
+<div class="bg-primary/20 rounded-t-md w-3/4" style="height: 40%;"></div>
+<p class="text-gray-500 dark:text-gray-400 text-[13px] font-bold leading-normal">Reports</p>
+</div>
+<div class="flex flex-col items-center gap-2 w-full h-full justify-end">
+<div class="bg-primary/20 rounded-t-md w-3/4" style="height: 30%;"></div>
+<p class="text-gray-500 dark:text-gray-400 text-[13px] font-bold leading-normal">Invoices</p>
+</div>
+<div class="flex flex-col items-center gap-2 w-full h-full justify-end">
+<div class="bg-primary/20 rounded-t-md w-3/4" style="height: 80%;"></div>
+<p class="text-gray-500 dark:text-gray-400 text-[13px] font-bold leading-normal">Emails</p>
+</div>
+<div class="flex flex-col items-center gap-2 w-full h-full justify-end">
+<div class="bg-primary/20 rounded-t-md w-3/4" style="height: 60%;"></div>
+<p class="text-gray-500 dark:text-gray-400 text-[13px] font-bold leading-normal">Data Entry</p>
+</div>
+</div>
+</div>
+<!-- Execution Log Card -->
+<div class="flex w-full flex-col gap-4 rounded-xl bg-surface-light dark:bg-surface-dark p-4 shadow-sm">
+<h3 class="text-black dark:text-white text-base font-medium leading-normal">Latest Executions</h3>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-green-500/20 text-green-400">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div class="flex-1">
+<p class="font-medium text-black dark:text-white">Invoice Processing Agent</p>
+<p class="text-sm text-gray-500 dark:text-gray-400">Completed</p>
+</div>
+<p class="text-sm text-gray-500 dark:text-gray-400">2 min ago</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-green-500/20 text-green-400">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div class="flex-1">
+<p class="font-medium text-black dark:text-white">Daily Reporting</p>
+<p class="text-sm text-gray-500 dark:text-gray-400">Completed</p>
+</div>
+<p class="text-sm text-gray-500 dark:text-gray-400">5 min ago</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-red-500/20 text-red-400">
+<span class="material-symbols-outlined">cancel</span>
+</div>
+<div class="flex-1">
+<p class="font-medium text-black dark:text-white">Email Sorter</p>
+<p class="text-sm text-gray-500 dark:text-gray-400">Error: API Timeout</p>
+</div>
+<p class="text-sm text-gray-500 dark:text-gray-400">12 min ago</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 z-10 border-t border-white/10 bg-surface-light/80 dark:bg-surface-dark/80 px-4 py-2 backdrop-blur-sm">
+<div class="flex justify-around">
+<button class="flex flex-col items-center justify-center gap-1 text-gray-500 dark:text-gray-400 w-1/4">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-xs font-medium">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 text-gray-500 dark:text-gray-400 w-1/4">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="text-xs font-medium">Agents</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 text-primary w-1/4">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-xs font-medium">Reports</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 text-gray-500 dark:text-gray-400 w-1/4">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-xs font-medium">Settings</span>
+</button>
+</div>
+</nav>
+</div>
+</body></html>

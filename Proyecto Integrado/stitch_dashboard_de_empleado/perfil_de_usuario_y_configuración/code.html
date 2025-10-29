@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Perfil y Configuración - Vareon</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#584df5",
+              "background-light": "#f6f5f8",
+              "background-dark": "#111022",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 24px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden text-gray-800 dark:text-white">
+<!-- TopAppBar -->
+<div class="flex items-center p-4 pb-2 justify-between sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="flex size-10 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h1 class="text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Perfil y Configuración</h1>
+<div class="flex size-10 shrink-0 items-center justify-center text-primary font-black text-xl">V</div>
+</div>
+<div class="flex flex-col gap-8 p-4">
+<!-- ProfileHeader -->
+<div class="@container">
+<div class="flex w-full flex-col gap-4 @[520px]:flex-row @[520px]:justify-between @[520px]:items-center">
+<div class="flex gap-4 items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-20 w-20 shrink-0 ring-2 ring-primary/50" data-alt="User avatar image with an abstract purple and blue gradient background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAw3cFROaxyHLj5pK7vEoSFCC1WaqCLYGGvvrWZW3Nc-Qmmbc0w1LW39WHNoeOzhVxFGCobC3ngb4ae8YUU8HS5QJcyBbPCQrKbkcC3ERknSn0jcc4z5_R65aDqZPDrbP6MLNvEAD9iEKjyxg8frldueM_mBW18Nv1Cb47QNPTyCw66QOckXzSzR8hI_JJoTUWvgcAQUfEVIizG5jkaJzLoRgy118GrevdKMpT3mvbI2iECxfiCOEhUUwKxFGwqygdBnE84IR7MLpc");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-xl font-bold leading-tight tracking-[-0.015em]">Olivia Rhye</p>
+<p class="text-gray-500 dark:text-gray-400 text-base font-normal leading-normal">olivia@vareon.ai</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Account Information Section -->
+<div class="flex flex-col gap-2">
+<h2 class="text-base font-bold leading-tight tracking-[-0.015em] px-0 pb-2 pt-4 text-gray-500 dark:text-gray-400 uppercase">Información de la Cuenta</h2>
+<!-- ListItem: Name -->
+<div class="flex items-center gap-4 bg-background-light dark:bg-background-dark p-3 rounded-lg min-h-14 justify-between border border-transparent hover:bg-gray-100 dark:hover:bg-primary/10 transition-colors duration-200">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center rounded-lg bg-primary/20 text-primary shrink-0 size-10">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs text-gray-500 dark:text-gray-400">Nombre</span>
+<p class="text-base font-medium leading-normal flex-1 truncate">Olivia Rhye</p>
+</div>
+</div>
+<button class="shrink-0 text-primary text-sm font-bold leading-normal">Editar</button>
+</div>
+<!-- ListItem: Email -->
+<div class="flex items-center gap-4 bg-background-light dark:bg-background-dark p-3 rounded-lg min-h-14 justify-between border border-transparent hover:bg-gray-100 dark:hover:bg-primary/10 transition-colors duration-200">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center rounded-lg bg-primary/20 text-primary shrink-0 size-10">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs text-gray-500 dark:text-gray-400">Correo Electrónico</span>
+<p class="text-base font-medium leading-normal flex-1 truncate">olivia@vareon.ai</p>
+</div>
+</div>
+<button class="shrink-0 text-primary text-sm font-bold leading-normal">Editar</button>
+</div>
+<!-- ListItem: Password -->
+<div class="flex items-center gap-4 bg-background-light dark:bg-background-dark p-3 rounded-lg min-h-14 justify-between border border-transparent hover:bg-gray-100 dark:hover:bg-primary/10 transition-colors duration-200">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center rounded-lg bg-primary/20 text-primary shrink-0 size-10">
+<span class="material-symbols-outlined">lock</span>
+</div>
+<p class="text-base font-medium leading-normal flex-1 truncate">Contraseña</p>
+</div>
+<button class="shrink-0 text-primary text-sm font-bold leading-normal">Cambiar</button>
+</div>
+</div>
+<!-- Roles and Permissions Section -->
+<div class="flex flex-col gap-2">
+<h2 class="text-base font-bold leading-tight tracking-[-0.015em] px-0 pb-2 pt-4 text-gray-500 dark:text-gray-400 uppercase">Roles y Permisos</h2>
+<div class="flex items-center gap-4 bg-background-light dark:bg-background-dark p-3 rounded-lg min-h-14 justify-between border border-transparent hover:bg-gray-100 dark:hover:bg-primary/10 transition-colors duration-200">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center rounded-lg bg-primary/20 text-primary shrink-0 size-10">
+<span class="material-symbols-outlined">verified_user</span>
+</div>
+<div class="flex flex-col">
+<p class="text-base font-medium leading-normal flex-1 truncate">Administrador</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">Acceso completo a todas las funciones.</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-gray-400">chevron_right</span>
+</div>
+</div>
+<!-- Notifications Section -->
+<div class="flex flex-col gap-2">
+<h2 class="text-base font-bold leading-tight tracking-[-0.015em] px-0 pb-2 pt-4 text-gray-500 dark:text-gray-400 uppercase">Notificaciones</h2>
+<!-- Notification Toggle -->
+<div class="flex items-center gap-4 bg-background-light dark:bg-background-dark p-3 rounded-lg min-h-14 justify-between">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center rounded-lg bg-primary/20 text-primary shrink-0 size-10">
+<span class="material-symbols-outlined">notifications</span>
+</div>
+<p class="text-base font-medium leading-normal flex-1 truncate">Agente finalizó una tarea</p>
+</div>
+<div class="shrink-0">
+<label class="flex cursor-pointer items-center" for="toggle1">
+<div class="relative">
+<input checked="" class="sr-only" id="toggle1" type="checkbox"/>
+<div class="block h-8 w-14 rounded-full bg-gray-300 dark:bg-gray-600"></div>
+<div class="dot absolute left-1 top-1 h-6 w-6 rounded-full bg-white transition-transform peer-checked:translate-x-full peer-checked:bg-primary"></div>
+</div>
+</label>
+</div>
+</div>
+<!-- Notification Toggle -->
+<div class="flex items-center gap-4 bg-background-light dark:bg-background-dark p-3 rounded-lg min-h-14 justify-between">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center rounded-lg bg-primary/20 text-primary shrink-0 size-10">
+<span class="material-symbols-outlined">error</span>
+</div>
+<p class="text-base font-medium leading-normal flex-1 truncate">Error en un proceso</p>
+</div>
+<div class="shrink-0">
+<label class="flex cursor-pointer items-center" for="toggle2">
+<div class="relative">
+<input checked="" class="sr-only" id="toggle2" type="checkbox"/>
+<div class="block h-8 w-14 rounded-full bg-gray-300 dark:bg-gray-600"></div>
+<div class="dot absolute left-1 top-1 h-6 w-6 rounded-full bg-white transition-transform peer-checked:translate-x-full peer-checked:bg-primary"></div>
+</div>
+</label>
+</div>
+</div>
+<!-- Notification Toggle -->
+<div class="flex items-center gap-4 bg-background-light dark:bg-background-dark p-3 rounded-lg min-h-14 justify-between">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center rounded-lg bg-primary/20 text-primary shrink-0 size-10">
+<span class="material-symbols-outlined">campaign</span>
+</div>
+<p class="text-base font-medium leading-normal flex-1 truncate">Novedades de Vareon</p>
+</div>
+<div class="shrink-0">
+<label class="flex cursor-pointer items-center" for="toggle3">
+<div class="relative">
+<input class="sr-only" id="toggle3" type="checkbox"/>
+<div class="block h-8 w-14 rounded-full bg-gray-300 dark:bg-gray-600"></div>
+<div class="dot absolute left-1 top-1 h-6 w-6 rounded-full bg-white transition-transform peer-checked:translate-x-full peer-checked:bg-primary"></div>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-4 pt-8">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] w-full transition-transform active:scale-95">
+<span class="truncate">Guardar Cambios</span>
+</button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 bg-transparent text-red-500 text-base font-bold leading-normal tracking-[0.015em] w-full transition-colors hover:bg-red-500/10 active:bg-red-500/20">
+<span class="truncate">Cerrar Sesión</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

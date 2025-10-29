@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vareon Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#7B2DFF",
+              "background-light": "#f6f5f8",
+              "background-dark": "#121212",
+              "card-dark": "#1E1E1E",
+              "text-light": "#FFFFFF",
+              "text-muted-dark": "#a0a0a0"
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col dark group/design-root overflow-x-hidden">
+<!-- TopAppBar -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="flex size-12 shrink-0 items-center text-primary" data-icon="VareonLogo">
+<span class="material-symbols-outlined text-4xl">
+                    auto_awesome
+                </span>
+</div>
+<h2 class="text-text-light text-lg font-bold leading-tight tracking-[-0.015em] flex-1">Hola, Empleado</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 w-10 bg-card-dark text-text-light gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<div class="text-text-light" data-icon="UserAvatar">
+<span class="material-symbols-outlined">
+                            person
+                        </span>
+</div>
+</button>
+</div>
+</div>
+<!-- Hero Card -->
+<div class="p-4 @container">
+<div class="flex flex-col items-stretch justify-start rounded-xl @xl:flex-row @xl:items-start shadow-lg bg-card-dark">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-xl @xl:rounded-l-xl @xl:rounded-r-none @xl:w-1/3" data-alt="Abstract purple and blue energy wave pattern" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDyQ6ynrjdbbc7kiolYbQNMm3L1DEBY6bWf3TKAHwd0FuIjOHs7z59jvR58Eyli1Dq6cnNf7Vc_4bdYFOWbSIsgzh9dxvWCRh-Fgxqx3rT0SSGY_Kw3zYNTmoDZcZEdTMyYD6TvIR0p1PhasG_69kSvYrdywK095k24KdPeYLO5IWw4bKkbydjcxmDx9YtdBFm-g5AtmZ41C7IsfNVrWJOdndQpGjOVslqyJFc-JsVHHIGo35Ppft03Hq7gXhEq_cmHzXZpOXH_bOs");'></div>
+<div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-2 p-6 @xl:w-2/3">
+<p class="text-text-light text-xl font-bold leading-tight tracking-[-0.015em]">Tiempo Ahorrado este Mes</p>
+<div class="flex items-end gap-3 justify-between">
+<div class="flex flex-col gap-1">
+<p class="text-primary text-4xl font-bold leading-tight">24.5 Horas</p>
+<p class="text-text-muted-dark text-base font-normal leading-normal">+15% vs el mes pasado</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Stats -->
+<div class="flex flex-wrap gap-4 p-4">
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-4 bg-card-dark shadow-md">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">smart_toy</span>
+<p class="text-text-light text-base font-medium leading-normal">Agentes Activos</p>
+</div>
+<p class="text-text-light tracking-light text-3xl font-bold leading-tight">8</p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-4 bg-card-dark shadow-md">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">task_alt</span>
+<p class="text-text-light text-base font-medium leading-normal">Tareas Completadas</p>
+</div>
+<p class="text-text-light tracking-light text-3xl font-bold leading-tight">124</p>
+</div>
+<div class="flex min-w-full flex-1 flex-col gap-2 rounded-lg p-4 bg-card-dark shadow-md">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">trending_up</span>
+<p class="text-text-light text-base font-medium leading-normal">Eficiencia Promedio</p>
+</div>
+<p class="text-text-light tracking-light text-3xl font-bold leading-tight">97%</p>
+</div>
+</div>
+<!-- SectionHeader -->
+<h3 class="text-text-light text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Actividad Reciente</h3>
+<!-- ListItems -->
+<div class="flex flex-col px-2">
+<div class="flex items-center gap-4 bg-transparent px-4 min-h-[72px] py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="text-text-light flex items-center justify-center rounded-lg bg-card-dark shrink-0 size-12">
+<span class="material-symbols-outlined">
+                            query_stats
+                        </span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-text-light text-base font-medium leading-normal line-clamp-1">Reporte de Ventas Semanal</p>
+<p class="text-text-muted-dark text-sm font-normal leading-normal line-clamp-2">Agente: SalesBot</p>
+</div>
+</div>
+<div class="shrink-0"><p class="text-text-muted-dark text-sm font-normal leading-normal">Hace 5 min</p></div>
+</div>
+<div class="flex items-center gap-4 bg-transparent px-4 min-h-[72px] py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="text-text-light flex items-center justify-center rounded-lg bg-card-dark shrink-0 size-12">
+<span class="material-symbols-outlined">
+                            mail
+                        </span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-text-light text-base font-medium leading-normal line-clamp-1">Mailing de Bienvenida</p>
+<p class="text-text-muted-dark text-sm font-normal leading-normal line-clamp-2">Agente: OnboardingBot</p>
+</div>
+</div>
+<div class="shrink-0"><p class="text-text-muted-dark text-sm font-normal leading-normal">Hace 32 min</p></div>
+</div>
+<div class="flex items-center gap-4 bg-transparent px-4 min-h-[72px] py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="text-text-light flex items-center justify-center rounded-lg bg-card-dark shrink-0 size-12">
+<span class="material-symbols-outlined">
+                            inventory_2
+                        </span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-text-light text-base font-medium leading-normal line-clamp-1">Actualización de Inventario</p>
+<p class="text-text-muted-dark text-sm font-normal leading-normal line-clamp-2">Agente: StockManager</p>
+</div>
+</div>
+<div class="shrink-0"><p class="text-text-muted-dark text-sm font-normal leading-normal">Hace 1 hora</p></div>
+</div>
+<div class="flex items-center gap-4 bg-transparent px-4 min-h-[72px] py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="text-text-light flex items-center justify-center rounded-lg bg-card-dark shrink-0 size-12">
+<span class="material-symbols-outlined">
+                            receipt_long
+                        </span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-text-light text-base font-medium leading-normal line-clamp-1">Procesamiento de Facturas</p>
+<p class="text-text-muted-dark text-sm font-normal leading-normal line-clamp-2">Agente: FinanceBot</p>
+</div>
+</div>
+<div class="shrink-0"><p class="text-text-muted-dark text-sm font-normal leading-normal">Hace 2 horas</p></div>
+</div>
+</div>
+<!-- Floating Action Button (FAB) -->
+<button class="fixed bottom-6 right-6 flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-primary text-text-light shadow-lg">
+<span class="material-symbols-outlined text-3xl">
+                add
+            </span>
+</button>
+<div class="h-24"></div> <!-- Spacer for content above bottom bar -->
+</div>
+</body></html>
