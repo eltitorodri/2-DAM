@@ -1,18 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { NavegationBarComponent } from "../navegation-bar/navegation-bar.component";
 import { LogoSloganComponent } from "../logo-slogan/logo-slogan.component";
-
+import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/angular/standalone'; 
+import { ProductSliderComponent } from '../product-slider/product-slider.component'; 
 @Component({
   selector: 'app-login',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   standalone: true,
-  imports: [NavegationBarComponent, LogoSloganComponent],
+  imports: [NavegationBarComponent, 
+    LogoSloganComponent, 
+    IonCard, 
+    IonCardContent, 
+    IonCardHeader, 
+    IonCardSubtitle, 
+    IonCardTitle,
+    ProductSliderComponent,
+  ],
 })
 
 export class HomeComponent  implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {}
 
