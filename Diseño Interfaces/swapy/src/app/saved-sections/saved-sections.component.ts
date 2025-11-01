@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { IonSegment, IonSegmentButton, IonLabel, IonIcon, IonButton, IonContent } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { heart, personCircle } from 'ionicons/icons';
+import { NavegationBarComponent } from "../navegation-bar/navegation-bar.component";
 
 addIcons({ heart, personCircle });
 
@@ -32,13 +33,9 @@ interface SavedProfile {
   templateUrl: './saved-sections.component.html',
   styleUrls: ['./saved-sections.component.scss'],
   standalone: true,
-  imports: [ IonContent, SloganLogoComponent,     CommonModule,
-    IonSegment,
-    IonSegmentButton,
-    IonLabel,
+  imports: [SloganLogoComponent, CommonModule,
     IonIcon,
-    IonButton,
-    IonContent],
+    IonContent, NavegationBarComponent],
 })
 export class SavedSectionsComponent {
 

@@ -1,8 +1,6 @@
-<ion-content>
+<app-slogan-logo></app-slogan-logo>
 
-  <app-slogan-logo></app-slogan-logo>
-
-  <ion-content class="saved-container">
+<div class="saved-container">
   <div class="tabs-header">
     <button
       [class.active]="activeTab === 'pendientes'"
@@ -36,9 +34,6 @@
             <div class="icon-circle saved-icon">
               <ion-icon name="heart"></ion-icon>
             </div>
-            <div class="product-avatar">
-              <ion-icon name="personCircle"></ion-icon>
-            </div>
           </div>
 
           <div class="product-info">
@@ -69,9 +64,6 @@
             <img [src]="product.image" [alt]="product.name" class="product-image" />
             <div class="icon-circle liked-icon">
               <ion-icon name="heart"></ion-icon>
-            </div>
-            <div class="product-avatar">
-              <ion-icon name="personCircle"></ion-icon>
             </div>
           </div>
 
@@ -123,6 +115,6 @@
       </div>
     </div>
   </div>
-</ion-content>
+</div>
 
-</ion-content>
+<app-navegation-bar></app-navegation-bar>
