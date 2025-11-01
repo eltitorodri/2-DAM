@@ -1,0 +1,55 @@
+<button
+  (click)="openSearch()"
+  [style.display]="isOpen ? 'none' : 'flex'"
+  class="search-button"
+  aria-label="Abrir búsqueda"
+>
+  <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+  </svg>
+</button>
+
+<div [style.display]="isOpen ? 'block' : 'none'">
+  <div class="search-backdrop" (click)="closeSearch()"></div>
+
+  <div class="search-modal">
+    <div class="search-container">
+      <div class="search-header">
+        <button
+          (click)="closeSearch()"
+          class="close-button"
+          aria-label="Cerrar búsqueda"
+        >
+          <span>×</span>
+        </button>
+        <h2 class="search-title">Buscar</h2>
+      </div>
+
+      <div class="search-input-group">
+        <input
+          #searchInput
+          type="text"
+          [value]="query"
+          (input)="onInputChange($event.target.value)"
+          (keypress)="handleKeyPress($event)"
+          placeholder="¿Qué buscas?"
+          class="search-input"
+          inputmode="search"
+        />
+        <button
+          (click)="performSearch()"
+          class="search-submit"
+          aria-label="Buscar"
+        >
+          <svg class="search-icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="search-hint">
+        Presiona Enter para buscar o Esc para cerrar
+      </div>
+    </div>
+  </div>
+</div>
