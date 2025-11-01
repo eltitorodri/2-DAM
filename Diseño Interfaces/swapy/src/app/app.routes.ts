@@ -7,6 +7,10 @@ import { HomeComponent } from './home/home.component';
 import { CarrouselHorizontalComponent } from './carrousel-horizontal/carrousel-horizontal.component';
 import { ProductSliderComponent } from './product-slider/product-slider.component';
 import { TrendTopicComponent } from './trend-topic/trend-topic.component';
+import { MostLikedComponent } from './most-liked/most-liked.component';
+import { SearcherComponent } from './searcher/searcher.component';
+import { SavedSectionsComponent } from './saved-sections/saved-sections.component';
+import { SloganLogoComponent } from './slogan-logo/slogan-logo.component';
 
 export const routes: Routes = [
 
@@ -16,9 +20,11 @@ export const routes: Routes = [
   { path: 'navegation-bar', component: NavegationBarComponent },
   { path: 'splash', component: SplashComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'home', component: CarrouselHorizontalComponent },
-  { path: 'home', component: ProductSliderComponent },
-  { path: 'home', component: TrendTopicComponent },
-  
-  
+  { path: 'carrouselHorizontal', component: CarrouselHorizontalComponent },
+  { path: 'productSlider', component: ProductSliderComponent },
+  { path: 'trendTopic', component: TrendTopicComponent },
+  { path: 'mostLiked', component: MostLikedComponent },
+  { path: 'searcher', component: SearcherComponent },
+  { path: 'savedSections', component: SavedSectionsComponent },
+  { path: 'sloganLogo', component: SloganLogoComponent },
 ];

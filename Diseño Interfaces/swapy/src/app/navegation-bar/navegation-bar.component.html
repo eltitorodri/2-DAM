@@ -1,25 +1,27 @@
 <ion-footer>
   <ion-toolbar>
-    <ion-tab-bar>
-      <ion-tab-button tab="home">
+    <div class="navigation-container">
+      
+      <ion-button fill="clear" routerLink="/home" routerLinkActive="active-button">
         <ion-icon name="home-outline"></ion-icon>
-      </ion-tab-button>
+      </ion-button>
       
-      <ion-tab-button tab="favourites">
+      <ion-button fill="clear" (click)="goToSaved()" routerLink="/favourites" routerLinkActive="active-button">
         <ion-icon name="heart-outline"></ion-icon>
-      </ion-tab-button>
+      </ion-button>
       
-      <ion-tab-button tab="upload">
+      <ion-button fill="clear" routerLink="/upload" routerLinkActive="active-button">
         <ion-icon name="add-circle-outline"></ion-icon>
-      </ion-tab-button>
+      </ion-button>
       
-      <ion-tab-button tab="chats">
+      <ion-button fill="clear" routerLink="/chats" routerLinkActive="active-button">
         <ion-icon name="chatbubbles-outline"></ion-icon>
-      </ion-tab-button>
+      </ion-button>
       
-      <ion-tab-button tab="settings">
+      <ion-button fill="clear" routerLink="/settings" routerLinkActive="active-button">
         <ion-icon name="person-circle-outline"></ion-icon>
-      </ion-tab-button>
-    </ion-tab-bar>
+      </ion-button>
+      
+    </div>
   </ion-toolbar>
 </ion-footer>
