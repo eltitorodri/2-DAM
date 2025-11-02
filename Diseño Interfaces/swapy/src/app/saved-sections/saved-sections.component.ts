@@ -5,6 +5,7 @@ import { IonSegment, IonSegmentButton, IonLabel, IonIcon, IonButton, IonContent 
 import { addIcons } from 'ionicons';
 import { heart, personCircle } from 'ionicons/icons';
 import { NavegationBarComponent } from "../navegation-bar/navegation-bar.component";
+import { SearcherComponent } from "../searcher/searcher.component";
 
 addIcons({ heart, personCircle });
 
@@ -35,7 +36,7 @@ interface SavedProfile {
   standalone: true,
   imports: [SloganLogoComponent, CommonModule,
     IonIcon,
-    IonContent, NavegationBarComponent],
+    NavegationBarComponent, SearcherComponent],
 })
 export class SavedSectionsComponent {
 

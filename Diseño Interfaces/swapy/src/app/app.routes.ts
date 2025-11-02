@@ -11,6 +11,7 @@ import { MostLikedComponent } from './most-liked/most-liked.component';
 import { SearcherComponent } from './searcher/searcher.component';
 import { SavedSectionsComponent } from './saved-sections/saved-sections.component';
 import { SloganLogoComponent } from './slogan-logo/slogan-logo.component';
+import { SettingsComponent } from './settings/settings.component';
 
 export const routes: Routes = [
 
@@ -27,4 +28,5 @@ export const routes: Routes = [
   { path: 'searcher', component: SearcherComponent },
   { path: 'savedSections', component: SavedSectionsComponent },
   { path: 'sloganLogo', component: SloganLogoComponent },
+  { path: 'settings', component: SettingsComponent },
 ];
