@@ -8,7 +8,6 @@ import { CarrouselHorizontalComponent } from "../carrousel-horizontal/carrousel-
   styleUrls: ['./logo-slogan.component.scss'],
   standalone: true,
   imports: [
-    IonHeader,
     CarrouselHorizontalComponent
 ]
 })

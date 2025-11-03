@@ -1,0 +1,258 @@
+$primary-color: #7c5cdb;
+$text-dark: #333333;
+$text-light: #999999;
+$border-color: #e0e0e0;
+$background-light: #f9f9f9;
+$rating-color: #ffc107;
+
+.settings-content {
+  --padding-top: 16px;
+  --padding-bottom: 16px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  background-color: #f5f5f5;
+}
+
+.settings-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+// Profile Card
+.profile-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+}
+
+.user-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.profile-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.user-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: $text-dark;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.rating-section {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.star-icon {
+  color: $rating-color;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.rating-text {
+  font-size: 14px;
+  color: $text-light;
+  margin-left: 4px;
+}
+
+.join-date {
+  font-size: 12px;
+  color: $text-light;
+  margin: 0;
+  font-weight: 400;
+}
+
+.profile-arrow {
+  color: $text-dark;
+  font-size: 24px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+ion-divider {
+  margin: 16px -20px 0 -20px;
+  --background: $border-color;
+}
+
+// Menu Section
+.menu-section {
+  background: white;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.menu-list {
+  padding: 0;
+}
+
+.menu-item {
+  --padding-start: 20px;
+  --padding-end: 20px;
+  --inner-padding-end: 0;
+  --min-height: 56px;
+  border-bottom: 1px solid $border-color;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.menu-item:hover {
+  --background: $background-light;
+}
+
+.menu-label {
+  font-size: 16px;
+  color: $text-dark;
+  font-weight: 500;
+}
+
+.menu-icon {
+  color: $text-dark;
+  font-size: 20px;
+  margin-right: 8px;
+}
+
+// Verification Section
+.verification-section {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: $text-dark;
+  margin: 0;
+}
+
+.qr-icon {
+  width: 28px;
+  height: 28px;
+  padding: 4px;
+  background-color: $background-light;
+  border-radius: 6px;
+}
+
+.verification-list {
+  padding: 0;
+}
+
+.verification-item {
+  --padding-start: 0;
+  --padding-end: 0;
+  --inner-padding-end: 0;
+  --min-height: 40px;
+  border-bottom: 1px solid $border-color;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.verification-item:hover {
+  --background: $background-light;
+}
+
+.verification-label {
+  font-size: 14px;
+  color: $text-light;
+  font-weight: 400;
+  padding: 8px 0;
+}
+
+// Support Section
+.support-section {
+  background: white;
+  border-radius: 16px;
+  margin-bottom: 32px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.support-list {
+  padding: 0;
+}
+
+.support-item {
+  --padding-start: 20px;
+  --padding-end: 20px;
+  --inner-padding-end: 0;
+  --min-height: 56px;
+  border-bottom: 1px solid $border-color;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.support-item:hover {
+  --background: $background-light;
+}
+
+.support-label {
+  font-size: 14px;
+  color: $text-light;
+  font-weight: 400;
+}
+
+.support-icon {
+  color: $text-light;
+  font-size: 20px;
+  margin-right: 8px;
+}
+
+// Responsive
+@media (max-width: 480px) {
+  .profile-header {
+    gap: 12px;
+  }
+
+  .user-avatar {
+    width: 70px;
+    height: 70px;
+  }
+
+  .user-name {
+    font-size: 18px;
+  }
+
+  .menu-item,
+  .support-item {
+    --min-height: 48px;
+  }
+}

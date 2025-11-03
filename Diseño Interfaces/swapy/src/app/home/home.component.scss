@@ -1,0 +1,16 @@
+:host {
+  height: 100vh;
+  overflow-y: auto;
+}
+
+ion-content {
+  --background: transparent !important;
+}
+
+body {
+  background-color: #ffffff;
+}
+
+html {
+  background-color: #ffffff;
+}
