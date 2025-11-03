@@ -1,13 +1,40 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+import java.util.Scanner;
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        SolicitaSuspender control = new SolicitaSuspender();
+        myHilo hilo = new myHilo(control);
+
+        hilo.start();
+
+        String opcion;
+
+        System.out.println("Introduce S para suspender, R para reanudar, * para salir:");
+
+        do {
+            opcion = sc.nextLine();
+
+            if (opcion.equalsIgnoreCase("S")) {
+                System.out.println("➡️  Suspendiendo hilo...");
+                control.setSuspender(true);
+            } else if (opcion.equalsIgnoreCase("R")) {
+                System.out.println("▶️  Reanudando hilo...");
+                control.setSuspender(false);
+            }
+
+        } while (!opcion.equals("*"));
+
+        System.out.println("⏹ Finalizando programa...");
+        hilo.pararHilo();
+        control.setSuspender(false);
+
+        try {
+            hilo.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("✅ Contador final leído desde main: " + hilo.getContador());
     }
 }

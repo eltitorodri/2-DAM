@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonHeader, IonIcon, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel } from "@ionic/angular/standalone";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss'],
   standalone: true,
-  imports: ([IonHeader, IonIcon, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel]),
+  imports: ([CommonModule, IonHeader, IonIcon, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel]),
 })
 export class SettingsComponent {
   userProfile = {
