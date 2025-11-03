@@ -1,0 +1,121 @@
+<app-slogan-logo></app-slogan-logo>
+
+<div class="saved-container">
+  <div class="tabs-header">
+    <button
+      [class.active]="activeTab === 'pendientes'"
+      (click)="changeTab('pendientes')"
+      class="tab-button"
+    >
+      Pendientes
+    </button>
+    <button
+      [class.active]="activeTab === 'productos'"
+      (click)="changeTab('productos')"
+      class="tab-button"
+    >
+      Productos
+    </button>
+    <button
+      [class.active]="activeTab === 'perfiles'"
+      (click)="changeTab('perfiles')"
+      class="tab-button"
+    >
+      Perfiles
+    </button>
+  </div>
+
+  <div *ngIf="activeTab === 'pendientes'" class="tab-content">
+    <div class="products-list">
+      <div *ngFor="let product of savedProducts" class="product-card">
+        <div class="product-card-content">
+          <div class="product-image-container">
+            <img [src]="product.image" [alt]="product.name" class="product-image" />
+            <div class="icon-circle saved-icon">
+              <ion-icon name="heart"></ion-icon>
+            </div>
+          </div>
+
+          <div class="product-info">
+            <p class="product-brand">{{ product.brand }}</p>
+            <h3 class="product-name">{{ product.name }}</h3>
+
+            <div class="product-details">
+              <div class="detail-row">
+                <span class="detail-label">Talla:</span>
+                <span class="detail-value">{{ product.size }}</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Estado:</span>
+                <span class="detail-value">{{ product.status }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="activeTab === 'productos'" class="tab-content">
+    <div class="products-list">
+      <div *ngFor="let product of likedProducts" class="product-card">
+        <div class="product-card-content">
+          <div class="product-image-container">
+            <img [src]="product.image" [alt]="product.name" class="product-image" />
+            <div class="icon-circle liked-icon">
+              <ion-icon name="heart"></ion-icon>
+            </div>
+          </div>
+
+          <div class="product-info">
+            <p class="product-brand">{{ product.brand }}</p>
+            <h3 class="product-name">{{ product.name }}</h3>
+
+            <div class="product-details">
+              <div class="detail-row">
+                <span class="detail-label">Talla:</span>
+                <span class="detail-value">{{ product.size }}</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Estado:</span>
+                <span class="detail-value">{{ product.status }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="activeTab === 'perfiles'" class="tab-content">
+    <div class="profiles-list">
+      <div *ngFor="let profile of savedProfiles" class="profile-card">
+        <div class="profile-card-content">
+          <div class="profile-avatar-large">
+            <img [src]="profile.avatar" [alt]="profile.name" />
+          </div>
+          <div class="profile-info-header">
+            <h3 class="profile-name">{{ profile.name }}</h3>
+            <p class="profile-username">{{ profile.username }}</p>
+            <div class="profile-rating">
+              <span *ngFor="let star of generateStars(profile.rating)" class="star">★</span>
+            </div>
+            <p class="profile-friends">+ {{ profile.friends }} prendas</p>
+          </div>
+          <div class="profile-icon">
+            <ion-icon name="personCircle"></ion-icon>
+          </div>
+        </div>
+
+        <div class="profile-categories">
+          <button *ngFor="let category of profile.categories" class="category-tag">
+            {{ category }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-navegation-bar></app-navegation-bar>
+<app-searcher></app-searcher>

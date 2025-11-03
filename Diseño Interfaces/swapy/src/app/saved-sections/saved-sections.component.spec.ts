@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { ClothCardComponent } from './cloth-card.component';
+import { SavedSectionsComponent } from './saved-sections.component';
 
-describe('ClothCardComponent', () => {
-  let component: ClothCardComponent;
-  let fixture: ComponentFixture<ClothCardComponent>;
+describe('SavedSectionsComponent', () => {
+  let component: SavedSectionsComponent;
+  let fixture: ComponentFixture<SavedSectionsComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [ClothCardComponent],
+      imports: [SavedSectionsComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ClothCardComponent);
+    fixture = TestBed.createComponent(SavedSectionsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
@@ -19,5 +19,4 @@ describe('ClothCardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  
 });

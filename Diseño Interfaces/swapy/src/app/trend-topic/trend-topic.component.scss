@@ -1,12 +1,19 @@
 .slider-container {
-  width: 100%;
+  width: 96.7%;
   background: transparent;
   padding: 10px 0 24px 0;
   position: relative; 
+<<<<<<< HEAD
   top: 50px;
   margin-left: 10px;
+=======
+  margin-left: 20px;
+>>>>>>> 020a5376a6107b8f057b99129f64c5b2975cc670
   min-height: 350px; 
   height: auto;
+  left:-50%;
+  top:13.5%;
+  transform: translate(50%,50%);
   --padding-start: 16px;
   --padding-end: 16px;
 }

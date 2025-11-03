@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IonFooter, IonToolbar, IonTabBar, IonTabButton, IonIcon } from '@ionic/angular/standalone';
+import { IonFooter, IonToolbar, IonIcon, IonButton } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
+import { Router, RouterLink } from '@angular/router';
 import { homeOutline, heartOutline, addCircleOutline, chatbubblesOutline, personCircleOutline } from 'ionicons/icons';
 
 @Component({
@@ -8,11 +9,11 @@ import { homeOutline, heartOutline, addCircleOutline, chatbubblesOutline, person
   templateUrl: './navegation-bar.component.html',
   styleUrls: ['./navegation-bar.component.scss'],
   standalone: true,
-  imports: [IonFooter, IonToolbar, IonTabBar, IonTabButton, IonIcon],
+  imports: [IonButton,  IonFooter, IonToolbar, IonIcon, RouterLink],
 })
 export class NavegationBarComponent implements OnInit {
 
-  constructor() {
+  constructor(private router: Router) {
     addIcons({ 
       homeOutline, 
       heartOutline, 
@@ -20,6 +21,10 @@ export class NavegationBarComponent implements OnInit {
       chatbubblesOutline, 
       personCircleOutline 
     });
+  }
+
+  goToSaved() : void {
+    this.router.navigate(['/savedSections'])
   }
 
   ngOnInit() {}

@@ -46,3 +46,14 @@ body {
     #CABBD3 50%,
     #9D9CD4 100%);
 }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-y: auto;
+}
+
+ion-content {
+  padding-bottom: 80px !important;
+}
