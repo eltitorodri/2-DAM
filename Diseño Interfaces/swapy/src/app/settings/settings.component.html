@@ -1,63 +1,41 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Configuración</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-slogan-logo/>
 
-<ion-content [fullscreen]="true" class="settings-content">
-  <div class="settings-container">
-    <!-- User Profile Card -->
-    <div class="profile-card">
-      <div class="profile-header">
-        <img [src]="userProfile.avatar" alt="User Avatar" class="user-avatar">
+<div class="settings-container">
+  <div class="settings-card">
+    <div class="profile-header">
+      <div class="profile-top">
         <div class="profile-info">
-          <h1 class="user-name">{{ userProfile.name }}</h1>
+          <h1 class="profile-name">{{ userProfile.name }}</h1>
           <div class="rating-section">
-            <ion-icon name="star" class="star-icon"></ion-icon>
-            <ion-icon name="star" class="star-icon"></ion-icon>
-            <ion-icon name="star" class="star-icon"></ion-icon>
-            <ion-icon name="star" class="star-icon"></ion-icon>
-            <ion-icon name="star" class="star-icon"></ion-icon>
+            <div class="stars">
+              <span *ngFor="let i of [1,2,3,4,5]" class="star">★</span>
+            </div>
             <span class="rating-text">{{ userProfile.rating }} ({{ userProfile.reviewCount }})</span>
           </div>
           <p class="join-date">Usuario de Swapy desde {{ userProfile.joinDate }}</p>
         </div>
-        <ion-icon name="chevron-forward" class="profile-arrow"></ion-icon>
+        <img [src]="userProfile.avatar" alt="Avatar" class="profile-avatar">
       </div>
     </div>
 
-    <!-- Menu Items -->
+    <div class="divider"></div>
+
     <div class="menu-section">
-      <ion-list lines="none" class="menu-list">
-        <ion-item *ngFor="let item of menuItems" class="menu-item" button>
-          <ion-label class="menu-label">{{ item.label }}</ion-label>
-          <ion-icon name="chevron-forward" slot="end" class="menu-icon"></ion-icon>
-        </ion-item>
-      </ion-list>
+      <button *ngFor="let item of menuItems" class="menu-item">
+        {{ item }}
+        <span class="arrow">→</span>
+      </button>
     </div>
 
-    <!-- Verifications Section -->
     <div class="verification-section">
-      <div class="section-header">
-        <h2 class="section-title">Verificaciones</h2>
-        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Crect x='2' y='2' width='8' height='8'/%3E%3Crect x='14' y='2' width='8' height='8'/%3E%3Crect x='2' y='14' width='8' height='8'/%3E%3Crect x='14' y='14' width='8' height='8'/%3E%3C/svg%3E" alt="QR Code" class="qr-icon">
+      <h2 class="section-title">Verificaciones</h2>
+      <div class="verification-list">
+        <button *ngFor="let item of verificationItems" class="verification-item">
+          {{ item }}
+        </button>
       </div>
-
-      <ion-list lines="none" class="verification-list">
-        <ion-item *ngFor="let item of verificationItems" class="verification-item" button>
-          <ion-label class="verification-label">{{ item.label }}</ion-label>
-        </ion-item>
-      </ion-list>
-    </div>
-
-    <!-- Support Section -->
-    <div class="support-section">
-      <ion-list lines="none" class="support-list">
-        <ion-item *ngFor="let item of supportItems" class="support-item" button>
-          <ion-label class="support-label">{{ item.label }}</ion-label>
-          <ion-icon name="chevron-forward" slot="end" class="support-icon"></ion-icon>
-        </ion-item>
-      </ion-list>
     </div>
   </div>
-</ion-content>
+</div>
+
+<app-navegation-bar></app-navegation-bar>

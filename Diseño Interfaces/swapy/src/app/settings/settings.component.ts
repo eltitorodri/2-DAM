@@ -1,39 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-import { IonHeader, IonIcon, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel } from "@ionic/angular/standalone";
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { NavegationBarComponent } from "../navegation-bar/navegation-bar.component";
+import { LogoSloganComponent } from "../logo-slogan/logo-slogan.component";
+import { SloganLogoComponent } from "../slogan-logo/slogan-logo.component";
 
 @Component({
   selector: 'app-settings',
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss'],
   standalone: true,
-  imports: ([IonHeader, IonIcon, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel]),
+  imports: [CommonModule, NavegationBarComponent, SloganLogoComponent],
+  templateUrl: './settings.component.html',
+  styleUrl: './settings.component.scss'
 })
 export class SettingsComponent {
   userProfile = {
-    name: 'Ramona L.',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=96&h=96&fit=crop',
+    name: 'Juan Pérez',
     rating: 5,
     reviewCount: 5,
-    joinDate: '2025'
+    joinDate: 'Diciembre 2024'
   };
 
   menuItems = [
-    { label: 'Editar perfil', icon: 'chevron-forward' },
-    { label: 'Préstamos', icon: 'chevron-forward' },
-    { label: 'Intercambios', icon: 'chevron-forward' },
-    { label: 'Intercambios', icon: 'chevron-forward' }
+    'Editar perfil',
+    'Préstamos',
+    'Intercambios',
+    'Historial'
   ];
 
   verificationItems = [
-    { label: 'Verificación en dos pasos', hasQR: false },
-    { label: 'Verificación Email', hasQR: false },
-    { label: 'Cambiar contraseña', hasQR: false }
+    'Verificación en dos pasos',
+    'Verificación Email',
+    'Cambiar contraseña',
+    'Chat de soporte',
+    'Necesitas ayuda?'
   ];
-
-  supportItems = [
-    { label: 'Chat de soporte', icon: 'chevron-forward' },
-    { label: '¿Necesitas ayuda?', icon: 'chevron-forward' }
-  ];
-
-  constructor() {}
 }
+
