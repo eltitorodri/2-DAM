@@ -27,6 +27,10 @@ export class NavegationBarComponent implements OnInit {
     this.router.navigate(['/savedSections'])
   }
 
+  goToUpload() : void {
+    this.router.navigate(['/uploadCloth1'])
+  }
+  
   ngOnInit() {}
 
 }

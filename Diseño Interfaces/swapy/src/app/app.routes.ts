@@ -12,6 +12,7 @@ import { SearcherComponent } from './searcher/searcher.component';
 import { SavedSectionsComponent } from './saved-sections/saved-sections.component';
 import { SloganLogoComponent } from './slogan-logo/slogan-logo.component';
 import { SettingsComponent } from './settings/settings.component';
+import { UploadCloth1Component } from './upload-cloth1/upload-cloth1.component';
 
 export const routes: Routes = [
 
@@ -29,4 +30,5 @@ export const routes: Routes = [
   { path: 'savedSections', component: SavedSectionsComponent },
   { path: 'sloganLogo', component: SloganLogoComponent },
   { path: 'settings', component: SettingsComponent },
+  { path: 'uploadCloth1', component: UploadCloth1Component },
 ];
