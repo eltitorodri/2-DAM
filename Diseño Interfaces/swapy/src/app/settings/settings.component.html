@@ -1,0 +1,41 @@
+<app-slogan-logo/>
+
+<div class="settings-container">
+  <div class="settings-card">
+    <div class="profile-header">
+      <div class="profile-top">
+        <div class="profile-info">
+          <h1 class="profile-name">{{ userProfile.name }}</h1>
+          <div class="rating-section">
+            <div class="stars">
+              <span *ngFor="let i of [1,2,3,4,5]" class="star">★</span>
+            </div>
+            <span class="rating-text">{{ userProfile.rating }} ({{ userProfile.reviewCount }})</span>
+          </div>
+          <p class="join-date">Usuario de Swapy desde {{ userProfile.joinDate }}</p>
+        </div>
+        <img [src]="userProfile.avatar" alt="Avatar" class="profile-avatar">
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="menu-section">
+      <button *ngFor="let item of menuItems" class="menu-item">
+        {{ item }}
+        <span class="arrow">→</span>
+      </button>
+    </div>
+
+    <div class="verification-section">
+      <h2 class="section-title">Verificaciones</h2>
+      <div class="verification-list">
+        <button *ngFor="let item of verificationItems" class="verification-item">
+          {{ item }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-navegation-bar></app-navegation-bar>

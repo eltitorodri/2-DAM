@@ -1,0 +1,32 @@
+import { Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { NavegationBarComponent } from './navegation-bar/navegation-bar.component';
+import { SplashComponent } from './splash/splash.component';
+import { HomeComponent } from './home/home.component';
+import { CarrouselHorizontalComponent } from './carrousel-horizontal/carrousel-horizontal.component';
+import { ProductSliderComponent } from './product-slider/product-slider.component';
+import { TrendTopicComponent } from './trend-topic/trend-topic.component';
+import { MostLikedComponent } from './most-liked/most-liked.component';
+import { SearcherComponent } from './searcher/searcher.component';
+import { SavedSectionsComponent } from './saved-sections/saved-sections.component';
+import { SloganLogoComponent } from './slogan-logo/slogan-logo.component';
+import { SettingsComponent } from './settings/settings.component';
+
+export const routes: Routes = [
+
+  {path: '', redirectTo: '/splash', pathMatch: 'full'},
+  { path: 'login', component: LoginComponent},
+  { path: 'sign-up', component: SignUpComponent },
+  { path: 'navegation-bar', component: NavegationBarComponent },
+  { path: 'splash', component: SplashComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'carrouselHorizontal', component: CarrouselHorizontalComponent },
+  { path: 'productSlider', component: ProductSliderComponent },
+  { path: 'trendTopic', component: TrendTopicComponent },
+  { path: 'mostLiked', component: MostLikedComponent },
+  { path: 'searcher', component: SearcherComponent },
+  { path: 'savedSections', component: SavedSectionsComponent },
+  { path: 'sloganLogo', component: SloganLogoComponent },
+  { path: 'settings', component: SettingsComponent },
+];

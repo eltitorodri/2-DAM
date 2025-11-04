@@ -1,0 +1,27 @@
+<ion-footer>
+  <ion-toolbar>
+    <div class="navigation-container">
+      
+      <ion-button fill="clear" routerLink="/home" routerLinkActive="active-button">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-button>
+      
+      <ion-button fill="clear" (click)="goToSaved()" routerLink="/favourites" routerLinkActive="active-button">
+        <ion-icon name="heart-outline"></ion-icon>
+      </ion-button>
+      
+      <ion-button fill="clear" routerLink="/upload" routerLinkActive="active-button">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </ion-button>
+      
+      <ion-button fill="clear" routerLink="/chats" routerLinkActive="active-button">
+        <ion-icon name="chatbubbles-outline"></ion-icon>
+      </ion-button>
+      
+      <ion-button fill="clear" routerLink="/settings" routerLinkActive="active-button">
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </ion-button>
+      
+    </div>
+  </ion-toolbar>
+</ion-footer>
