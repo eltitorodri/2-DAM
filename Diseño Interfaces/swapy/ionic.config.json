@@ -1,7 +1,0 @@
-{
-  "name": "swapy",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular-standalone"
-}
