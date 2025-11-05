@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './upload-cloth1.component.html',
-  styleUrls: ['./upload-cloth1.component.css']
+  styleUrls: ['./upload-cloth1.component.scss']
 })
 export class UploadCloth1Component {
 
