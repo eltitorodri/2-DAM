@@ -8,16 +8,14 @@ import { Router } from '@angular/router';
   selector: 'app-upload-cloth1',
   standalone: true,
   imports: [CommonModule, NavegationBarComponent, SloganLogoComponent],
-  templateUrl: './upload-cloth1.component.html',
-  styleUrls: ['./upload-cloth1.component.scss']
+  templateUrl: './upload-cloth2.component.html',
+  styleUrls: ['./upload-cloth2.component.scss']
 })
-export class UploadCloth1Component {
+export class UploadCloth2Component {
 
   constructor(private router: Router) {}
 
   onPrestarClick(): void {
-    this.router.navigate(['/uploadCloth2']);
+    this.router.navigate(['/uploadCloth3']);
   }
-
-
 }

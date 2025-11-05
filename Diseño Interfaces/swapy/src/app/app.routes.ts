@@ -13,6 +13,8 @@ import { SavedSectionsComponent } from './saved-sections/saved-sections.componen
 import { SloganLogoComponent } from './slogan-logo/slogan-logo.component';
 import { SettingsComponent } from './settings/settings.component';
 import { UploadCloth1Component } from './upload-cloth1/upload-cloth1.component';
+import { UploadCloth2Component } from './upload-cloth2/upload-cloth2.component';
+import { UploadCloth3Component } from './upload-cloth3/upload-cloth3.component';
 
 export const routes: Routes = [
 
@@ -31,4 +33,6 @@ export const routes: Routes = [
   { path: 'sloganLogo', component: SloganLogoComponent },
   { path: 'settings', component: SettingsComponent },
   { path: 'uploadCloth1', component: UploadCloth1Component },
+  { path: 'uploadCloth2', component: UploadCloth2Component },
+  { path: 'uploadCloth3', component: UploadCloth3Component },
 ];
