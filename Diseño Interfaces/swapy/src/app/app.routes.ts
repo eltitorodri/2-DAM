@@ -15,6 +15,9 @@ import { SettingsComponent } from './settings/settings.component';
 import { UploadCloth1Component } from './upload-cloth1/upload-cloth1.component';
 import { UploadCloth2Component } from './upload-cloth2/upload-cloth2.component';
 import { UploadCloth3Component } from './upload-cloth3/upload-cloth3.component';
+import { BrandSelectorComponent } from './brand-selector/brand-selector.component';
+import { PreviousViewComponent } from './previous-view/previous-view.component';
+import { ColorModalComponent } from './color-modal/color-modal.component';
 
 export const routes: Routes = [
 
@@ -35,4 +38,7 @@ export const routes: Routes = [
   { path: 'uploadCloth1', component: UploadCloth1Component },
   { path: 'uploadCloth2', component: UploadCloth2Component },
   { path: 'uploadCloth3', component: UploadCloth3Component },
+  { path: 'brandSelector', component: BrandSelectorComponent },
+  { path: 'previousView', component: PreviousViewComponent },
+  { path: 'colorModal', component: ColorModalComponent },
 ];

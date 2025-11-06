@@ -16,7 +16,7 @@ export class UploadCloth3Component {
   constructor(private router: Router) {}
 
   onPrestarClick(): void {
-    this.router.navigate(['/uploadCloth3']);
+    this.router.navigate(['/brandSelector']);
   }
 
 }

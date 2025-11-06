@@ -7,42 +7,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a627a75-6b8b-4652-a540-ecc984cb0371" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/most-liked/most-liked.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/most-liked/most-liked.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/most-liked/most-liked.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/saved-sections/saved-sections.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/saved-sections/saved-sections.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/saved-sections/saved-sections.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/saved-sections/saved-sections.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/searcher/searcher.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/searcher/searcher.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/searcher/searcher.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/searcher/searcher.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/settings/settings.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/settings/settings.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/settings/settings.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/settings/settings.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/slogan-logo/slogan-logo.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/slogan-logo/slogan-logo.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/slogan-logo/slogan-logo.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/slogan-logo/slogan-logo.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/Diseño Figma/--imagenes--/iconos/dress_3557749.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/Diseño Figma/--imagenes--/iconos/hoodie_8156251.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/Diseño Figma/--imagenes--/iconos/jacket_6642072.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/Diseño Figma/--imagenes--/iconos/shop_16219993.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/Diseño Figma/--imagenes--/iconos/skirt_5254917.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/Diseño Figma/--imagenes--/iconos/suit_1316932.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/Diseño Figma/--imagenes--/iconos/t-shirt_1836810.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/Diseño Figma/--imagenes--/iconos/t-shirt_7869433.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/Diseño Figma/--imagenes--/iconos/tracksuit_17246279.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/Diseño Figma/--imagenes--/iconos/trousers_10419239.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/cloth-card/cloth-card.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/cloth-card/cloth-card.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/cloth-card/cloth-card.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/most-liked/most-liked.component.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/cloth-card/cloth-card.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/home/home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/home/home.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/home/home.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/home/home.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/logo-slogan/logo-slogan.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/logo-slogan/logo-slogan.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/navegation-bar/navegation-bar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/navegation-bar/navegation-bar.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/navegation-bar/navegation-bar.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/navegation-bar/navegation-bar.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/navegation-bar/navegation-bar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/navegation-bar/navegation-bar.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/product-slider/product-slider.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/product-slider/product-slider.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/product-slider/product-slider.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/product-slider/product-slider.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/trend-topic/trend-topic.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/trend-topic/trend-topic.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/trend-topic/trend-topic.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/trend-topic/trend-topic.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/global.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/global.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/upload-cloth3/upload-cloth3.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/upload-cloth3/upload-cloth3.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/upload-cloth3/upload-cloth3.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/app/upload-cloth3/upload-cloth3.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Diseño Interfaces/swapy/src/assets/icon/user_favourite.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +50,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "C/C++ File.Director_Gerente.c - WSL.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.RadMigrateCodeStyle": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -79,10 +59,19 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "Merging main",
+    "git-widget-placeholder": "main",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Director_Gerente.c - WSL" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" nameIsGenerated="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Examen2025_Rodrigo" TARGET_NAME="Director_Gerente.c - WSL" CONFIG_NAME="Director_Gerente.c - WSL">
+      <option name="sourceFile" value="C:\Users\DAM\Desktop\Clase\2ºDAM\2-DAM\PSP\Examen2025_Rodrigo\Director_Gerente.c" />
+      <option name="toolchainName" value="WSL" />
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="3a627a75-6b8b-4652-a540-ecc984cb0371" name="Changes" comment="" />
@@ -92,6 +81,7 @@
       <updated>1761808789716</updated>
       <workItem from="1761808793058" duration="33000" />
       <workItem from="1762154811962" duration="223000" />
+      <workItem from="1762429927226" duration="75000" />
     </task>
     <servers />
   </component>
