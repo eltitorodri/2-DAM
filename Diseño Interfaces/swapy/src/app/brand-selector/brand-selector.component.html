@@ -1,0 +1,47 @@
+<app-slogan-logo></app-slogan-logo>
+
+<div class="container">
+  <div class="brands-list">
+    <div
+      *ngFor="let brand of filteredBrands"
+      class="brand-item"
+      [class.hidden]="brand.hidden"
+
+      (click)="navigateToBrand()"
+    >
+      {{ brand.name }}
+    </div>
+  </div>
+
+  <div class="search-container">
+    <button class="menu-button">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+
+    <div class="search-input-wrapper">
+      <input
+        type="text"
+        class="search-input"
+        [(ngModel)]="searchTerm"
+        (input)="onSearch()"
+        placeholder="Buscar"
+      />
+      <span class="search-suggestion" *ngIf="searchTerm && suggestion">
+        {{ suggestion }}
+      </span>
+    </div>
+
+    <button class="search-button">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="m21 21-4.35-4.35"></path>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<app-navegation-bar></app-navegation-bar>

@@ -1,0 +1,125 @@
+<app-slogan-logo></app-slogan-logo>
+
+<div class="scroll-wrapper">
+  <div class="nueva-prenda-container">
+    <div class="header">
+      <h2>Nueva prenda</h2>
+    </div>
+
+    <div class="form-section">
+      <label class="form-label">Título</label>
+      <input
+        type="text"
+        class="form-input"
+        placeholder="Sudadera Cartier"
+        [(ngModel)]="titulo">
+    </div>
+
+    <div class="form-section">
+      <label class="form-label">Imágenes</label>
+      <div class="imagenes-grid">
+        @for (imagen of imagenes(); track $index) {
+          <div class="imagen-box">
+            <img [src]="imagen" alt="Imagen {{ $index + 1 }}">
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="form-section">
+      <label class="form-label">Categoría</label>
+      <input
+        type="text"
+        class="form-input"
+        placeholder="Sudadera"
+        [(ngModel)]="categoria">
+    </div>
+
+    <div class="form-section">
+      <label class="form-label">Talla</label>
+      <div class="tallas-grid">
+        @for (talla of tallas; track talla) {
+          <button
+            type="button"
+            class="talla-btn"
+            [class.selected]="tallaSeleccionada() === talla"
+            (click)="seleccionarTalla(talla)">
+            {{ talla }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="form-section">
+      <label class="form-label">Estado</label>
+      <div class="estados-grid">
+        @for (estado of estados; track estado.value) {
+          <button
+            type="button"
+            class="estado-btn"
+            [class.selected]="estadoSeleccionado() === estado.value"
+            (click)="seleccionarEstado(estado.value)">
+            {{ estado.label }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="form-section">
+      <label class="form-label">Marca</label>
+      <input
+        type="text"
+        class="form-input"
+        placeholder="Ralph Lauren"
+        [(ngModel)]="marca">
+    </div>
+
+    <div class="form-section">
+      <label class="form-label">Colores</label>
+      <div class="colores-grid">
+        @for (color of colores(); track color.id) {
+          <button
+            type="button"
+            class="color-btn">
+            {{ color.name }}
+          </button>
+        }
+        <button
+          type="button"
+          class="color-btn add-color-btn"
+          (click)="abrirModalColor()">
+          <span class="palette-icon">🎨</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <label class="form-label">Descripción breve</label>
+      <textarea
+        class="form-textarea"
+        placeholder="Mi prenda esta nueva de paquete"
+        rows="3"
+        [(ngModel)]="descripcion"></textarea>
+    </div>
+
+    <button
+      type="button"
+      class="publicar-btn"
+      (click)="publicarProducto()">
+      Publicar producto
+      <span class="arrow-icon">→</span>
+    </button>
+    
+    <div class="bottom-spacer"></div> 
+    
+  </div>
+</div>
+
+@if (mostrarModalColor()) {
+  <app-color-modal
+    (cerrar)="cerrarModalColor()"
+    (agregar)="agregarColor($event)">
+  </app-color-modal>
+}
+
+<app-navegation-bar></app-navegation-bar>
