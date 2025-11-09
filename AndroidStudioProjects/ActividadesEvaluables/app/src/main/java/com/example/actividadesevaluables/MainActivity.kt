@@ -19,6 +19,15 @@ class MainActivity : AppCompatActivity() {
 
         val editTextUrl: EditText = findViewById(R.id.editTextUrl)
         val buttonAbrirUrl: Button = findViewById(R.id.buttonAbrirUrl)
+        val buttonInicio: Button = findViewById(R.id.buttonInicio)
+
+        buttonInicio.setOnClickListener {
+            val intent = Intent(this, Menu::class.java)
+
+            startActivity(intent)
+            finish()
+
+        }
 
         //Ahora vamos a asignar el Listener al boton (lo que sucede al hacer el click)
         buttonAbrirUrl.setOnClickListener {

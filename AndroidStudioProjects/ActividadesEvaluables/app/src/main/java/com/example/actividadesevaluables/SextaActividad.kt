@@ -1,7 +1,9 @@
 package com.example.actividadesevaluables
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -18,6 +20,16 @@ class SextaActividad : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sexta_actividad)
+
+        val buttonInicio: Button = findViewById(R.id.buttonInicio)
+
+        buttonInicio.setOnClickListener {
+            val intent = Intent(this, Menu::class.java)
+
+            startActivity(intent)
+            finish()
+
+        }
 
         imagePerfil = findViewById(R.id.imagePerfil)
         textNombre = findViewById(R.id.textNombre)
