@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Menu">
+
+    <TextView
+        android:id="@+id/text_titulo_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Menú de Actividades"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#4F4AFF"
+        android:layout_marginTop="64dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btn_PrimeraActividad"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:text="Ir a la Primera Actividad"
+        android:textSize="18sp"
+        android:textColor="#FFE700"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="64dp"
+        app:layout_constraintTop_toBottomOf="@id/text_titulo_menu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cornerRadius="12dp"
+        app:elevation="8dp" />
+
+    <Button
+        android:id="@+id/btn_SegundaActividad"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:text="Ir a la Segunda Actividad"
+        android:textSize="18sp"
+        android:textColor="#FFE700"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/btn_PrimeraActividad"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cornerRadius="12dp"
+        app:elevation="8dp" />
+
+    <Button
+        android:id="@+id/btn_TerceraActividad"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:text="Ir a la Tercera Actividad"
+        android:textSize="18sp"
+        android:textColor="#FFE700"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/btn_SegundaActividad"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cornerRadius="12dp"
+        app:elevation="8dp" />
+
+    <Button
+        android:id="@+id/btn_CuartaActividad"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="32dp"
+        android:text="Ir a la Cuarta Actividad"
+        android:textColor="#FFE700"
+        android:textSize="18sp"
+        app:cornerRadius="12dp"
+        app:elevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_SegundaActividad" />
+
+    <Button
+        android:id="@+id/btn_QuientaActividad"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="32dp"
+        android:text="Ir a la Quinta Actividad"
+        android:textColor="#FFE700"
+        android:textSize="18sp"
+        app:cornerRadius="12dp"
+        app:elevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_TerceraActividad" />
+
+    <Button
+        android:id="@+id/btn_SextaActividad"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="32dp"
+        android:text="Ir a la Sexta Actividad"
+        android:textColor="#FFE700"
+        android:textSize="18sp"
+        app:cornerRadius="12dp"
+        app:elevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_CuartaActividad" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
