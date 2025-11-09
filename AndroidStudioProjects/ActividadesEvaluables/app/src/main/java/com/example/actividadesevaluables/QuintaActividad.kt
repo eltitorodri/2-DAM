@@ -1,5 +1,6 @@
 package com.example.actividadesevaluables
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -13,8 +14,19 @@ class QuintaActividad : AppCompatActivity() {
     private var nuevaEntrada: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quinta_actividad)
+
+        val buttonInicio: Button = findViewById(R.id.buttonInicio)
+
+        buttonInicio.setOnClickListener {
+            val intent = Intent(this, Menu::class.java)
+
+            startActivity(intent)
+            finish()
+
+        }
 
         editText_CuartaActividad = findViewById(R.id.editText_CuartaActividad)
         editText_CuartaActividad.setText("0")
@@ -50,7 +62,6 @@ class QuintaActividad : AppCompatActivity() {
         findViewById<Button>(R.id.multiplicarButton).setOnClickListener { seleccionarOperacion("*") }
         findViewById<Button>(R.id.dividirButton).setOnClickListener { seleccionarOperacion("/") }
         findViewById<Button>(R.id.clearButton).setOnClickListener { limpiar() }
-        findViewById<Button>(R.id.igualButton).setOnClickListener { calcularResultado() }
         findViewById<Button>(R.id.igualFinalButton).setOnClickListener { calcularResultado() }
     }
 

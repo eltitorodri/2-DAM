@@ -76,7 +76,15 @@
             <Button android:id="@+id/button1" android:text="1" android:textSize="24sp" android:padding="24dp" android:backgroundTint="#9827F5" android:textColor="#E7F527"/>
             <Button android:id="@+id/button2" android:text="2" android:textSize="24sp" android:padding="24dp" android:backgroundTint="#9827F5" android:textColor="#E7F527" />
             <Button android:id="@+id/button3" android:text="3" android:textSize="24sp" android:padding="24dp" android:backgroundTint="#9827F5" android:textColor="#E7F527" />
-            <Button android:id="@+id/igualButton" android:text="=" android:textSize="24sp" android:padding="24dp" android:backgroundTint="#9827F5" android:textColor="#E7F527" />
+            <Button
+                android:id="@+id/buttonInicio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inicio"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginBottom="16dp" />
         </TableRow>
 
         <TableRow
