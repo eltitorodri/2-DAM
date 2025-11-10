@@ -18,6 +18,8 @@ import { UploadCloth3Component } from './upload-cloth3/upload-cloth3.component';
 import { BrandSelectorComponent } from './brand-selector/brand-selector.component';
 import { PreviousViewComponent } from './previous-view/previous-view.component';
 import { ColorModalComponent } from './color-modal/color-modal.component';
+import { ChatsComponent } from './chats/chats.component';
+import { PageChatsComponent } from './page-chats/page-chats.component';
 
 export const routes: Routes = [
 
@@ -41,4 +43,6 @@ export const routes: Routes = [
   { path: 'brandSelector', component: BrandSelectorComponent },
   { path: 'previousView', component: PreviousViewComponent },
   { path: 'colorModal', component: ColorModalComponent },
+  { path: 'chats', component: ChatsComponent },
+  { path: 'pageChats', component: PageChatsComponent },
 ];
