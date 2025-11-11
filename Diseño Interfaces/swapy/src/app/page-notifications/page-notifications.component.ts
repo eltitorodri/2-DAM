@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SloganLogoComponent } from "../slogan-logo/slogan-logo.component";
+import { NavegationBarComponent } from "../navegation-bar/navegation-bar.component";
+import { NotificationsComponent } from "../notifications/notifications.component";
 
 interface ChatItem {
   id: number;
@@ -15,7 +18,7 @@ interface ChatItem {
   templateUrl: './page-notifications.component.html',
   styleUrls: ['./page-notifications.component.scss'],
   standalone: true,
-  imports: ([CommonModule])
+  imports: ([CommonModule, NotificationsComponent, NavegationBarComponent,SloganLogoComponent])
 })
 export class PageNotificationsComponent {
 

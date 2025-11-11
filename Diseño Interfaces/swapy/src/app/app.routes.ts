@@ -22,6 +22,7 @@ import { ChatsComponent } from './chats/chats.component';
 import { PageChatsComponent } from './page-chats/page-chats.component';
 import { PageNotificationsComponent } from './page-notifications/page-notifications.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { ChatComponent } from './chat/chat.component';
 
 export const routes: Routes = [
 
@@ -49,4 +50,5 @@ export const routes: Routes = [
   { path: 'pageChats', component: PageChatsComponent },
   { path: 'pageNotifications', component: PageNotificationsComponent },
   { path: 'notifications', component: NotificationsComponent },
+  { path: 'chat', component: ChatComponent },
 ];

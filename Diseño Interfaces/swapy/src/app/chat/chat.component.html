@@ -1,0 +1,179 @@
+<div class="chat-container">
+  <div class="chat-header">
+    <button class="back-btn">←</button>
+    <div class="contact-info">
+      <img src="https://images.unsplash.com/photo-1534528741775-53994a69cf86?w=40&h=40&fit=crop" alt="Avatar" class="avatar">
+      <div class="contact-details">
+        <h3>Camiseta EMEstudios</h3>
+        <p>Altruista</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <span class="badge">Préstamo</span>
+      <button class="menu-btn">⋮</button>
+    </div>
+  </div>
+
+  <div class="messages-area" #messagesContainer>
+    <button class="date-button">Ayer</button>
+
+    <div class="message received">
+      <p>¡Hola! Vi tu camiseta de EMEstudios 👕 Me encanta, ¿podrías prestaramela para este finde?</p>
+      <span class="timestamp">18:19</span>
+    </div>
+
+    <div class="message sent">
+      <p>¡Hey! Sí claro, sin problema</p>
+      <span class="timestamp">18:19</span>
+      <i class="check-icon">✓✓</i>
+    </div>
+
+    <div class="message sent">
+      <p>Solo te pido que me la devuelvas limpia para el domingo.</p>
+      <span class="timestamp">18:19</span>
+      <i class="check-icon">✓✓</i>
+    </div>
+
+    <div class="message received">
+      <p>De una, tranqui 👏</p>
+      <span class="timestamp">18:19</span>
+    </div>
+
+    <div class="message received">
+      <p>¿Te viene bien que la recoja el viernes por la tarde?</p>
+      <span class="timestamp">18:19</span>
+    </div>
+
+    <div class="message sent">
+      <p>Sí, perfecto. Te pongo los datos para que lo confirmemos</p>
+      <span class="timestamp">18:19</span>
+      <i class="check-icon">✓✓</i>
+    </div>
+  </div>
+
+  <div class="action-buttons" *ngIf="!showConfiguration">
+    <button class="config-btn" (click)="toggleConfiguration()">Configurar quedada</button>
+  </div>
+
+  <div class="config-panel" *ngIf="showConfiguration">
+    <div class="config-options">
+      <button class="config-option" (click)="openLocationPicker()">
+        <i class="icon">📍</i>
+        <span>Lugar</span>
+        <span class="value" *ngIf="meetup.location">{{ meetup.location }}</span>
+      </button>
+
+      <button class="config-option" (click)="openDatePicker()">
+        <i class="icon">📅</i>
+        <span>Día</span>
+        <span class="value" *ngIf="meetup.date">{{ meetup.date | date: 'short' }}</span>
+      </button>
+
+      <button class="config-option" (click)="openTimePicker()">
+        <i class="icon">🕐</i>
+        <span>Hora</span>
+        <span class="value" *ngIf="meetup.time">{{ meetup.time }}</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="modal" *ngIf="showLocationModal" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h2>Seleccionar lugar</h2>
+      <div class="map-container">
+        <input type="text" placeholder="Buscar El Cerro Del Aguila" class="search-input">
+        <div class="map-placeholder">
+          <p>Mapa de ubicación</p>
+        </div>
+      </div>
+      <div class="modal-buttons">
+        <button class="btn-cancel" (click)="closeModal()">Cancelar</button>
+        <button class="btn-confirm" (click)="confirmLocation()">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" *ngIf="showDateModal" (click)="closeModal()">
+    <div class="modal-content date-modal" (click)="$event.stopPropagation()">
+      <h2>Seleccionar fecha</h2>
+      <div class="date-display">
+        <span>{{ selectedDate | date: 'EEE, MMM d' }}</span>
+        <button class="edit-btn">✏️</button>
+      </div>
+      <div class="calendar">
+        <div class="calendar-header">
+          <button>←</button>
+          <span>{{ selectedDate | date: 'MMMM yyyy' }}</span>
+          <button>→</button>
+        </div>
+        <div class="calendar-grid">
+          <div *ngFor="let day of calendarDays" 
+               class="calendar-day"
+               [class.selected]="day === selectedDate.getDate()"
+               (click)="selectDate(day)">
+            {{ day }}
+          </div>
+        </div>
+      </div>
+      <div class="modal-buttons">
+        <button class="btn-cancel" (click)="closeModal()">Cancelar</button>
+        <button class="btn-confirm" (click)="confirmDate()">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" *ngIf="showTimeModal" (click)="closeModal()">
+    <div class="modal-content time-modal" (click)="$event.stopPropagation()">
+      <h2>Seleccionar hora</h2>
+      <div class="time-display">
+        <span class="time-value">{{ formattedSelectedHour }} : {{ formattedSelectedMinute }}</span>
+        <div class="ampm-toggle">
+          <button [class.active]="selectedPeriod === 'AM'" (click)="selectedPeriod = 'AM'">AM</button>
+          <button [class.active]="selectedPeriod === 'PM'" (click)="selectedPeriod = 'PM'">PM</button>
+        </div>
+      </div>
+      <div class="time-picker-grid">
+        <div class="time-column">
+          <span *ngFor="let h of [11,10,9,8]" 
+                class="time-item"
+                (click)="selectedHour = h">{{ h }}</span>
+          <span class="time-item active" *ngFor="let h of [selectedHour]">{{ h }}</span>
+          <span *ngFor="let h of [1,2,3,4]" 
+                class="time-item"
+                (click)="selectedHour = h">{{ h }}</span>
+        </div>
+        <span class="time-separator">:</span>
+        <div class="time-column">
+          <span *ngFor="let m of minuteValues" 
+                class="time-item"
+                [class.active]="m === selectedMinute"
+                (click)="selectMinute(m)">
+            {{ ('' + m).padStart(2, '0') }}
+          </span>
+        </div>
+      </div>
+      <div class="modal-buttons">
+        <button class="btn-cancel" (click)="closeModal()">Cancelar</button>
+        <button class="btn-confirm" (click)="confirmTime()">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="quick-actions">
+    <button class="action-icon" title="Ubicación">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
+      </svg>
+    </button>
+    <button class="action-icon" title="Calendario">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
+      </svg>
+    </button>
+    <button class="action-icon" title="Reloj">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+      </svg>
+    </button>
+  </div>
+</div>
