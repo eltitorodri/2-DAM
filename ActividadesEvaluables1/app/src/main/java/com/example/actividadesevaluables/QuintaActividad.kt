@@ -73,13 +73,23 @@ class QuintaActividad : AppCompatActivity() {
 
     private fun calcularResultado() {
         val segundoValor = editText_CuartaActividad.text.toString().toDoubleOrNull() ?: 0.0
+
+        if (currentOperator == "/" && segundoValor == 0.0) {
+            editText_CuartaActividad.setText("Error dividiendo entre 0")
+            primerValor = 0.0
+            currentOperator = ""
+            nuevaEntrada = true
+            return
+        }
+
         val resultado = when (currentOperator) {
             "+" -> primerValor + segundoValor
             "-" -> primerValor - segundoValor
             "*" -> primerValor * segundoValor
-            "/" -> if (segundoValor != 0.0) primerValor / segundoValor else Double.NaN
+            "/" -> primerValor / segundoValor
             else -> segundoValor
         }
+
         editText_CuartaActividad.setText(resultado.toString())
         nuevaEntrada = true
         currentOperator = ""

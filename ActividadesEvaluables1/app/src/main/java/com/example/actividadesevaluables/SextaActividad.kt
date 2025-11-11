@@ -17,6 +17,8 @@ class SextaActividad : AppCompatActivity() {
     private lateinit var textNombre: TextView
     private lateinit var textDescripcion: TextView
 
+    private lateinit var imageTecnologias: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sexta_actividad)
@@ -34,6 +36,7 @@ class SextaActividad : AppCompatActivity() {
         imagePerfil = findViewById(R.id.imagePerfil)
         textNombre = findViewById(R.id.textNombre)
         textDescripcion = findViewById(R.id.textDescription)
+        imageTecnologias = findViewById(R.id.imageTecnologias)
 
         cargarPerfil()
 
@@ -44,6 +47,7 @@ class SextaActividad : AppCompatActivity() {
         imagePerfil.setImageResource(R.drawable.actimeles)
         textNombre.text = "Juanito Perez Alcantara"
         textDescripcion.text = "No se que tengo que poner aqui pero esto es la descripcion"
+        imageTecnologias.setImageResource(R.drawable.tecnologias)
 
     }
 

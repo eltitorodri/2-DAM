@@ -8,11 +8,13 @@
         android:id="@+id/imagePerfil"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@drawable/actimeles"
+        android:layout_marginTop="60dp"
         android:contentDescription="Imagen de perfil"
-        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/actimeles"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textNombre"
@@ -37,6 +39,29 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imagePerfil" />
+
+    <TextView
+        android:id="@+id/textTecnologias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tecnologias usadas"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/imagePerfil"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="140dp" />
+
+    <ImageView
+        android:id="@+id/imageTecnologias"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="350dp"
+        android:contentDescription="Imagen de Tecnologias"
+        android:src="@drawable/tecnologias"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonInicio"

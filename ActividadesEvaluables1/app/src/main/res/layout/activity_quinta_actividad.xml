@@ -84,7 +84,10 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginBottom="16dp" />
+                android:layout_marginBottom="16dp"
+                android:padding="30dp"
+                android:backgroundTint="#E0F527"
+                android:textColor="@color/black"/>
         </TableRow>
 
         <TableRow
