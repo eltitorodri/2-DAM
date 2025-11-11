@@ -5,14 +5,14 @@ plugins {
 
 android {
     namespace = "com.example.actividadesevaluables"
-    compileSdk {
-        version = release(36)
-    }
+
+    // --- CAMBIOS REALIZADOS AQUÍ: Usamos una API estable (34) ---
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.actividadesevaluables"
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 34 // <-- Coincide con compileSdk
         versionCode = 1
         versionName = "1.0"
 
