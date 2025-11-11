@@ -20,6 +20,8 @@ import { PreviousViewComponent } from './previous-view/previous-view.component';
 import { ColorModalComponent } from './color-modal/color-modal.component';
 import { ChatsComponent } from './chats/chats.component';
 import { PageChatsComponent } from './page-chats/page-chats.component';
+import { PageNotificationsComponent } from './page-notifications/page-notifications.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 export const routes: Routes = [
 
@@ -45,4 +47,6 @@ export const routes: Routes = [
   { path: 'colorModal', component: ColorModalComponent },
   { path: 'chats', component: ChatsComponent },
   { path: 'pageChats', component: PageChatsComponent },
+  { path: 'pageNotifications', component: PageNotificationsComponent },
+  { path: 'notifications', component: NotificationsComponent },
 ];
