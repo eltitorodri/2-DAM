@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:context=".QuintaActividad">
+
+    <EditText
+        android:id="@+id/editText_CuartaActividad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="0"
+        android:textSize="48sp"
+        android:gravity="end"
+        android:inputType="none"
+        android:focusable="false"
+        android:background="@android:color/transparent"
+        android:layout_marginBottom="8dp" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:stretchColumns="*">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp">
+
+            <Button
+                android:id="@+id/clearButton"
+                android:text="C"
+                android:layout_column="0"
+                android:layout_span="2"
+                android:textSize="24sp" android:padding="24dp" android:backgroundTint="#9827F5" android:textColor="#E7F527"/>
+
+            <Button
+                android:id="@+id/dividirButton"
+                android:text="/"
+                android:textSize="24sp" android:padding="24dp" android:backgroundTint="#9827F5" android:textColor="#E7F527" />
+
+            <Button
+                android:id="@+id/multiplicarButton"
+                android:text="*"
+                android:textSize="24sp" android:padding="24dp" android:backgroundTint="#9827F5" android:textColor="#E7F527"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_weight="1">
+            <Button android:id="@+id/button7" android:text="7" android:textSize="24sp" android:padding="24dp" android:backgroundTint="#9827F5" android:textColor="#E7F527" />
+            <Button android:id="@+id/button8" android:text="8" android:textSize="24sp" android:padding="24dp" android:backgroundTint="#9827F5" android:textColor="#E7F527" />
+            <Button android:id="@+id/button9" android:text="9" android:textSize="24sp" android:padding="24dp" android:backgroundTint="#9827F5" android:textColor="#E7F527" />
+            <Button android:id="@+id/sumaButton" android:text="+" android:textSize="24sp" android:padding="24dp" android:backgroundTint="#9827F5" android:textColor="#E7F527" />
+        </TableRow>
+
+        <TableRow
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_weight="1">
+            <Button android:id="@+id/button4" android:text="4" android:textSize="24sp" android:padding="24dp" android:backgroundTint="#9827F5" android:textColor="#E7F527" />
+            <Button android:id="@+id/button5" android:text="5" android:textSize="24sp" android:padding="24dp" android:backgroundTint="#9827F5" android:textColor="#E7F527" />
+            <Button android:id="@+id/button6" android:text="6" android:textSize="24sp" android:padding="24dp" android:backgroundTint="#9827F5" android:textColor="#E7F527" />
+            <Button android:id="@+id/restaButton" android:text="-" android:textSize="24sp" android:padding="24dp" android:backgroundTint="#9827F5" android:textColor="#E7F527" />
+        </TableRow>
+
+        <TableRow
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_weight="1">
+            <Button android:id="@+id/button1" android:text="1" android:textSize="24sp" android:padding="24dp" android:backgroundTint="#9827F5" android:textColor="#E7F527"/>
+            <Button android:id="@+id/button2" android:text="2" android:textSize="24sp" android:padding="24dp" android:backgroundTint="#9827F5" android:textColor="#E7F527" />
+            <Button android:id="@+id/button3" android:text="3" android:textSize="24sp" android:padding="24dp" android:backgroundTint="#9827F5" android:textColor="#E7F527" />
+            <Button
+                android:id="@+id/buttonInicio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inicio"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginBottom="16dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/button0"
+                android:text="0"
+                android:textSize="24sp" android:padding="24dp" android:backgroundTint="#9827F5" android:textColor="#E7F527"
+                android:layout_column="0"
+                android:layout_span="2" />
+
+            <Button
+                android:id="@+id/decimalButton"
+                android:text="."
+                android:textSize="24sp" android:padding="24dp" android:backgroundTint="#9827F5" android:textColor="#E7F527" />
+
+            <Button
+                android:id="@+id/igualFinalButton"
+                android:text="="
+                android:textSize="24sp" android:padding="24dp" android:backgroundTint="#9827F5" android:textColor="#E7F527" />
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>
