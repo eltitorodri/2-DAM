@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NavegationBarComponent } from "../navegation-bar/navegation-bar.component";
+import { Router } from '@angular/router';
 
 interface Meetup {
   location: string | null;
@@ -10,11 +12,18 @@ interface Meetup {
 @Component({
   selector: 'app-chat',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NavegationBarComponent],
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
+
+  constructor (private router : Router) {}
+
+  goBack(): void {
+    this.router.navigate(['/pageChats'])
+  }
+
   showConfiguration = false;
   showLocationModal = false;
   showDateModal = false;
@@ -82,8 +91,7 @@ export class ChatComponent implements OnInit {
     this.closeModal();
     this.showConfiguration = true;
   }
-  
-  // FUNCIÓN AÑADIDA PARA SOLUCIONAR EL FALLO DEL (click)
+
   selectMinute(minute: number): void {
     this.selectedMinute = minute;
   }
