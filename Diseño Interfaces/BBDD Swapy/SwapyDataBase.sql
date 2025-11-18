@@ -1,3 +1,7 @@
+DROP database swapy;
+
+CREATE database swapy;
+
 use swapy;
 
 create or replace table usuarios (
