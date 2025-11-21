@@ -32,11 +32,20 @@ create or replace table prendas_tipos (
 	nombre varchar(100) unique
 );
 
-create or replace table prendas_colores (
-	prendas_id int not null,
-	colores_id int not null,
-    primary key (prendas_id, colores_id)
+drop table prendas_colores;
+
+CREATE TABLE prendas_colores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    prendas_id INT NOT NULL,
+    colores_id INT NOT NULL,
+    CONSTRAINT fk_prendas_colores_prendas_id
+        FOREIGN KEY (prendas_id) REFERENCES prendas(id)
+        ON DELETE CASCADE,
+    CONSTRAINT fk_prendas_colores_colores_id
+        FOREIGN KEY (colores_id) REFERENCES colores(id)
+        ON DELETE CASCADE
 );
+
 
 create or replace table prendas (
 	id int auto_increment primary key,

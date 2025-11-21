@@ -17,6 +17,10 @@ import java.util.List;
 
 public class Prendas_colores {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
     @ManyToMany @JoinColumn(name = "prendas_id")
     private List<Prendas> prendas;
 
