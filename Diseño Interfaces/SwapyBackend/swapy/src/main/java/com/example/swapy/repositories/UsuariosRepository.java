@@ -14,6 +14,4 @@ public interface UsuariosRepository extends JpaRepository<Usuarios, Integer> {
 
     Usuarios findByNombreIgnoreCase(String nombre);
 
-
-
 }
