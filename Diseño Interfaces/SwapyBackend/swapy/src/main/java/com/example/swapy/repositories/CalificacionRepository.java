@@ -10,17 +10,17 @@ import java.util.List;
 @Repository
 public interface CalificacionRepository extends JpaRepository<Calificacion, Integer> {
 
-    List<Calificacion> findByValoracionGreaterThan(int valoracion);
+    List<Calificacion> findByRatingGreaterThan(Float rating);
 
-    List<Calificacion> findByValoracionBetween(int valoracion1, int valoracion2);
+    List<Calificacion> findByRatingBetween(Float rating1, Float rating2);
 
-    List<Calificacion> findByValoracion(int valoracion);
+    List<Calificacion> findByRating(Float rating);
 
-    List<Calificacion> findByValoracionGreaterThanEqual(int valoracion);
+    List<Calificacion> findByRatingGreaterThanEqual(Float rating);
 
-    List<Calificacion> findAllByOrderByValoracionAsc();
+    List<Calificacion> findAllByOrderByRatingAsc();
 
-    List<Calificacion> findAllByOrderByValoracionDesc();
+    List<Calificacion> findAllByOrderByRatingDesc();
 
     Calificacion save(Calificacion calificacion);
 

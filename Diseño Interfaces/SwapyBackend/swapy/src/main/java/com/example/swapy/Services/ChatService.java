@@ -2,6 +2,7 @@ package com.example.swapy.Services;
 
 
 import com.example.swapy.models.Chat;
+import com.example.swapy.models.Usuarios;
 import com.example.swapy.repositories.ChatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,8 +32,8 @@ public class ChatService {
         chatRepository.delete(chat);
     }
 
-    public List<Chat> findBySenderAndReceiverId(Integer sender, Integer receiver){
-        return chatRepository.fundBySenderAndReceiverIdOrderBySentAt(receiver, sender);
-    }
+//   public List<Chat> findBySenderAndReceiverId(Usuarios sender, Usuarios receiver){
+//       return chatRepository.findBySenderAndReceiverOrderBySentAt(receiver, sender);
+//   }
 
 }

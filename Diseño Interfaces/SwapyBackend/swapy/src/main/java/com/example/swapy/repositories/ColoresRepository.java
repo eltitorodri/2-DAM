@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface ColoresRepository extends JpaRepository<Colores, Integer> {
 
-    List<Colores> findByColoresContaining(String nombre);
+    List<Colores> findByNombreColorContaining(String nombreColor);
 
     Colores save(Colores colores);
 

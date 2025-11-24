@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -36,16 +37,28 @@ public class Prendas {
     @Column(name = "tipoGuardado", nullable = false)
     private String tipoGuardado;
 
-    @ManyToOne @JoinColumn(name = "categorias_id")
+    @ManyToOne
+    @JoinColumn(name = "categorias_id")
     private Categorias categorias;
 
-    @ManyToOne @JoinColumn(name = "marcas_id")
+    @ManyToOne
+    @JoinColumn(name = "marcas_id")
     private Marcas marcas;
 
-    @ManyToOne @JoinColumn(name = "prendas_tipo_id")
+    @ManyToOne
+    @JoinColumn(name = "prendas_tipo_id")
     private Prendas prendasTipo;
 
-    @ManyToOne @JoinColumn(name = "usuario_id")
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
     private Usuarios usuario;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "prendas_colores",
+            joinColumns = @JoinColumn(name = "prendas_id"),
+            inverseJoinColumns = @JoinColumn(name = "colores_id")
+    )
+    private List<Colores> colores;
 
 }

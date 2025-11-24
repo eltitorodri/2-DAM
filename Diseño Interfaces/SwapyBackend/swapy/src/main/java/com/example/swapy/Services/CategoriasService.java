@@ -32,7 +32,7 @@ public class CategoriasService {
     }
 
     public List<Categorias> findByNombreContaining(String nombre){
-        return categoriasRepository.findByCategoriaContaining(nombre);
+        return categoriasRepository.findByNombreContaining(nombre);
     }
 
 }

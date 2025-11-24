@@ -15,11 +15,11 @@ public interface PrendasRepository extends JpaRepository<Prendas, Integer> {
 
     void delete(Prendas prendas);
 
-    List<Prendas> findByTituloPrenda(String tituloPrenda);
+    List<Prendas> findByTitulo(String titulo);
 
-    List<Prendas> findByPrendaEstado(String estadoPrenda);
+    List<Prendas> findByEstado(String estado);
 
-    List<Prendas> findByMarcasPrendas(Marcas marcaPrendas);
+    List<Prendas> findByMarcas(Marcas marcas);
 
     List<Prendas> findByColores_Id(Integer colorId);
 
