@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface CategoriasRepository extends JpaRepository <Categorias, Integer> {
 
-    List<Categorias> findByCategoriaContaining(String nombre);
+    List<Categorias> findByNombreContaining(String nombre);
 
     Categorias save(Categorias categorias);
 

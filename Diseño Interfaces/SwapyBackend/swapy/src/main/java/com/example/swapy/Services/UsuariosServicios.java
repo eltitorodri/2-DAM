@@ -1,6 +1,7 @@
 package com.example.swapy.Services;
 
 
+import com.example.swapy.dto.UsuarioDTO;
 import com.example.swapy.models.Usuarios;
 import com.example.swapy.repositories.UsuariosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,19 @@ public class UsuariosServicios {
     }
 
     public Usuarios findByNombreIgnoreCase(String nombre) {
-        return usuariosRepository.findByNombreIgnoreCase(nombre);
+        return usuariosRepository.findByNombreCompletoIgnoreCase(nombre);
     }
 
+    public void crearUsuario(UsuarioDTO dto) {
+
+        Usuarios usuario = new Usuarios();
+
+        usuario.setNombreCompleto(dto.getNombreCompleto());
+        usuario.setEmail(dto.getEmail());
+        usuario.setNickname(dto.getNickname());
+        usuario.setPasswordHash(dto.getPasswordHash());
+
+        usuariosRepository.save(usuario);
+
+    }
 }

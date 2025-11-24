@@ -10,8 +10,9 @@ import java.util.List;
 @Repository
 public interface UsuariosRepository extends JpaRepository<Usuarios, Integer> {
 
-    List<Usuarios> findByNombre(String nombre);
+    List<Usuarios> findByNombreCompleto(String nombreCompleto);
 
-    Usuarios findByNombreIgnoreCase(String nombre);
+    Usuarios findByNombreCompletoIgnoreCase(String nombreCompleto);
+
 
 }

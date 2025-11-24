@@ -23,7 +23,7 @@ public class PrendasTiposService {
     }
 
     public List<PrendasTipos> findByPrendasTiposContaining(String nombre){
-        return prendasTiposRepository.findByPrendasTiposContaining(nombre);
+        return prendasTiposRepository.findByNombreContaining(nombre);
     }
 
     public PrendasTipos save(PrendasTipos prendasTipos){

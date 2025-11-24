@@ -31,28 +31,28 @@ public class CalificacionService {
          calificacionRepository.deleteById(id);
      }
 
-     public List<Calificacion> findByValoracion(int valoracion){
-         return calificacionRepository.findByValoracion(valoracion);
+     public List<Calificacion> findByValoracion(Float rating){
+         return calificacionRepository.findByRating(rating);
      }
 
-     public List<Calificacion> findByValoracionGreaterThan(int valoracion){
-         return calificacionRepository.findByValoracionGreaterThan(valoracion);
+     public List<Calificacion> findByValoracionGreaterThan(Float rating){
+         return calificacionRepository.findByRatingGreaterThan(rating);
      }
 
-     public List<Calificacion> findByValoracionBetween(int valoracion1, int valoracion2){
-         return calificacionRepository.findByValoracionBetween(valoracion1, valoracion2);
+     public List<Calificacion> findByValoracionBetween(Float rating1, Float rating2){
+         return calificacionRepository.findByRatingBetween(rating1, rating2);
      }
 
-     public List<Calificacion> findByValoracionMayorOIgual(int valoracion){
-         return calificacionRepository.findByValoracionGreaterThanEqual(valoracion);
+     public List<Calificacion> findByValoracionMayorOIgual(Float rating){
+         return calificacionRepository.findByRatingGreaterThanEqual(rating);
      }
 
      public List<Calificacion> findAllOrderByValoracionAsc(){
-         return calificacionRepository.findAllByOrderByValoracionAsc();
+         return calificacionRepository.findAllByOrderByRatingAsc();
      }
 
      public List<Calificacion> findAllOrderByValoracionDesc(){
-         return calificacionRepository.findAllByOrderByValoracionDesc();
+         return calificacionRepository.findAllByOrderByRatingDesc();
      }
 
 }

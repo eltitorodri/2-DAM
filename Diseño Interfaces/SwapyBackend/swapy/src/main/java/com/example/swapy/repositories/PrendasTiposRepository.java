@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface PrendasTiposRepository extends JpaRepository<PrendasTipos, Integer> {
 
-    List<PrendasTipos> findByPrendasTiposContaining(String nombre);
+    List<PrendasTipos> findByNombreContaining(String nombre);
 
     PrendasTipos save(PrendasTipos prendasTipos);
 

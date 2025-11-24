@@ -9,8 +9,8 @@ import java.util.List;
 @Repository
 public interface MarcasRepository extends JpaRepository<Marcas, Integer> {
 
-    Marcas findByMarca(String marca);
+    Marcas findByNombre(String marca);
 
-    List<Marcas> findByMarcaContaining(String nombre);
+    List<Marcas> findByNombreContaining(String nombre);
 
 }

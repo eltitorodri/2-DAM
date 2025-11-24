@@ -32,7 +32,7 @@ public class ColoresServices {
     }
 
     public List<Colores> findByNombreContaining(String nombre){
-        return coloresRepository.findByColoresContaining(nombre);
+        return coloresRepository.findByNombreColorContaining(nombre);
     }
 
 }

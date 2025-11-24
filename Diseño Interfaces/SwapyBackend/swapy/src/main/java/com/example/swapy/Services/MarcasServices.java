@@ -32,7 +32,7 @@ public class MarcasServices {
     }
 
     public Marcas findByNombreContaining(String nombre){
-        return marcasRepository.findByMarca(nombre);
+        return marcasRepository.findByNombre(nombre);
     }
 
     public void deleteById(Integer id){
