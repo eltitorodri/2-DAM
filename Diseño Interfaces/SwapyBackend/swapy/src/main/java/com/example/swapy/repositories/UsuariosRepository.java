@@ -14,5 +14,7 @@ public interface UsuariosRepository extends JpaRepository<Usuarios, Integer> {
 
     Usuarios findByNombreCompletoIgnoreCase(String nombreCompleto);
 
+    Usuarios findByNickname(String nickname);
+
 
 }

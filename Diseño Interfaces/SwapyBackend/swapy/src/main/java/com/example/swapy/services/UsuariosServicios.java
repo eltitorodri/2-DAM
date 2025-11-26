@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuariosServicios {
@@ -45,6 +46,22 @@ public class UsuariosServicios {
         usuariosRepository.save(usuario);
 
     }
+
+    public UsuarioDTO  consultarPerfilUsuario(Integer id) {
+
+        Usuarios usuario = usuariosRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado con ID: " + id));
+
+        UsuarioDTO dto = new UsuarioDTO();
+
+        dto.setNombreCompleto(usuario.getNombreCompleto());
+        dto.setEmail(usuario.getEmail());
+        dto.setNickname(usuario.getNickname());
+        dto.setPasswordHash(usuario.getPasswordHash());
+        return dto;
+
+    }
+
 
 
 }
