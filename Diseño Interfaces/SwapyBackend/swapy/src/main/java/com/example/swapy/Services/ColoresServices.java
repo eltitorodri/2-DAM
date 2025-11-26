@@ -1,6 +1,10 @@
-package com.example.swapy.Services;
+package com.example.swapy.services;
 
 
+import com.example.swapy.Convertidores.ColoresMapper;
+import com.example.swapy.Convertidores.PrendasMapper;
+import com.example.swapy.dto.ColoresDTO;
+import com.example.swapy.dto.PrendasDTO;
 import com.example.swapy.models.Colores;
 import com.example.swapy.repositories.ColoresRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +37,13 @@ public class ColoresServices {
 
     public List<Colores> findByNombreContaining(String nombre){
         return coloresRepository.findByNombreColorContaining(nombre);
+    }
+
+    @Autowired
+    private ColoresMapper coloresMapper;
+
+    public void crearColores(ColoresDTO dto) {
+        coloresRepository.save(coloresMapper.convertirAEntity(dto));
     }
 
 }
