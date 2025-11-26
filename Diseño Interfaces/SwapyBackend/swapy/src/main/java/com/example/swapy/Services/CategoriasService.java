@@ -1,4 +1,4 @@
-package com.example.swapy.Services;
+package com.example.swapy.services;
 
 
 import com.example.swapy.models.Categorias;

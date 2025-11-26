@@ -1,6 +1,9 @@
-package com.example.swapy.Services;
+package com.example.swapy.services;
 
 
+import com.example.swapy.Convertidores.MarcasMapper;
+import com.example.swapy.dto.MarcasDTO;
+import com.example.swapy.dto.PrendasDTO;
 import com.example.swapy.models.Marcas;
 import com.example.swapy.repositories.MarcasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +41,13 @@ public class MarcasServices {
     public void deleteById(Integer id){
         Marcas marcas = findById(id);
         marcasRepository.delete(marcas);
+    }
+
+    @Autowired
+    private MarcasMapper marcasMapper;
+
+    public void crearMarca(MarcasDTO dto) {
+        marcasRepository.save(marcasMapper.convertirAEntity(dto));
     }
 
 }
