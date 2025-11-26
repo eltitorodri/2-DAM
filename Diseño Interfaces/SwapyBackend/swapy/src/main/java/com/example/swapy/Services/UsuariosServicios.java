@@ -3,6 +3,7 @@ package com.example.swapy.Services;
 
 import com.example.swapy.dto.UsuarioDTO;
 import com.example.swapy.models.Usuarios;
+import com.example.swapy.repositories.PrendasRepository;
 import com.example.swapy.repositories.UsuariosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,4 +45,6 @@ public class UsuariosServicios {
         usuariosRepository.save(usuario);
 
     }
+
+
 }
