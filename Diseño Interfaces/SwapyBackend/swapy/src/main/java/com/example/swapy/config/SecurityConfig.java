@@ -16,8 +16,10 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> authorize
-                        // Aquí corregimos la ruta EXACTA de tu endpoint
                         .requestMatchers(HttpMethod.POST, "/usuarios/crearUser").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/marcas/crearMarca").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/colores/crearColores").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/prendas/crearPrenda").permitAll()
                         .anyRequest().authenticated()
                 );
         return http.build();
