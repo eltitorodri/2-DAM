@@ -1,31 +1,28 @@
 package com.example.swapy.dto;
 
-import com.example.swapy.models.*;
+import com.example.swapy.models.Colores;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PrendasDTO {
+public class PublicarPrendas {
 
     private String titulo;
     private String descripcion;
-    private LocalDate fechaAgregado;
-
     private String estado;
     private String tipoGuardado;
 
-    private Categorias categorias;
-    private Marcas marcas;
-    private Prendas prendasTipo;
-    private Usuarios usuario;
+    private Integer categorias;
+    private Integer marcas;
+    private Integer prendasTipo;
+    private Integer usuario;
 
-    private List<Colores> colores;
+    private List<Integer> colores;
 
     private List<ImagenesDTO> imagenes;
 

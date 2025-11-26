@@ -1,6 +1,7 @@
 package com.example.swapy.dto;
 
-
+import com.example.swapy.models.Prendas;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,10 +9,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PrendaBasicaDTO {
+public class ImagenesDTO {
 
-    private String titulo;
-    private String estado;
-    private String urlImagenPrincipal;
+    private int orden;
+
+    private String url_imagen;
 
 }

@@ -16,7 +16,9 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers(HttpMethod.GET, "/usuarios/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/usuarios/crearUser").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/usuarios/infousuario").permitAll()
                         .requestMatchers(HttpMethod.POST, "/marcas/crearMarca").permitAll()
                         .requestMatchers(HttpMethod.POST, "/colores/crearColores").permitAll()
                         .requestMatchers(HttpMethod.POST, "/prendas/crearPrenda").permitAll()
