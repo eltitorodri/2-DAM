@@ -1,0 +1,4 @@
+manual de desarrollo de microservicios - ORM hasta los repositorios esa seria la parte del tema 4
+Tema 7 - Programación de componentes a la hora del acceso a datos:  de que se encarga cada cosa los services, repositorios etc...
+	
+

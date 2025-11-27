@@ -11,7 +11,7 @@ import lombok.*;
 @ToString
 
 @Entity
-@Table(name = "categorías")
+@Table(name = "categorias")
 public class Categorias {
 
     @Id

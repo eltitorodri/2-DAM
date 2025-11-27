@@ -2,6 +2,7 @@ package com.example.swapy.controls;
 
 
 import com.example.swapy.dto.PrendasDTO;
+import com.example.swapy.dto.PublicarPrendas;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +17,7 @@ public class PrendasController {
     private com.example.swapy.services.PrendasServices prendasServices;
 
     @PostMapping("/crearPrenda")
-    public void crearPrendas(@RequestBody PrendasDTO prendasdto){
+    public void crearPrendas(@RequestBody PublicarPrendas prendasdto){
         prendasServices.crearPrendas(prendasdto);
     }
 
