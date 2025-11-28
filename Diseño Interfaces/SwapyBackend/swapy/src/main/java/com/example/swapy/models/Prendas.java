@@ -34,7 +34,7 @@ public class Prendas {
     @Column(name = "estado", nullable = false)
     private String estado;
 
-    @Column(name = "tipoGuardado", nullable = false)
+    @Column(name = "tipo_guardado", nullable = false)
     private String tipoGuardado;
 
     @ManyToOne

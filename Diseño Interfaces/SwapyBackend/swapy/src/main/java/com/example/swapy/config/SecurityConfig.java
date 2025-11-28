@@ -22,6 +22,8 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/prendas/filtrarestado").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/prendas/filtrarguardado").permitAll()
                         .requestMatchers(HttpMethod.POST, "/prendas/crearPrenda").permitAll()
                         .requestMatchers(HttpMethod.POST, "/marcas/crearMarca").permitAll()
                         .requestMatchers(HttpMethod.POST, "/colores/crearColores").permitAll()

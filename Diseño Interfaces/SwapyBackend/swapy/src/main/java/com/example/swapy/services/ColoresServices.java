@@ -27,6 +27,10 @@ public class ColoresServices {
                 .orElseThrow(() -> new RuntimeException("No se ha encontrado ningun color con este id: "+ id));
     }
 
+    public List<Colores> findAllByIds(List<Integer> ids) {
+        return coloresRepository.findAllById(ids);
+    }
+
     public Colores save(Colores colores){
         return coloresRepository.save(colores);
     }

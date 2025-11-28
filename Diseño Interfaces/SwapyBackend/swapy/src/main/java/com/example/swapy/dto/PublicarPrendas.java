@@ -24,6 +24,4 @@ public class PublicarPrendas {
 
     private List<Integer> colores;
 
-    private List<ImagenesDTO> imagenes;
-
 }
