@@ -27,6 +27,4 @@ public class PrendasDTO {
 
     private List<Colores> colores;
 
-    private List<ImagenesDTO> imagenes;
-
 }

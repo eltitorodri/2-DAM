@@ -14,4 +14,5 @@ public interface ColoresRepository extends JpaRepository<Colores, Integer> {
 
     Colores save(Colores colores);
 
+
 }

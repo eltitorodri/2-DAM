@@ -1,6 +1,8 @@
 package com.example.swapy.repositories;
 
 
+import com.example.swapy.dto.PrendasDTO;
+import com.example.swapy.models.Imagenes;
 import com.example.swapy.models.Marcas;
 import com.example.swapy.models.Prendas;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,12 +17,10 @@ public interface PrendasRepository extends JpaRepository<Prendas, Integer> {
 
     void delete(Prendas prendas);
 
-    List<Prendas> findByTitulo(String titulo);
+    List<Prendas> findByTituloEquals(String titulo);
 
-    List<Prendas> findByEstado(String estado);
+    List<Prendas> findByEstadoEquals(String estado);
 
-    List<Prendas> findByMarcas(Marcas marcas);
-
-    List<Prendas> findByColores_Id(Integer colorId);
+    List<Prendas> findByTipoGuardadoEquals(String tipoGuardado);
 
 }

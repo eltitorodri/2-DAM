@@ -1,6 +1,7 @@
 package com.example.swapy.repositories;
 
 
+import com.example.swapy.models.Prendas;
 import com.example.swapy.models.Usuarios;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

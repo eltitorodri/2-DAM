@@ -2,6 +2,7 @@ package com.example.swapy.repositories;
 
 import com.example.swapy.models.Calificacion;
 import com.example.swapy.models.Categorias;
+import com.example.swapy.models.Prendas;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

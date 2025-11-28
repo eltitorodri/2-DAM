@@ -1,6 +1,7 @@
 package com.example.swapy.repositories;
 
 import com.example.swapy.models.Marcas;
+import com.example.swapy.models.Prendas;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,5 +13,6 @@ public interface MarcasRepository extends JpaRepository<Marcas, Integer> {
     Marcas findByNombre(String marca);
 
     List<Marcas> findByNombreContaining(String nombre);
+
 
 }

@@ -5,6 +5,7 @@ import com.example.swapy.Convertidores.MarcasMapper;
 import com.example.swapy.dto.MarcasDTO;
 import com.example.swapy.dto.PrendasDTO;
 import com.example.swapy.models.Marcas;
+import com.example.swapy.models.Prendas;
 import com.example.swapy.repositories.MarcasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,7 +48,9 @@ public class MarcasServices {
     private MarcasMapper marcasMapper;
 
     public void crearMarca(MarcasDTO dto) {
-        marcasRepository.save(marcasMapper.convertirAEntity(dto));
+        marcasRepository.save(marcasMapper.toEntitySingular(dto));
     }
+
+
 
 }
