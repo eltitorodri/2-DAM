@@ -133,6 +133,55 @@ create or replace table chat (
 		references transacciones (id)
 );
 
+-- TABLA DE DETALLE DE INTERCAMBIOS
+-- Establece una relación 1:1 con 'transacciones' (gracias a 'transaccion_id UNIQUE')
+-- Esta tabla modela qué prendas están involucradas en la transacción (solicitada y ofrecida).
+
+create or replace table intercambio_detalle (
+    id int auto_increment primary key,
+    
+    -- Relación 1:1 con Transacciones.
+    -- El 'unique not null' asegura que cada transacción tenga un solo set de detalles.
+    transaccion_id int unique not null,
+    constraint fk_intercambio_detalle_transaccion_id
+        foreign key (transaccion_id)
+        references transacciones (id),
+    
+    -- Prenda que el SOLICITANTE desea obtener (pertenece al propietario).
+    prenda_solicitada_id int not null,
+    constraint fk_intercambio_detalle_solicitada_id
+        foreign key (prenda_solicitada_id)
+        references prendas (id),
+    
+    -- Prenda que el SOLICITANTE OFRECE a cambio. 
+    -- Es NULL si es un Préstamo (tipo_transaccion='Prestamo').
+    prenda_ofrecida_id int,
+    constraint fk_intercambio_detalle_ofrecida_id
+        foreign key (prenda_ofrecida_id)
+        references prendas (id)
+);
+
+-- 1. Eliminar la clave foránea (para poder modificar la columna).
+-- Nombre de la clave foránea en tu esquema: fk_chat_transaccion_id
+ALTER TABLE chat DROP FOREIGN KEY fk_chat_transaccion_id;
+
+-- 2. Eliminar el índice que impide la modificación (el que usa la base de datos).
+-- Usamos el nombre que causaba el conflicto: transaccion_id_3
+ALTER TABLE chat DROP INDEX transaccion_id_3;
+
+-- 3. Modificar la columna: la hacemos ÚNICA y OBLIGATORIA (NOT NULL).
+-- Si esta línea da error, significa que tienes filas con transaccion_id nulo.
+ALTER TABLE chat MODIFY COLUMN transaccion_id INT UNIQUE NOT NULL;
+
+-- 4. Volver a crear la clave foránea.
+ALTER TABLE chat ADD CONSTRAINT fk_chat_transaccion_id
+    FOREIGN KEY (transaccion_id)
+    REFERENCES transacciones (id);
+
+DESCRIBE chat;
+-- o, dependiendo de tu base de datos:
+SHOW COLUMNS FROM chat;
+
 create or replace table mensaje (
 	id int auto_increment primary key,
 	fecha_envio datetime not null,
@@ -174,3 +223,29 @@ alter table prendas_colores
     add constraint fk_prendas_colores_colores_id
         foreign key (colores_id)
         references colores (id);
+
+ALTER TABLE prendas
+RENAME COLUMN tipoGuardado TO tipo_guardado;
+
+
+SELECT
+    p.titulo AS nombrePrenda,
+    COUNT(c.id) AS numeroIntercambios
+FROM
+    prendas p
+JOIN
+    chat c ON p.id = c.prenda_id
+GROUP BY
+    p.id, p.titulo
+ORDER BY
+    numeroIntercambios DESC
+LIMIT 5;
+
+
+select u.nombre_completo as nombreCompleto, count(t.id) as numeroIntercambios
+from usuarios u join transacciones t 
+on (u.id = t.solicitante_id or u.id = t.propietario_id)
+where t.estado = 'Aceptada'
+group by u.id, u.nickname 
+order by numerointercambios desc
+limit 1;

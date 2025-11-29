@@ -22,6 +22,10 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/prendas/actualizarprenda/{id}").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/transacciones/{id}/estado").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/usuarios/{id}/valoraciones").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/transacciones/solicitar").permitAll()
                         .requestMatchers(HttpMethod.GET, "/prendas/filtrarestado").permitAll()
                         .requestMatchers(HttpMethod.GET, "/prendas/filtrarguardado").permitAll()
                         .requestMatchers(HttpMethod.POST, "/prendas/crearPrenda").permitAll()
@@ -29,6 +33,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/colores/crearColores").permitAll()
                         .requestMatchers(HttpMethod.POST, "/usuarios/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/usuarios/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/prendas/prendaspopulares").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/usuarios/intercambiosactivos").permitAll()
                         .anyRequest().permitAll()
                 );
 

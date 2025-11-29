@@ -1,10 +1,15 @@
 package com.example.swapy.services;
 import com.example.swapy.Convertidores.PrendasMapper;
+import com.example.swapy.dto.PrendaPopularDTO;
 import com.example.swapy.dto.PrendasDTO;
 import com.example.swapy.dto.PublicarPrendas;
+import com.example.swapy.dto.UsuarioActivosDTO;
 import com.example.swapy.models.Colores;
 import com.example.swapy.models.Prendas;
+import com.example.swapy.models.Usuarios;
 import com.example.swapy.repositories.*;
+import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
 public class PrendasServices {
 
     @Autowired
@@ -79,5 +85,39 @@ public class PrendasServices {
                 .map(prendasMapper::toDTO)
                 .collect(Collectors.toList());
     }
+
+    public PrendasDTO actualizarPrendas(Integer id, PublicarPrendas dto) {
+        Prendas prendaExistente = prendasRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Prenda no encontrada con ID: " +id));
+
+        Prendas prendaActualizada = prendasMapper.toEntity(dto);
+
+        prendaActualizada.setId(prendaExistente.getId());
+        prendaActualizada.setFechaAgregado(prendaExistente.getFechaAgregado());
+        prendaActualizada.setUsuario(prendaExistente.getUsuario());
+        prendaActualizada.setCategorias(prendaExistente.getCategorias());
+        prendaActualizada.setMarcas(prendaExistente.getMarcas());
+        prendaActualizada.setColores(prendaExistente.getColores());
+        prendaActualizada.setPrendasTipo(prendaExistente.getPrendasTipo());
+
+        Prendas prendaGuardada = prendasRepository.save(prendaActualizada);
+
+        return prendasMapper.toDTO(prendaGuardada);
+
+    }
+
+    public List<PrendaPopularDTO> obtenerPrendasPopular() {
+        List<Object[]> resultados = prendasRepository.findTop5PrendasPopulares();
+
+        return resultados.stream()
+                .map(row -> new PrendaPopularDTO(
+                        (String) row [0],
+                        ((Number) row [1]).longValue())
+                )
+                .collect(Collectors.toList());
+
+    }
+
+
 
 }
