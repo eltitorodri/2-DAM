@@ -1,6 +1,7 @@
 package com.example.swapy.services;
 
 
+import com.example.swapy.dto.UsuarioActivosDTO;
 import com.example.swapy.dto.UsuarioDTO;
 import com.example.swapy.models.Usuarios;
 import com.example.swapy.repositories.PrendasRepository;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UsuariosServicios {
@@ -62,6 +64,16 @@ public class UsuariosServicios {
 
     }
 
+    public List<UsuarioActivosDTO> findUsuarioConMasAceptados() {
+        List<Object[]> resultados = usuariosRepository.findUsuarioConMasAceptados();
+
+        return resultados.stream()
+                .map(row -> new UsuarioActivosDTO(
+                        (String) row[0],
+                        ((Number) row [1]).longValue())
+                )
+                .collect(Collectors.toList());
+    }
 
 
 }
