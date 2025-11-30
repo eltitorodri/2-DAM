@@ -4,13 +4,11 @@ package com.example.swapy.services;
 import com.example.swapy.dto.UsuarioActivosDTO;
 import com.example.swapy.dto.UsuarioDTO;
 import com.example.swapy.models.Usuarios;
-import com.example.swapy.repositories.PrendasRepository;
 import com.example.swapy.repositories.UsuariosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
