@@ -167,7 +167,7 @@ ALTER TABLE chat DROP FOREIGN KEY fk_chat_transaccion_id;
 
 -- 2. Eliminar el índice que impide la modificación (el que usa la base de datos).
 -- Usamos el nombre que causaba el conflicto: transaccion_id_3
-ALTER TABLE chat DROP INDEX transaccion_id_3;
+ALTER TABLE chat DROP INDEX transaccion_id_2;
 
 -- 3. Modificar la columna: la hacemos ÚNICA y OBLIGATORIA (NOT NULL).
 -- Si esta línea da error, significa que tienes filas con transaccion_id nulo.
