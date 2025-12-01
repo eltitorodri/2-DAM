@@ -22,7 +22,7 @@ public class PrendasDTO {
 
     private Categorias categorias;
     private Marcas marcas;
-    private Prendas prendasTipo;
+    private PrendasTipos prendasTipo;
     private Usuarios usuario;
 
     private List<Colores> colores;
