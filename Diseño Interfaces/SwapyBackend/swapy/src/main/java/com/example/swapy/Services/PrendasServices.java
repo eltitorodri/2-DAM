@@ -3,12 +3,9 @@ import com.example.swapy.Convertidores.PrendasMapper;
 import com.example.swapy.dto.PrendaPopularDTO;
 import com.example.swapy.dto.PrendasDTO;
 import com.example.swapy.dto.PublicarPrendas;
-import com.example.swapy.dto.UsuarioActivosDTO;
 import com.example.swapy.models.Colores;
 import com.example.swapy.models.Prendas;
-import com.example.swapy.models.Usuarios;
 import com.example.swapy.repositories.*;
-import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -117,7 +114,4 @@ public class PrendasServices {
                 .collect(Collectors.toList());
 
     }
-
-
-
 }
