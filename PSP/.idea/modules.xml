@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Concurrente JAVA/Concurrente JAVA.iml" filepath="$PROJECT_DIR$/Concurrente JAVA/Concurrente JAVA.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/PSP.iml" filepath="$PROJECT_DIR$/.idea/PSP.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/PSP2.iml" filepath="$PROJECT_DIR$/.idea/PSP2.iml" />
     </modules>
   </component>
 </project>
