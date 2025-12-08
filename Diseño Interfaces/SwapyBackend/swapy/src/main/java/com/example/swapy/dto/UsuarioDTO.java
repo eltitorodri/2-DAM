@@ -15,7 +15,7 @@ public class UsuarioDTO {
     private String nombreCompleto;
     private String passwordHash;
 
-    @NotBlank
+    @NotBlank(message = "Debes de indicar un nickname único ")
     private String nickname;
 
     @Email
