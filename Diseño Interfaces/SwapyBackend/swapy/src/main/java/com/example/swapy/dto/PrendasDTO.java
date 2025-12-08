@@ -1,7 +1,10 @@
 package com.example.swapy.dto;
 
 import com.example.swapy.models.*;
+<<<<<<< HEAD
 import jakarta.validation.constraints.NotBlank;
+=======
+>>>>>>> 769d9085263c0a816577cacdb6ea8f8fe5ffb6f1
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 public class PrendasDTO {
 
+<<<<<<< HEAD
     @NotBlank(message = "Debes de indicar un titulo para la prenda ")
     private String titulo;
 
@@ -42,6 +46,20 @@ public class PrendasDTO {
     private Usuarios usuario;
 
     @NotBlank(message = "Debes de indicar algun color")
+=======
+    private String titulo;
+    private String descripcion;
+    private LocalDate fechaAgregado;
+
+    private String estado;
+    private String tipoGuardado;
+
+    private Categorias categorias;
+    private Marcas marcas;
+    private PrendasTipos prendasTipo;
+    private Usuarios usuario;
+
+>>>>>>> 769d9085263c0a816577cacdb6ea8f8fe5ffb6f1
     private List<Colores> colores;
 
 }

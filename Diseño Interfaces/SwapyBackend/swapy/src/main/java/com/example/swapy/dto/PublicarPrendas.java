@@ -1,8 +1,11 @@
 package com.example.swapy.dto;
 
 import com.example.swapy.models.Colores;
+<<<<<<< HEAD
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+=======
+>>>>>>> 769d9085263c0a816577cacdb6ea8f8fe5ffb6f1
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 public class PublicarPrendas {
 
+<<<<<<< HEAD
     @NotBlank(message = "Debes de indicar un titulo para la prenda ")
     private String titulo;
 
@@ -39,6 +43,18 @@ public class PublicarPrendas {
     private Integer usuario;
 
     @NotNull(message = "Debes de indicar algun color")
+=======
+    private String titulo;
+    private String descripcion;
+    private String estado;
+    private String tipoGuardado;
+
+    private Integer categorias;
+    private Integer marcas;
+    private Integer prendasTipo;
+    private Integer usuario;
+
+>>>>>>> 769d9085263c0a816577cacdb6ea8f8fe5ffb6f1
     private List<Integer> colores;
 
 }
