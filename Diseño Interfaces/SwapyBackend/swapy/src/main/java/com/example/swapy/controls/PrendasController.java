@@ -5,6 +5,7 @@ import com.example.swapy.dto.PrendaPopularDTO;
 import com.example.swapy.dto.PrendasDTO;
 import com.example.swapy.dto.PublicarPrendas;
 import com.example.swapy.services.PrendasServices;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class PrendasController {
     private final PrendasServices prendasServices;
 
     @PostMapping("/crearPrenda")
-    public PrendasDTO crearPrendas(@RequestBody PublicarPrendas prendasdto){
+    public PrendasDTO crearPrendas(@Valid @RequestBody PublicarPrendas prendasdto){
         return prendasServices.crearPrenda(prendasdto);
     }
 
@@ -34,7 +35,7 @@ public class PrendasController {
     }
 
     @PutMapping("/actualizarprenda/{id}")
-    public PrendasDTO actualizarPrendas(@PathVariable Integer id, @RequestBody PublicarPrendas prendasDTO){
+    public PrendasDTO actualizarPrendas(@Valid @PathVariable Integer id, @RequestBody PublicarPrendas prendasDTO){
         return prendasServices.actualizarPrendas(id, prendasDTO);
     }
 

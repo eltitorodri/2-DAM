@@ -7,6 +7,7 @@ import com.example.swapy.models.Calificacion;
 import com.example.swapy.services.CalificacionService;
 import com.example.swapy.services.UsuariosServicios;
 import com.example.swapy.dto.UsuarioDTO;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,7 @@ public class UsuariosController {
     private final CalificacionService calificacionService;
 
     @PostMapping("/crearUser")
-    public void crearUser(@RequestBody UsuarioDTO usuariodto){
+    public void crearUser(@Valid @RequestBody UsuarioDTO usuariodto){
         usuariosServicios.crearUsuario(usuariodto);
     }
 
@@ -33,7 +34,7 @@ public class UsuariosController {
     }
 
     @PostMapping("/{id}/valoraciones")
-    public ResponseEntity<?> registrarCalificacion(@PathVariable("id") Integer usuarioValoradoId, @RequestBody CrearCalificacionDTO calificacion) {
+    public ResponseEntity<?> registrarCalificacion(@Valid @PathVariable("id") Integer usuarioValoradoId, @RequestBody CrearCalificacionDTO calificacion) {
 
         try {
             Calificacion nuevaCalificacion = calificacionService.registrarCalificacion(usuarioValoradoId, calificacion);

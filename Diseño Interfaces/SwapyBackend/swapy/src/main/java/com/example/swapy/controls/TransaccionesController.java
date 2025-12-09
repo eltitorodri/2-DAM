@@ -4,6 +4,7 @@ import com.example.swapy.dto.ActualizarEstadoDTO;
 import com.example.swapy.dto.CrearTransaccionDTO;
 import com.example.swapy.models.Transacciones;
 import com.example.swapy.services.TransaccionesServices;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class TransaccionesController {
     private final TransaccionesServices transaccionesServices;
 
     @PostMapping("/solicitar")
-    public ResponseEntity<?> crearTransaccion(@RequestBody CrearTransaccionDTO transacciones){
+    public ResponseEntity<?> crearTransaccion(@Valid @RequestBody CrearTransaccionDTO transacciones){
         try {
             Transacciones nuevaSolicitud = transaccionesServices.crearSolicitud(transacciones);
             return ResponseEntity.status(201).body(nuevaSolicitud);
@@ -26,7 +27,7 @@ public class TransaccionesController {
     }
 
     @PutMapping("/{id}/estado")
-    public ResponseEntity<?> actualizarEstadoTransaccion(@PathVariable Integer id, @RequestBody ActualizarEstadoDTO dto) {
+    public ResponseEntity<?> actualizarEstadoTransaccion(@Valid @PathVariable Integer id, @RequestBody ActualizarEstadoDTO dto) {
         try {
             Transacciones transaccionActualizada = transaccionesServices.actualizarEstado(id, dto.getEstado());
             return ResponseEntity.ok(transaccionActualizada);

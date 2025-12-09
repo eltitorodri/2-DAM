@@ -32,8 +32,5 @@ public class ChatService {
         chatRepository.delete(chat);
     }
 
-//   public List<Chat> findBySenderAndReceiverId(Usuarios sender, Usuarios receiver){
-//       return chatRepository.findBySenderAndReceiverOrderBySentAt(receiver, sender);
-//   }
 
 }
