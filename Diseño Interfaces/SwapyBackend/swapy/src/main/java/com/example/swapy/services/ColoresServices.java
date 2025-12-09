@@ -47,6 +47,11 @@ public class ColoresServices {
     private ColoresMapper coloresMapper;
 
     public void crearColores(ColoresDTO dto) {
+
+        if (coloresRepository.existsById(dto.getId())) {
+            throw new RuntimeException("El color ya existe");
+        }
+
         coloresRepository.save(coloresMapper.convertirAEntity(dto));
     }
 
