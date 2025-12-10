@@ -14,5 +14,7 @@ public interface ColoresRepository extends JpaRepository<Colores, Integer> {
 
     Colores save(Colores colores);
 
+    Colores findByNombreColor(String nombreColor);
 
+    boolean existsByNombreColorIgnoreCase(String nombreColor);
 }

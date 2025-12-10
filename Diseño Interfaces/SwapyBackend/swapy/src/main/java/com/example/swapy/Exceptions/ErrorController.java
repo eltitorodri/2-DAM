@@ -37,4 +37,12 @@ public class ErrorController {
         error.put("error", ex.getMessage());
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(ElementoExistenteException.class)
+    public ResponseEntity<Map<String, String>> manejarElementoExistente(ElementoExistenteException ex) {
+        Map<String, String> error = new HashMap<>();
+        error.put(ex.getNombreCampo(), ex.getMessage());
+        return new ResponseEntity<>(error, HttpStatus.CONFLICT);
+    }
+
 }

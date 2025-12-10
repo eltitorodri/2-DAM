@@ -18,6 +18,10 @@ public interface UsuariosRepository extends JpaRepository<Usuarios, Integer> {
 
     Usuarios findByNickname(String nickname);
 
+    boolean existsByNicknameIgnoreCase(String nickname);
+
+    boolean existsByEmailIgnoreCase(String email);
+
     @Query(value = "select u.nombre_completo as nombreCompleto, count(t.id) as numeroIntercambios\n" +
             "from usuarios u join transacciones t \n" +
             "on (u.id = t.solicitante_id or u.id = t.propietario_id)\n" +

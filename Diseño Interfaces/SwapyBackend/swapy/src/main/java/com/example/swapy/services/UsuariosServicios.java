@@ -1,6 +1,8 @@
 package com.example.swapy.services;
 
 
+import com.example.swapy.Exceptions.ElementoExistenteException;
+import com.example.swapy.Exceptions.ElementoNoEncontradoException;
 import com.example.swapy.dto.UsuarioActivosDTO;
 import com.example.swapy.dto.UsuarioDTO;
 import com.example.swapy.models.Usuarios;
@@ -36,6 +38,18 @@ public class UsuariosServicios {
 
     public void crearUsuario(UsuarioDTO dto) {
 
+        if (usuariosRepository.existsByNicknameIgnoreCase(dto.getNickname())) {
+            throw new ElementoExistenteException("nickname",
+                    "El nombre de usuario '" + dto.getNickname() + "' ya está en uso."
+            );
+        }
+
+        if (usuariosRepository.existsByEmailIgnoreCase(dto.getEmail())) {
+            throw new ElementoExistenteException("email",
+                    "El email '" + dto.getEmail() + "' ya está asociado a otra cuenta."
+            );
+        }
+
         Usuarios usuario = new Usuarios();
 
         usuario.setNombreCompleto(dto.getNombreCompleto());
@@ -44,7 +58,6 @@ public class UsuariosServicios {
         usuario.setPasswordHash(dto.getPasswordHash());
 
         usuariosRepository.save(usuario);
-
     }
 
     public UsuarioDTO  consultarPerfilUsuario(Integer id) {

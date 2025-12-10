@@ -3,8 +3,9 @@ package com.example.swapy.services;
 
 import com.example.swapy.Convertidores.ColoresMapper;
 import com.example.swapy.Convertidores.PrendasMapper;
+import com.example.swapy.Exceptions.ElementoExistenteException;
 import com.example.swapy.dto.ColoresDTO;
-import com.example.swapy.dto.PrendasDTO;
+import com.example.swapy.Exceptions.ElementoNoEncontradoException;
 import com.example.swapy.models.Colores;
 import com.example.swapy.repositories.ColoresRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class ColoresServices {
 
     public Colores findById(Integer id){
         return coloresRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("No se ha encontrado ningun color con este id: "+ id));
+                .orElseThrow(() -> new ElementoNoEncontradoException("No se ha encontrado ningun color con este id: "+ id));
     }
 
     public List<Colores> findAllByIds(List<Integer> ids) {
@@ -48,11 +49,13 @@ public class ColoresServices {
 
     public void crearColores(ColoresDTO dto) {
 
-        if (coloresRepository.existsById(dto.getId())) {
-            throw new RuntimeException("El color ya existe");
+        if (coloresRepository.existsByNombreColorIgnoreCase(dto.getNombreColor())) {
+            throw new ElementoExistenteException("nombreColor",
+                    "El color con nombre: " + dto.getNombreColor() + " ya existe");
         }
 
         coloresRepository.save(coloresMapper.convertirAEntity(dto));
+
     }
 
 }
