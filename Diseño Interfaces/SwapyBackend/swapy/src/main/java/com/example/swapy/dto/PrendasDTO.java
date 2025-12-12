@@ -42,6 +42,9 @@ public class PrendasDTO {
     @NotBlank(message = "Debes de indicar un id usuario")
     private Usuarios usuario;
 
+    @NotBlank(message = "Debes de indicar un id de alguna imagen")
+    private Imagenes imagen;
+
     @NotBlank(message = "Debes de indicar algun color")
     private List<Colores> colores;
 

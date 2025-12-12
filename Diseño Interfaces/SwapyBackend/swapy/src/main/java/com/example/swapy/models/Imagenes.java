@@ -25,7 +25,4 @@ public class Imagenes {
     @Column(name = "url_imagen", length = 255)
     private String url_imagen;
 
-    @ManyToOne @JoinColumn(name = "prendas_id")
-    private Prendas prenda;
-
 }

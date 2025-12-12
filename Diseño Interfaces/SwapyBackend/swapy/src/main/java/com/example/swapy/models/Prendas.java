@@ -53,6 +53,10 @@ public class Prendas {
     @JoinColumn(name = "usuario_id")
     private Usuarios usuario;
 
+    @ManyToOne
+    @JoinColumn(name = "imagen_id")
+    private Imagenes imagen;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "prendas_colores",

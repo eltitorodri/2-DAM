@@ -23,6 +23,8 @@ public class PrendasServices {
 
     @Autowired
     private PrendasMapper prendasMapper;
+    @Autowired
+    private ImagenesService imagenesService;
 
     public void salvarPrendas(PrendasDTO dto) {
         prendasRepository.save(prendasMapper.toEntity(dto));
@@ -57,6 +59,7 @@ public class PrendasServices {
         prenda.setUsuario(usuariosServicios.findById(dto.getUsuario()));
         prenda.setCategorias(categoriasService.findById(dto.getCategorias()));
         prenda.setPrendasTipo(prendasTiposService.findbyId(dto.getPrendasTipo()));
+        prenda.setImagen(imagenesService.findById(dto.getImagen()));
 
         if(dto.getColores() != null && !dto.getColores().isEmpty()) {
             List<Colores> coloresEncontrados = coloresServices.findAllByIds(dto.getColores());

@@ -249,3 +249,31 @@ where t.estado = 'Aceptada'
 group by u.id, u.nickname 
 order by numerointercambios desc
 limit 1;
+
+-- Primero elimina la FK que está en imágenes
+ALTER TABLE imagenes
+DROP FOREIGN KEY fk_imagenes_prendas_id,
+DROP COLUMN prendas_id;
+
+ALTER TABLE prendas
+DROP COLUMN imagen_id;
+
+
+ALTER TABLE prendas DROP COLUMN imagen_id;
+
+SHOW CREATE TABLE prendas;
+
+ALTER TABLE prendas DROP FOREIGN KEY fk_prendas_imagen_id;
+
+ALTER TABLE prendas DROP INDEX imagen_id;
+
+ALTER TABLE prendas 
+ADD CONSTRAINT fk_prendas_imagen_id FOREIGN KEY (imagen_id) REFERENCES imagenes(id);
+
+
+-- Luego añade la FK en prendas
+ALTER TABLE prendas
+ADD imagen_id INT NULL DEFAULT NULL UNIQUE,  -- UNIQUE asegura que una imagen solo esté en una prenda
+ADD CONSTRAINT fk_prendas_imagen_id
+    FOREIGN KEY (imagen_id)
+    REFERENCES imagenes(id);

@@ -15,6 +15,7 @@ public interface PrendasMapper {
     @Mapping(target = "usuario", ignore = true)
     @Mapping(target = "colores", ignore = true)
     @Mapping(target = "fechaAgregado", ignore = true)
+    @Mapping(target = "imagen", ignore = true)
     Prendas toEntity(PublicarPrendas dto);
 
     Prendas toEntity(PrendasDTO dto);

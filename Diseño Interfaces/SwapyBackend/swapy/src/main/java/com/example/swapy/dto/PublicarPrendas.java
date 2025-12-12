@@ -38,6 +38,9 @@ public class PublicarPrendas {
     @NotNull(message = "Debes de indicar un id usuario")
     private Integer usuario;
 
+    @NotNull(message = "Debes de indicar un id de alguna imagen")
+    private Integer imagen;
+
     @NotNull(message = "Debes de indicar algun color")
     private List<Integer> colores;
 
