@@ -3,15 +3,16 @@ package com.example.swapy.dto;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
 public class CrearCalificacionDTO {
 
-    @NotBlank(message = "Tienes que indicar el id del usuario emisor de la calificación")
+    @NotNull(message = "Tienes que indicar el id del usuario emisor de la calificación")
     private Integer usuarioEmisorId;
 
-    @NotBlank(message = "Has de indicar el id de alguna transacción")
+    @NotNull(message = "Has de indicar el id de alguna transacción")
     private Integer transaccionId;
 
     @Min(value = 0, message = "El rating ha de ser mínimo un 0.")

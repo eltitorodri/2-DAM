@@ -2,10 +2,12 @@ package com.example.swapy.controls;
 
 import com.example.swapy.dto.ActualizarEstadoDTO;
 import com.example.swapy.dto.CrearTransaccionDTO;
+import com.example.swapy.dto.TransaccionResponseDTO;
 import com.example.swapy.models.Transacciones;
 import com.example.swapy.services.TransaccionesServices;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,12 +28,24 @@ public class TransaccionesController {
         }
     }
 
-    @PutMapping("/{id}/estado")
-    public ResponseEntity<?> actualizarEstadoTransaccion(@Valid @PathVariable Integer id, @RequestBody ActualizarEstadoDTO dto) {
+    @PutMapping("/{id}/estado/{idUsuario}")
+    public ResponseEntity<?> actualizarEstado(
+            @PathVariable Integer id,
+            @PathVariable("idUsuario") Integer usuarioQueRespondeId,
+            @Valid @RequestBody ActualizarEstadoDTO dto) {
+
         try {
-            Transacciones transaccionActualizada = transaccionesServices.actualizarEstado(id, dto.getEstado());
+            // 2. CAMBIAR el tipo de dato a TransaccionResponseDTO
+            TransaccionResponseDTO transaccionActualizada = transaccionesServices.actualizarEstado(
+                    id,
+                    dto.getNuevoEstado(),
+                    usuarioQueRespondeId
+            );
             return ResponseEntity.ok(transaccionActualizada);
         } catch (RuntimeException e) {
+            if (e.getMessage().contains("Acceso denegado") || e.getMessage().contains("Solo el propietario")) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.getMessage()); // 403 Forbidden
+            }
             return ResponseEntity.badRequest().body("Error al actualizar el estado: " + e.getMessage());
         }
     }

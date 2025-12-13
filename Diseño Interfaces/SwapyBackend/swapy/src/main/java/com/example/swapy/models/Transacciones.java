@@ -21,11 +21,13 @@ public class Transacciones {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "tipo_transaccion", length = 50)
-    private String tipoTransaccion;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_transaccion", columnDefinition = "enum('Prestamo','Intercambio')")
+    private TipoTransaccion tipoTransaccion;
 
-    @Column(name = "estado", length = 50)
-    private String estado;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "estado", columnDefinition = "enum('Pendiente','Aceptada','Rechazada','Finalizada')")
+    private EstadoTransaccion estado;
 
     @Column(name = "fecha_fin_real")
     private LocalDate fechaFinReal;
@@ -36,7 +38,8 @@ public class Transacciones {
     @ManyToOne @JoinColumn(name = "solicitante_id")
     private Usuarios solicitante;
 
-    @ManyToOne @JoinColumn(name = "propietario_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "propietario_id")
     private Usuarios propietario;
 
 }

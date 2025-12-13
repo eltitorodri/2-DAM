@@ -1,12 +1,9 @@
 package com.example.swapy.controls;
 
-import com.example.swapy.dto.CrearCalificacionDTO;
-import com.example.swapy.dto.PrendaPopularDTO;
-import com.example.swapy.dto.UsuarioActivosDTO;
+import com.example.swapy.dto.*;
 import com.example.swapy.models.Calificacion;
 import com.example.swapy.services.CalificacionService;
 import com.example.swapy.services.UsuariosServicios;
-import com.example.swapy.dto.UsuarioDTO;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -34,10 +31,16 @@ public class UsuariosController {
     }
 
     @PostMapping("/{id}/valoraciones")
-    public ResponseEntity<?> registrarCalificacion(@Valid @PathVariable("id") Integer usuarioValoradoId, @RequestBody CrearCalificacionDTO calificacion) {
+    public ResponseEntity<?> registrarCalificacion(
+            @Valid @PathVariable("id") Integer usuarioValoradoId,
+            @RequestBody CrearCalificacionDTO calificacion) {
 
         try {
-            Calificacion nuevaCalificacion = calificacionService.registrarCalificacion(usuarioValoradoId, calificacion);
+            CalificacionResponseDTO nuevaCalificacion = calificacionService.registrarCalificacion(
+                    usuarioValoradoId,
+                    calificacion
+            );
+
             return ResponseEntity.status(201).body(nuevaCalificacion);
         } catch (RuntimeException ex) {
             return ResponseEntity.badRequest().body(ex.getMessage());
