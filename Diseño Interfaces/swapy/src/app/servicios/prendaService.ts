@@ -31,8 +31,12 @@ export class PrendaService {
   return this.http.delete(`http://localhost:8080/prendas/borrar/${encodeURIComponent(titulo)}`);
   }
 
-  editarPrenda(titulo: string, prendaActualizada: any): Observable<any> {
-    return this.http.put(`http://localhost:8080/prendas/editar/${titulo}`, prendaActualizada);
+  editarPrenda(id: number | string, prendaActualizada: any): Observable<any> {
+   return this.http.put(`http://localhost:8080/prendas/actualizarprenda/${id}`, prendaActualizada);
+ }
+
+  actualizarPrenda(prenda: any): Observable<any> {
+      return this.http.put(`http://localhost:8080/prendas/actualizarprenda/${prenda.id}`, prenda); 
   }
 
 }

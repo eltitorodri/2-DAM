@@ -1,11 +1,13 @@
 package com.example.swapy.services;
 
+import com.example.swapy.dto.MostrarRelacionesDTO;
 import com.example.swapy.models.PrendasTipos;
 import com.example.swapy.repositories.PrendasTiposRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PrendasTiposService {
@@ -33,6 +35,16 @@ public class PrendasTiposService {
     public void deleteById(int id){
         PrendasTipos prendasTipos = findbyId(id);
         prendasTiposRepository.delete(prendasTipos);
+    }
+
+    public List<MostrarRelacionesDTO> obtenerTodas() {
+        // Obtiene todas las entidades y las mapea al DTO
+        return prendasTiposRepository.findAll().stream()
+                .map(tipo -> MostrarRelacionesDTO.builder()
+                        .id(tipo.getId())
+                        .nombre(tipo.getNombre())
+                        .build())
+                .collect(Collectors.toList());
     }
 
 }

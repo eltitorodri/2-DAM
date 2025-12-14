@@ -1,10 +1,7 @@
 package com.example.swapy.controls;
 
 
-import com.example.swapy.dto.MostrarItemPrendaDTO;
-import com.example.swapy.dto.PrendaPopularDTO;
-import com.example.swapy.dto.PrendasDTO;
-import com.example.swapy.dto.PublicarPrendas;
+import com.example.swapy.dto.*;
 import com.example.swapy.services.PrendasServices;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
@@ -38,7 +35,7 @@ public class PrendasController {
     }
 
     @PutMapping("/actualizarprenda/{id}")
-    public PrendasDTO actualizarPrendas(@Valid @PathVariable Integer id, @RequestBody PublicarPrendas prendasDTO){
+    public PrendasDTO actualizarPrendas(@Valid @PathVariable Integer id, @RequestBody ActualizarPrendasDTO prendasDTO){
         return prendasServices.actualizarPrendas(id, prendasDTO);
     }
 
@@ -73,13 +70,13 @@ public class PrendasController {
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/editar/{titulo}")
+    /*@PutMapping("/editar/{titulo}")
     public ResponseEntity<Void> editarPrenda(
             @PathVariable String titulo,
             @RequestBody PrendasDTO dto
     ) {
         prendasServices.editarPrendaPorTitulo(titulo, dto);
         return ResponseEntity.ok().build();
-    }
+    }*/
 
 }

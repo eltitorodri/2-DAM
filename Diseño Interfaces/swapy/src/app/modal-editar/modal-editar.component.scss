@@ -1,60 +1,66 @@
+/* Fondo del modal */
 .modal-content {
   padding: 25px;
-  background-color: #e2e8f0; // fondo gris azulado claro
+  background-color: #e0e7ff; /* azul muy claro */
   display: flex;
   flex-direction: column;
   gap: 18px;
   min-height: 100%;
 }
 
+/* Cada grupo de input + label */
 .form-group {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
+/* Label de los inputs */
 ion-label {
   font-weight: 600;
   font-size: 1rem;
-  color: #0f172a; // letra azul muy oscura
+  color: #1e293b; /* azul muy oscuro para buen contraste */
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
+/* Inputs */
 ion-input {
   --padding-start: 12px;
   --padding-end: 12px;
   height: 44px;
-  border: 1px solid #94a3b8; // gris azulado
+  border: 1px solid #94a3b8; /* borde gris azulado */
   border-radius: 10px;
-  background-color: #f8fafc; // ligeramente gris, contraste con el fondo
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  background-color: #f1f5f9; /* gris suave para contraste */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
   font-size: 0.95rem;
-  color: #1e293b; // letra dentro del input
+  color: #0f172a; /* letra azul muy oscura dentro del input */
   transition: all 0.2s ease-in-out;
 
   &:focus {
-    border-color: #1d4ed8; // azul intenso
+    border-color: #1d4ed8; /* azul intenso al enfocar */
     box-shadow: 0 2px 8px rgba(29, 78, 216, 0.2);
   }
 }
 
+/* Botón principal */
 ion-button {
   margin-top: 20px;
   border-radius: 10px;
   font-weight: bold;
   font-size: 1rem;
-  background: linear-gradient(to right, #1e40af, #2563eb); // degradado azul oscuro
+  background: linear-gradient(to right, #1e40af, #2563eb); /* degradado azul */
   color: #ffffff;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
 
   &:hover {
     background: linear-gradient(to right, #1e3a8a, #1e40af);
   }
 }
 
+/* Header del modal */
 ion-header {
-  --background: #1e40af; // azul oscuro
+  --background: #1e40af; /* azul oscuro */
   color: #ffffff;
 }
 

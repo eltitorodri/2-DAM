@@ -7,6 +7,7 @@ import { PrendasTipo } from "./PrendasTipo";
 import { Usuario } from "./Usuario";
 
 export interface PrendasItem {
+  id?: number;
   titulo: string;
   descripcion: string;
   fechaAgregado: Date;

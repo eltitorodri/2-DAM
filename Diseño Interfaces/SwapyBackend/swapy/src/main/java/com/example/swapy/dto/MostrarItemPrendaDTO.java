@@ -13,6 +13,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MostrarItemPrendaDTO {
 
+    private Integer id;
+
     @NotBlank(message = "Debes de indicar un id de alguna imagen")
     private String  imagenUrl;
 

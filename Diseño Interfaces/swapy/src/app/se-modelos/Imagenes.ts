@@ -1,6 +1,6 @@
 export interface Imagenes {
 
-    id: Number;
+    id: number;
     orden: Number;
     url_imagen: string;
 

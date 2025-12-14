@@ -1,6 +1,6 @@
 export interface Usuario {
 
-    id: Number;
+    id: number;
     nombreCompleto: string;
     passwordHash: string;
     nickname: String;

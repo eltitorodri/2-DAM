@@ -1,11 +1,7 @@
 package com.example.swapy.services;
 import com.example.swapy.Convertidores.PrendasMapper;
-import com.example.swapy.dto.MostrarItemPrendaDTO;
-import com.example.swapy.dto.PrendaPopularDTO;
-import com.example.swapy.dto.PrendasDTO;
-import com.example.swapy.dto.PublicarPrendas;
-import com.example.swapy.models.Colores;
-import com.example.swapy.models.Prendas;
+import com.example.swapy.dto.*;
+import com.example.swapy.models.*;
 import com.example.swapy.repositories.*;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
@@ -14,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -89,25 +86,58 @@ public class PrendasServices {
                 .collect(Collectors.toList());
     }
 
-    public PrendasDTO actualizarPrendas(Integer id, PublicarPrendas dto) {
+    // ---------------------- MÉTODO DE ACTUALIZACIÓN (CORREGIDO) ----------------------
+
+    @Transactional
+    public PrendasDTO actualizarPrendas(Integer id, ActualizarPrendasDTO dto) {
+
+        // 1. Obtener la prenda principal, manejando el Optional con orElseThrow
         Prendas prendaExistente = prendasRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Prenda no encontrada con ID: " +id));
+                .orElseThrow(() -> new EntityNotFoundException("Prenda no encontrada con ID: " + id));
 
-        Prendas prendaActualizada = prendasMapper.toEntity(dto);
+        // a) Categoría
+        if (dto.getCategorias() != null) {
+            prendaExistente.setCategorias(categoriasService.findById(dto.getCategorias()));
+        }
 
-        prendaActualizada.setId(prendaExistente.getId());
-        prendaActualizada.setFechaAgregado(prendaExistente.getFechaAgregado());
-        prendaActualizada.setUsuario(prendaExistente.getUsuario());
-        prendaActualizada.setCategorias(prendaExistente.getCategorias());
-        prendaActualizada.setMarcas(prendaExistente.getMarcas());
-        prendaActualizada.setColores(prendaExistente.getColores());
-        prendaActualizada.setPrendasTipo(prendaExistente.getPrendasTipo());
+        // b) Marca
+        if (dto.getMarcas() != null) {
+            prendaExistente.setMarcas(marcasServices.findById(dto.getMarcas()));
+        }
 
-        Prendas prendaGuardada = prendasRepository.save(prendaActualizada);
+        // c) Tipo de Prenda
+        if (dto.getPrendasTipo() != null) {
+            prendaExistente.setPrendasTipo(prendasTiposService.findbyId(dto.getPrendasTipo()));
+        }
+
+        // 3. Resolver y actualizar la colección Many-to-Many (Colores)
+        if (dto.getColores() != null) {
+            if (dto.getColores().isEmpty()) {
+                prendaExistente.setColores(Collections.emptyList());
+            } else {
+                // CORRECCIÓN: Usar el ColoresServices para obtener la lista de entidades
+                List<Colores> nuevosColores = coloresServices.findAllByIds(dto.getColores());
+                prendaExistente.setColores(nuevosColores);
+            }
+        } else {
+            // Si el campo es null, se mantiene la lista de colores existente,
+            // aunque usualmente en una actualización se espera que se envíe una lista vacía para borrar la colección.
+        }
+
+        // 4. Actualizar campos simples y estados
+        // Se asume que estos campos no son null, o el DTO los maneja (como en tu código anterior)
+        prendaExistente.setTitulo(dto.getTitulo());
+        prendaExistente.setDescripcion(dto.getDescripcion());
+        prendaExistente.setEstado(dto.getEstado());
+        prendaExistente.setTipoGuardado(dto.getTipoGuardado());
+
+        // 5. Guardar la entidad gestionada
+        Prendas prendaGuardada = prendasRepository.save(prendaExistente);
 
         return prendasMapper.toDTO(prendaGuardada);
-
     }
+
+    // ---------------------- MÉTODOS RESTANTES (SIN MODIFICAR) ----------------------
 
     public List<PrendaPopularDTO> obtenerPrendasPopular() {
         List<Object[]> resultados = prendasRepository.findTop5PrendasPopulares();
@@ -167,6 +197,4 @@ public class PrendasServices {
 
         prendasRepository.save(prenda);
     }
-
-
 }

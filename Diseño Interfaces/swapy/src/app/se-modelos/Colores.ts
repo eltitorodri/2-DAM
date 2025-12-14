@@ -1,6 +1,6 @@
 export interface Colores {
 
-    id?:Number;
+    id?:number;
     nombreColor:string;
 
 }
