@@ -50,9 +50,8 @@ public class TransaccionesServices {
     public TransaccionResponseDTO actualizarEstado(Integer transaccionId, EstadoTransaccion nuevoEstado, Integer usuarioActualId) {
 
         Transacciones transaccion = transaccionesRepository.findById(transaccionId)
-                .orElseThrow(() -> new RuntimeException("Transacción no encontrada.")); // <-- ¡Faltaba esto!
+                .orElseThrow(() -> new RuntimeException("Transacción no encontrada."));
 
-        // --- 1. VALIDACIÓN DE SEGURIDAD ---
         Integer propietarioId = Integer.valueOf(transaccion.getPropietario().getId());
         Integer solicitanteId = Integer.valueOf(transaccion.getSolicitante().getId());
 
@@ -60,19 +59,21 @@ public class TransaccionesServices {
             throw new RuntimeException("Acceso denegado. Solo el propietario o el solicitante pueden actualizar el estado.");
         }
 
-        // --- 2. VALIDACIÓN DE ESTADO PARA FINALIZAR/RECHAZAR ---
-
-        // Si se intenta finalizar, debe estar previamente Aceptada
         if (nuevoEstado == EstadoTransaccion.Finalizada && transaccion.getEstado() != EstadoTransaccion.Aceptada) {
             throw new RuntimeException("Solo se puede finalizar una transacción que ya haya sido Aceptada. Estado actual: " + transaccion.getEstado());
         }
 
-        // Si el propietario acepta/rechaza, la transacción debe estar Pendiente
+        if (!(nuevoEstado == EstadoTransaccion.Finalizada ||
+                nuevoEstado == EstadoTransaccion.Aceptada)) {
+            throw new RuntimeException("Solo se puede cambiar el estado a ACEPTADA o FINALIZADA.");
+        }
+
+
         if ((nuevoEstado == EstadoTransaccion.Aceptada || nuevoEstado == EstadoTransaccion.Rechazada) && !propietarioId.equals(usuarioActualId)) {
             throw new RuntimeException("Solo el propietario puede ACEPTAR o RECHAZAR.");
         }
 
-        // --- 3. APLICAR CAMBIO ---
+
         transaccion.setEstado(nuevoEstado);
 
         if (nuevoEstado == EstadoTransaccion.Finalizada) {
@@ -81,7 +82,6 @@ public class TransaccionesServices {
 
         Transacciones transaccionActualizada = transaccionesRepository.save(transaccion);
 
-        // --- 4. MAPEO A DTO (Soluciona el error 500) ---
         return mapToResponseDTO(transaccionActualizada);
     }
 

@@ -25,8 +25,7 @@ public class CategoriasService {
     }
 
     public Categorias findById(int id){
-        return categoriasRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("No se ha encontrado categoria con este id: "+id));
+        return categoriasRepository.findById(id).orElse(null);
     }
 
     public void  delete(int id){

@@ -1,5 +1,7 @@
 package com.example.swapy.services;
 import com.example.swapy.Convertidores.PrendasMapper;
+import com.example.swapy.Exceptions.ElementoExistenteException;
+import com.example.swapy.Exceptions.ElementoNoEncontradoException;
 import com.example.swapy.dto.*;
 import com.example.swapy.models.*;
 import com.example.swapy.repositories.*;
@@ -12,6 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -89,52 +93,78 @@ public class PrendasServices {
     // ---------------------- MÉTODO DE ACTUALIZACIÓN (CORREGIDO) ----------------------
 
     @Transactional
+
     public PrendasDTO actualizarPrendas(Integer id, ActualizarPrendasDTO dto) {
 
-        // 1. Obtener la prenda principal, manejando el Optional con orElseThrow
         Prendas prendaExistente = prendasRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Prenda no encontrada con ID: " + id));
 
-        // a) Categoría
         if (dto.getCategorias() != null) {
-            prendaExistente.setCategorias(categoriasService.findById(dto.getCategorias()));
+            Categorias categoria = categoriasService.findById(dto.getCategorias());
+            if (categoria == null) {
+                throw new ElementoNoEncontradoException("Debe introducir una Categoría válida para la prenda.");
+            }
+            prendaExistente.setCategorias(categoria);
         }
 
-        // b) Marca
         if (dto.getMarcas() != null) {
-            prendaExistente.setMarcas(marcasServices.findById(dto.getMarcas()));
+            Marcas marca = marcasServices.findById(dto.getMarcas());
+            if (marca == null) {
+                throw new ElementoNoEncontradoException("Debe introducir una Marca válida para la prenda.");
+            }
+            prendaExistente.setMarcas(marca);
         }
 
-        // c) Tipo de Prenda
         if (dto.getPrendasTipo() != null) {
-            prendaExistente.setPrendasTipo(prendasTiposService.findbyId(dto.getPrendasTipo()));
+            PrendasTipos prendasTipo = prendasTiposService.findbyId(dto.getPrendasTipo());
+            if (prendasTipo == null) {
+                throw new ElementoNoEncontradoException("Debe introducir un Tipo de Prenda válido para la prenda.");
+            }
+            prendaExistente.setPrendasTipo(prendasTipo);
         }
 
-        // 3. Resolver y actualizar la colección Many-to-Many (Colores)
         if (dto.getColores() != null) {
             if (dto.getColores().isEmpty()) {
                 prendaExistente.setColores(Collections.emptyList());
             } else {
-                // CORRECCIÓN: Usar el ColoresServices para obtener la lista de entidades
                 List<Colores> nuevosColores = coloresServices.findAllByIds(dto.getColores());
+
+                if (nuevosColores.size() != dto.getColores().size()) {
+                    throw new ElementoNoEncontradoException("'Colores': Uno o más IDs de Color proporcionados no existen.");
+                }
                 prendaExistente.setColores(nuevosColores);
             }
-        } else {
-            // Si el campo es null, se mantiene la lista de colores existente,
-            // aunque usualmente en una actualización se espera que se envíe una lista vacía para borrar la colección.
         }
 
-        // 4. Actualizar campos simples y estados
-        // Se asume que estos campos no son null, o el DTO los maneja (como en tu código anterior)
+        if (dto.getEstado() != null) {
+            String estadoNormalizado = dto.getEstado().trim().toLowerCase();
+            if (!estadoNormalizado.equals("intercambio") && !estadoNormalizado.equals("prestamo")) {
+                throw new ElementoExistenteException("estado",
+                        "El valor proporcionado para el Estado ('" + dto.getEstado() + "') no es válido. Debe ser 'Intercambio' o 'Préstamo'."
+                );
+            }
+            prendaExistente.setEstado(dto.getEstado());
+        }
+
+        if (dto.getTipoGuardado() != null) {
+            String tipoGuardadoNormalizado = dto.getTipoGuardado().trim().toLowerCase();
+            if (!tipoGuardadoNormalizado.equals("guardado") && !tipoGuardadoNormalizado.equals("pendiente")) {
+                throw new ElementoExistenteException("tipoGuardado",
+                        "El valor proporcionado para el Tipo de Guardado ('" + dto.getTipoGuardado() + "') no es válido. Debe ser 'Guardado' o 'Pendiente'."
+                );
+            }
+            prendaExistente.setTipoGuardado(dto.getTipoGuardado());
+        }
+
         prendaExistente.setTitulo(dto.getTitulo());
         prendaExistente.setDescripcion(dto.getDescripcion());
         prendaExistente.setEstado(dto.getEstado());
         prendaExistente.setTipoGuardado(dto.getTipoGuardado());
 
-        // 5. Guardar la entidad gestionada
         Prendas prendaGuardada = prendasRepository.save(prendaExistente);
 
         return prendasMapper.toDTO(prendaGuardada);
+
     }
 
     // ---------------------- MÉTODOS RESTANTES (SIN MODIFICAR) ----------------------

@@ -35,7 +35,6 @@ public class TransaccionesController {
             @Valid @RequestBody ActualizarEstadoDTO dto) {
 
         try {
-            // 2. CAMBIAR el tipo de dato a TransaccionResponseDTO
             TransaccionResponseDTO transaccionActualizada = transaccionesServices.actualizarEstado(
                     id,
                     dto.getNuevoEstado(),
@@ -44,7 +43,7 @@ public class TransaccionesController {
             return ResponseEntity.ok(transaccionActualizada);
         } catch (RuntimeException e) {
             if (e.getMessage().contains("Acceso denegado") || e.getMessage().contains("Solo el propietario")) {
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.getMessage()); // 403 Forbidden
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.getMessage());
             }
             return ResponseEntity.badRequest().body("Error al actualizar el estado: " + e.getMessage());
         }
