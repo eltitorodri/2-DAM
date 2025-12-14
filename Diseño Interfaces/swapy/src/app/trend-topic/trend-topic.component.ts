@@ -1,14 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
-
-interface Product {
-  id: number;
-  title: string;
-  subtitle: string;
-  location: string;
-  imageUrl: string;
-}
+import { IonicModule, AlertController, ModalController } from '@ionic/angular';
+import { PrendaService } from '../servicios/prendaService';
+import { PrendasItem } from '../se-modelos/PrendasItem';
+import { ModalEditarComponent } from '../modal-editar/modal-editar.component';
 
 @Component({
   selector: 'app-trend-topic',
@@ -17,50 +12,64 @@ interface Product {
   standalone: true,
   imports: [CommonModule, IonicModule]
 })
-export class TrendTopicComponent  {
-  products: Product[] = [
-    {
-      id: 1,
-      title: 'Chaqueta LV Damier',
-      subtitle: 'A Coruña',
-      location: 'Cocoa Echecoa',
-      imageUrl: 'https://images.pexels.com/photos/1124468/pexels-photo-1124468.jpeg?auto=compress&cs=tinysrgb&w=400'
-    },
-    {
-      id: 2,
-      title: 'Camiseta EMEstudios',
-      subtitle: 'Valencia',
-      location: 'Lepe Tete',
-      imageUrl: 'https://images.pexels.com/photos/8532616/pexels-photo-8532616.jpeg?auto=compress&cs=tinysrgb&w=400'
-    },
-    {
-      id: 3,
-      title: 'Hoodie Cold',
-      subtitle: 'Toledo',
-      location: 'Tito Chape',
-      imageUrl: 'https://images.pexels.com/photos/5698853/pexels-photo-5698853.jpeg?auto=compress&cs=tinysrgb&w=400'
-    },
-    {
-      id: 4,
-      title: 'Sudadera Retro',
-      subtitle: 'Madrid',
-      location: 'Urban Style',
-      imageUrl: 'https://images.pexels.com/photos/8148577/pexels-photo-8148577.jpeg?auto=compress&cs=tinysrgb&w=400'
-    },
-    {
-      id: 5,
-      title: 'Polo Vintage',
-      subtitle: 'Barcelona',
-      location: 'Classic Wear',
-      imageUrl: 'https://images.pexels.com/photos/1232459/pexels-photo-1232459.jpeg?auto=compress&cs=tinysrgb&w=400'
-    }
-  ];
+export class TrendTopicComponent {
+  private prendaService = inject(PrendaService);
+  private alertController = inject(AlertController);
+  private modalCtrl = inject(ModalController);
 
-  onAddProduct(product: Product): void {
-    console.log('Agregar producto:', product);
+  public prendas: PrendasItem[] = [];
+
+  constructor() {}
+
+  ngOnInit() {
+    this.cargarPrendas();
   }
 
-  onViewProfile(product: Product): void {
-    console.log('Ver perfil:', product);
+  cargarPrendas(): void {
+    this.prendaService.obtenerPrendas().subscribe({
+      next: (data) => {
+        console.log('Datos recibidos: ', data);
+        this.prendas = data;
+      },
+      error: (error: any) => console.error('Error: ', error),
+      complete: () => console.log('Solicitud completada')
+    });
+  }
+
+  async borrarPrenda(titulo: any) {
+    const tituloStr: string = titulo.toString(); 
+    const alert = await this.alertController.create({
+      header: 'Confirmar',
+      message: `¿Estás seguro de que quieres eliminar la prenda "${tituloStr}"?`,
+      buttons: [
+        { text: 'Cancelar', role: 'cancel', handler: () => console.log('Borrado cancelado') },
+        { text: 'Borrar', role: 'destructive', handler: () => {
+            this.prendaService.eliminarPrenda(tituloStr).subscribe({
+              next: () => { console.log(`Prenda con nombre ${tituloStr} eliminada`); this.cargarPrendas(); },
+              error: (error: any) => console.error('Error al eliminar: ', error),
+              complete: () => console.log('Eliminación completada')
+            });
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async abrirEditarModal(prenda: PrendasItem) {
+    if (!prenda) return;
+
+    const modal = await this.modalCtrl.create({
+      component: ModalEditarComponent,
+      componentProps: { prenda }
+    });
+
+    modal.onDidDismiss().then((data) => {
+      if (data.data?.actualizado) {
+        this.cargarPrendas(); // Recargamos si se actualizó la prenda
+      }
+    });
+
+    await modal.present();
   }
 }

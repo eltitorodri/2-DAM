@@ -1,14 +1,17 @@
 package com.example.swapy.services;
 import com.example.swapy.Convertidores.PrendasMapper;
+import com.example.swapy.dto.MostrarItemPrendaDTO;
 import com.example.swapy.dto.PrendaPopularDTO;
 import com.example.swapy.dto.PrendasDTO;
 import com.example.swapy.dto.PublicarPrendas;
 import com.example.swapy.models.Colores;
 import com.example.swapy.models.Prendas;
 import com.example.swapy.repositories.*;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -117,4 +120,53 @@ public class PrendasServices {
                 .collect(Collectors.toList());
 
     }
+
+    public List<PrendasDTO> listarTodasLasPrendas() {
+        List<Prendas> prendas = prendasRepository.findAll();
+        return prendas.stream()
+                .map(prendasMapper::toDTO)
+                .collect(Collectors.toList());
+    }
+
+    public List<MostrarItemPrendaDTO> obtenerPrendas() {
+        return prendasRepository.findAll()
+                .stream()
+                .map(prendasMapper::toMostrarItemPrendaDTO)
+                .toList();
+    }
+
+    public void eliminarPrendaPorTitulo(String titulo) {
+        List<Prendas> prendas = prendasRepository.findByTitulo(titulo);
+        if (!prendas.isEmpty()) {
+            prendasRepository.delete(prendas.get(0));
+        } else {
+            throw new RuntimeException("Prenda no encontrada");
+        }
+    }
+
+    @Transactional
+    public void editarPrendaPorTitulo(String titulo, PrendasDTO dto) {
+
+        List<Prendas> prendas = prendasRepository.findAllByTitulo(titulo);
+
+        if (prendas.isEmpty()) {
+            throw new EntityNotFoundException("No se encontró la prenda");
+        }
+
+        Prendas prenda = prendas.get(0);
+
+        prenda.setDescripcion(dto.getDescripcion());
+        prenda.setEstado(dto.getEstado());
+        prenda.setTipoGuardado(dto.getTipoGuardado());
+
+        prenda.setCategorias(dto.getCategorias());
+        prenda.setMarcas(dto.getMarcas());
+        prenda.setPrendasTipo(dto.getPrendasTipo());
+        prenda.setImagen(dto.getImagen());
+        prenda.setColores(dto.getColores());
+
+        prendasRepository.save(prenda);
+    }
+
+
 }

@@ -1,15 +1,13 @@
 package com.example.swapy.repositories;
 
 
-import com.example.swapy.dto.PrendasDTO;
-import com.example.swapy.models.Imagenes;
-import com.example.swapy.models.Marcas;
 import com.example.swapy.models.Prendas;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface PrendasRepository extends JpaRepository<Prendas, Integer> {
@@ -32,5 +30,8 @@ public interface PrendasRepository extends JpaRepository<Prendas, Integer> {
             "LIMIT 5", nativeQuery = true)
     List<Object[]> findTop5PrendasPopulares();
 
+    List<Prendas> findByTitulo(String titulo);
+
+    List<Prendas> findAllByTitulo(String titulo);
 
 }

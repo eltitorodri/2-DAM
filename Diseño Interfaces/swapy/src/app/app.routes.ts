@@ -23,6 +23,7 @@ import { PageChatsComponent } from './page-chats/page-chats.component';
 import { PageNotificationsComponent } from './page-notifications/page-notifications.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ChatComponent } from './chat/chat.component';
+import { ModalEditarComponent } from './modal-editar/modal-editar.component';
 
 export const routes: Routes = [
 
@@ -51,4 +52,5 @@ export const routes: Routes = [
   { path: 'pageNotifications', component: PageNotificationsComponent },
   { path: 'notifications', component: NotificationsComponent },
   { path: 'chat', component: ChatComponent },
+  { path: 'modal-editar', component: ModalEditarComponent },
 ];

@@ -1,7 +1,10 @@
 package com.example.swapy.Convertidores;
 
 import com.example.swapy.dto.MarcasDTO;
+import com.example.swapy.dto.NombreMarcaDTO;
+import com.example.swapy.dto.UsuarioNombreDTO;
 import com.example.swapy.models.Marcas;
+import com.example.swapy.models.Usuarios;
 import org.mapstruct.Mapper;
 
 import java.util.List;
@@ -16,5 +19,7 @@ public interface MarcasMapper {
     MarcasDTO toDTOSingular(Marcas entity);
 
     Marcas toEntitySingular(MarcasDTO dto);
+
+    NombreMarcaDTO toNombreDTO(Marcas marcas);
 
 }

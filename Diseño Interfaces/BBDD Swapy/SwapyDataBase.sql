@@ -277,3 +277,33 @@ ADD imagen_id INT NULL DEFAULT NULL UNIQUE,  -- UNIQUE asegura que una imagen so
 ADD CONSTRAINT fk_prendas_imagen_id
     FOREIGN KEY (imagen_id)
     REFERENCES imagenes(id);
+
+ALTER TABLE prendas_colores
+ADD CONSTRAINT fk_prenda
+FOREIGN KEY (prendas_id) REFERENCES prendas(id)
+ON DELETE CASCADE;
+
+ALTER TABLE chat
+DROP FOREIGN KEY fk_chat_prenda_id;
+
+ALTER TABLE chat
+ADD CONSTRAINT fk_chat_prenda_id
+FOREIGN KEY (prenda_id) REFERENCES prendas(id)
+ON DELETE CASCADE;
+
+ALTER TABLE mensaje
+DROP FOREIGN KEY fk_mensaje_chat_id;
+
+ALTER TABLE mensaje
+ADD CONSTRAINT fk_mensaje_chat_id
+FOREIGN KEY (chat_id) REFERENCES chat(id)
+ON DELETE CASCADE;
+
+ALTER TABLE notificaciones
+DROP FOREIGN KEY fk_notificaciones_chat_id;
+
+ALTER TABLE notificaciones
+ADD CONSTRAINT fk_notificaciones_chat_id
+FOREIGN KEY (chat_id) REFERENCES chat(id)
+ON DELETE CASCADE;
+

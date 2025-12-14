@@ -1,36 +1,29 @@
 <div class="slider-container">
   <h2 class="slider-title">Novedades</h2>
 
-    <div class="products-wrapper">
-      <ion-card 
-        *ngFor="let product of products" 
-        class="product-card"
-        button="true">
+  <div class="products-wrapper">
+    <ion-card *ngFor="let prenda of prendas" class="product-card" button="true">
+      
+      <div class="product-image-container">
+        <img [src]="prenda.imagenUrl" [alt]="prenda.titulo" class="product-image" />
         
-        <div class="product-image-container">
-          <img [src]="product.imageUrl" [alt]="product.title" class="product-image" />
-          
-          <ion-fab-button 
-            class="add-button" 
-            size="small"
-            (click)="onAddProduct(product); $event.stopPropagation()">
-            <ion-icon name="add-circle"></ion-icon>
-          </ion-fab-button>
+        <!-- Botón para editar -->
+        <ion-fab-button class="add-button" size="small" (click)="abrirEditarModal(prenda)">
+          <ion-icon name="add-circle"></ion-icon>
+        </ion-fab-button>
 
-          <ion-fab-button 
-            class="profile-button" 
-            size="small" 
-            color="light"
-            (click)="onViewProfile(product); $event.stopPropagation()">
-            <ion-icon name="person"></ion-icon>
-          </ion-fab-button>
-        </div>
+        <!-- Botón para borrar -->
+        <ion-fab-button class="profile-button" size="small" color="light"
+          (click)="borrarPrenda(prenda.titulo)">
+          <ion-icon name="person"></ion-icon>
+        </ion-fab-button>
+      </div>
 
-        <ion-card-content class="product-info">
-          <p class="product-title">{{ product.title }}</p>
-          <h3 class="product-subtitle">{{ product.subtitle }}</h3>
-          <p class="product-location">{{ product.location }}</p>
-        </ion-card-content>
-      </ion-card>
-    </div>
+      <ion-card-content class="product-info">
+        <p class="product-title">{{ prenda.titulo }}</p>
+        <h3 class="product-subtitle">{{ prenda.nombreMarca }}</h3>
+        <p class="product-location">{{ prenda.UsuarioNombre }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </div>
