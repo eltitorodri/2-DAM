@@ -39,6 +39,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/prendas/itemsPrendas").permitAll()
                         .requestMatchers(HttpMethod.DELETE, "/prendas/borrar/{titulo}").permitAll()
                         .requestMatchers(HttpMethod.PUT, "/prendas/editar/{titulo}").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/prendas/filtradojuntos").permitAll()
                         .anyRequest().permitAll()
                 );
 

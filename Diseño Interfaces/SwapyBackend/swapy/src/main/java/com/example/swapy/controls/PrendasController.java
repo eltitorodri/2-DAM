@@ -34,6 +34,14 @@ public class PrendasController {
         return prendasServices.listarPrendasByTipoGuardado();
     }
 
+    @GetMapping("/filtradojuntos")
+    public List<PrendasDTO> filtrarPrendas(
+            @RequestParam String estado,
+            @RequestParam String tipoGuardado) {
+        return prendasServices.listarPrendasByEstadoAndTipoGuardado(estado, tipoGuardado);
+    }
+
+
     @PutMapping("/actualizarprenda/{id}")
     public PrendasDTO actualizarPrendas(@Valid @PathVariable Integer id, @RequestBody ActualizarPrendasDTO prendasDTO){
         return prendasServices.actualizarPrendas(id, prendasDTO);

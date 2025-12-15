@@ -90,6 +90,23 @@ public class PrendasServices {
                 .collect(Collectors.toList());
     }
 
+    public List<PrendasDTO> listarPrendasByEstadoAndTipoGuardado(String estado, String tipoGuardado) {
+
+        estado = estado.trim();
+        tipoGuardado = tipoGuardado.trim();
+
+        List<Prendas> prendas = prendasRepository
+                .findByEstadoIgnoreCaseAndTipoGuardadoIgnoreCase(estado, tipoGuardado);
+
+        System.out.println("Prendas encontradas: " + prendas.size()); // debug rápido
+
+        return prendas.stream()
+                .map(prendasMapper::toDTO)
+                .collect(Collectors.toList());
+    }
+
+
+
     // ---------------------- MÉTODO DE ACTUALIZACIÓN (CORREGIDO) ----------------------
 
     @Transactional

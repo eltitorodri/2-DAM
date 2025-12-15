@@ -302,8 +302,13 @@ ON DELETE CASCADE;
 ALTER TABLE notificaciones
 DROP FOREIGN KEY fk_notificaciones_chat_id;
 
-ALTER TABLE notificaciones
+ALTER TAB LE notificaciones
 ADD CONSTRAINT fk_notificaciones_chat_id
 FOREIGN KEY (chat_id) REFERENCES chat(id)
 ON DELETE CASCADE;
+
+ALTER TABLE prendas
+ADD CONSTRAINT fk_prendas_imagen
+FOREIGN KEY (imagen_id)
+REFERENCES imagenes(id);
 
