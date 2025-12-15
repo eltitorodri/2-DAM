@@ -4,6 +4,7 @@ import { IonicModule, AlertController, ModalController } from '@ionic/angular';
 import { PrendaService } from '../servicios/prendaService';
 import { PrendasItem } from '../se-modelos/PrendasItem';
 import { ModalEditarComponent } from '../modal-editar/modal-editar.component';
+import { ModalCrearComponent } from '../modal-crear/modal-crear.component';
 
 @Component({
   selector: 'app-trend-topic',
@@ -56,7 +57,7 @@ export class TrendTopicComponent {
     await alert.present();
   }
 
-  async abrirEditarModal(prenda: PrendasItem) {
+async abrirEditarModal(prenda: PrendasItem) {
     if (!prenda) return;
 
     const modal = await this.modalCtrl.create({
@@ -65,11 +66,28 @@ export class TrendTopicComponent {
     });
 
     modal.onDidDismiss().then((data) => {
-      if (data.data?.actualizado) {
-        this.cargarPrendas(); // Recargamos si se actualizó la prenda
+      if (data.data && data.data.actualizado) {
+        console.log('Prenda actualizada, recargando lista...');
+        this.cargarPrendas(); 
       }
     });
 
     await modal.present();
   }
+
+  async abrirCrearModal() {
+    const modal = await this.modalCtrl.create({
+      component: ModalCrearComponent
+    });
+
+    modal.onDidDismiss().then((data) => {
+      if (data.data?.creado) {
+        console.log('Prenda creada, recargando lista...');
+        this.cargarPrendas();
+      }
+    });
+
+    await modal.present();
+  }
+
 }

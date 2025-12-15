@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="cerrarModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Nueva Prenda</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form #crearForm="ngForm">
+    <ion-list>
+      
+      <ion-item>
+        <ion-input label="Título" label-placement="floating" [(ngModel)]="titulo" name="titulo" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-textarea label="Descripción" label-placement="floating" [(ngModel)]="descripcion" name="descripcion" required rows="3"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-select label="Estado" label-placement="floating" [(ngModel)]="estado" name="estado" required>
+          <ion-select-option value="Prestamo">Préstamo</ion-select-option>
+          <ion-select-option value="Intercambio">Intercambio</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-select label="Tipo de Guardado" label-placement="floating" [(ngModel)]="tipoGuardado" name="tipoGuardado" required>
+          <ion-select-option value="Guardado">Guardado</ion-select-option>
+          <ion-select-option value="Pendiente">Pendiente</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-select label="Categoría" label-placement="floating" [(ngModel)]="categoriaId" name="categoria" required>
+          <ion-select-option *ngFor="let c of categoriasDisponibles" [value]="c.id">{{ c.nombre }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-select label="Marca" label-placement="floating" [(ngModel)]="marcaId" name="marca" required>
+          <ion-select-option *ngFor="let m of marcasDisponibles" [value]="m.id">{{ m.nombre }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-select label="Tipo de Prenda" label-placement="floating" [(ngModel)]="prendaTipoId" name="prendatipo" required>
+          <ion-select-option *ngFor="let t of prendasTipoDisponibles" [value]="t.id">{{ t.nombre }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      
+      <ion-item>
+        <ion-input type="number" label="ID Usuario (Dueño)" label-placement="floating" [(ngModel)]="usuarioId" name="usuarioId" required placeholder="Ej: 1"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="number" label="ID Imagen" label-placement="floating" [(ngModel)]="imagenId" name="imagenId" required placeholder="Ej: 5"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input label="IDs Colores (ej: 1, 2)" label-placement="floating" [(ngModel)]="coloresString" name="coloresString" required></ion-input>
+      </ion-item>
+
+    </ion-list>
+  </form>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+      <ion-button 
+        expand="block" 
+        color="success" 
+        (click)="guardarPrenda()"
+        [disabled]="!crearForm.valid"
+      >
+        Publicar Prenda
+      </ion-button>
+    </ion-toolbar>
+</ion-footer>

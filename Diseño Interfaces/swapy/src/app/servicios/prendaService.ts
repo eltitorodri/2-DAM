@@ -39,4 +39,8 @@ export class PrendaService {
       return this.http.put(`http://localhost:8080/prendas/actualizarprenda/${prenda.id}`, prenda); 
   }
 
+  crearPrenda(prenda: any): Observable<any> {
+      return this.http.post(`http://localhost:8080/prendas/crearPrenda`, prenda);
+  }
+
 }

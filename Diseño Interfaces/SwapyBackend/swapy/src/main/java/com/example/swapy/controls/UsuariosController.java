@@ -1,9 +1,7 @@
 package com.example.swapy.controls;
 
 import com.example.swapy.dto.*;
-import com.example.swapy.models.Calificacion;
 import com.example.swapy.services.CalificacionService;
-import com.example.swapy.services.UsuariosServicios;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
