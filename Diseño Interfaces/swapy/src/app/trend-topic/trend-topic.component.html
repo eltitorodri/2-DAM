@@ -8,17 +8,17 @@
         <img [src]="prenda.imagenUrl" [alt]="prenda.titulo" class="product-image" />
         
         <ion-fab-button class="add-button" size="small" (click)="abrirEditarModal(prenda)">
-          <ion-icon name="add-circle"></ion-icon>
+          <img src="assets/icon/pen_rodrigo.png" alt="Borrar Prenda" class="custom-trash-icon" />
         </ion-fab-button>
 
-        <ion-fab-button class="profile-button" size="small" color="light"
+        <ion-fab-button class="profile-button" size="small"
           (click)="borrarPrenda(prenda.titulo)">
-          <ion-icon name="person"></ion-icon>
+          <img src="assets/icon/trash_rodrigo.png" alt="Borrar Prenda" class="custom-trash-icon" />
         </ion-fab-button>
 
-        <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-          <ion-fab-button (click)="abrirCrearModal()">
-            <ion-icon name="add"></ion-icon>
+        <ion-fab vertical="bottom" horizontal="end"> 
+          <ion-fab-button class="create-button-fab" (click)="abrirCrearModal()">
+            <img src="assets/icon/plus_rodrigo.png" alt="Crear Prenda" class="custom-create-button" />
           </ion-fab-button>
         </ion-fab>
       </div>

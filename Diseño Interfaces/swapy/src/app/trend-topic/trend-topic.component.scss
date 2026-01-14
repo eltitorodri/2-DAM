@@ -87,18 +87,40 @@
 }
 
 .profile-button {
+
   position: absolute;
   top: 16px;
   right: 16px;
-  --background: transparent;
-  --box-shadow: none; 
+
+
+  --background: rgba(255, 255, 255, 0.9); 
+  --background-hover: rgba(230, 230, 230, 0.9);
+  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
   
-  ion-icon {
-    color: #FFFFFF; 
-    font-size: 28px;
-    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5)); 
+  
+  .custom-trash-icon {
+    height: 40px;
+    object-fit: contain;
   }
 }
+
+.custom-create-button {
+  height: 30px;
+  object-fit: contain;
+}
+
+.create-button-fab {
+  --background: transparent;
+  --background-hover: transparent; 
+  --box-shadow: none; 
+
+  .custom-create-button {
+    width: 44px; 
+    height: 44px;
+    object-fit: contain;
+  }
+}
+
 
 .product-info {
   padding: 20px;
