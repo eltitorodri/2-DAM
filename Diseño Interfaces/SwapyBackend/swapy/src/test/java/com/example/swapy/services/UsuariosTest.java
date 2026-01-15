@@ -1,5 +1,6 @@
 package com.example.swapy.services; // 1. Corregido el paquete
 
+import com.example.swapy.Exceptions.ElementoExistenteException;
 import com.example.swapy.dto.UsuarioDTO;
 import com.example.swapy.models.Usuarios;
 import com.example.swapy.repositories.UsuariosRepository;
@@ -29,7 +30,7 @@ public class UsuariosTest {
 
     @BeforeEach
     void cargarDatos() {
-        repository.deleteAll(); // Limpiamos para evitar conflictos entre tests
+        repository.deleteAll();
 
         Usuarios usuario = new Usuarios();
         usuario.setNombreCompleto("Usuario De Testeo");
@@ -37,7 +38,7 @@ public class UsuariosTest {
         usuario.setEmail("testeo@gmail.com");
         usuario.setPasswordHash("123456");
 
-        repository.save(usuario);
+        repository.saveAndFlush(usuario);
     }
 
     @Test
@@ -45,9 +46,9 @@ public class UsuariosTest {
     public void crearUsuarioTest() {
         // Given
         UsuarioDTO usuarioDTO = new UsuarioDTO();
-        usuarioDTO.setNombreCompleto("Nuevo Usuario"); // Nombre distinto
-        usuarioDTO.setNickname("nuevo123");           // Nickname que no existe
-        usuarioDTO.setEmail("nuevo@gmail.com");       // Email que no existe (IMPORTANTE)
+        usuarioDTO.setNombreCompleto("Nuevo Usuario"); 
+        usuarioDTO.setNickname("nuevo123");
+        usuarioDTO.setEmail("nuevo@gmail.com");
         usuarioDTO.setPasswordHash("123456");
 
         // Then
@@ -59,4 +60,38 @@ public class UsuariosTest {
         assertNotNull(guardado, "El usuario no fue guardado en la base de datos");
         assertEquals("nuevo123", guardado.getNickname(), "El nickname no coincide");
     }
+
+    @Test
+    @DisplayName("Crear Usuario -> Caso Negativo (Email Duplicado) ")
+    public void crearUsuarioNegativoTest() {
+
+        //Given
+
+        UsuarioDTO usuarioDTO = new UsuarioDTO();
+        usuarioDTO.setNombreCompleto("Intento Fallido");
+        usuarioDTO.setNickname("intento123");
+        usuarioDTO.setEmail("testeo@gmail.com");
+        usuarioDTO.setPasswordHash("123456");
+
+        //Then y When
+
+        assertThrows(ElementoExistenteException.class, () -> {
+            service.crearUsuario(usuarioDTO);
+        }, "Deberia haber fallado porque el email ya esta registrado" );
+    }
+
+    private Integer usuarioIdGenerado;
+
+    @BeforeEach
+    void cargarDatosDos() {
+        repository.deleteAll();
+
+        Usuarios usuario = new Usuarios();
+        usuario.setNombreCompleto("Usuario De Testeo");
+        usuario.setNickname("testeo");
+        usuario.setEmail("testeo@gmail.com");
+        usuario.setPasswordHash("123456");
+
+    }
+
 }
