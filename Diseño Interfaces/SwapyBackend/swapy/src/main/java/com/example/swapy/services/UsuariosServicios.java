@@ -1,8 +1,7 @@
 package com.example.swapy.services;
 
-
 import com.example.swapy.Exceptions.ElementoExistenteException;
-import com.example.swapy.Exceptions.ElementoNoEncontradoException;
+import com.example.swapy.Exceptions.ElementoNoEncontradoException; // Asegúrate de que está importada
 import com.example.swapy.dto.UsuarioActivosDTO;
 import com.example.swapy.dto.UsuarioDTO;
 import com.example.swapy.models.Usuarios;
@@ -25,7 +24,8 @@ public class UsuariosServicios {
 
     public Usuarios findById(Integer id) {
         return usuariosRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("No se ha encontrado ningún usuario con este id: "+ id));
+                // CORRECCIÓN 1: Cambiado RuntimeException a ElementoNoEncontradoException
+                .orElseThrow(() -> new ElementoNoEncontradoException("No se ha encontrado ningún usuario con este id: " + id));
     }
 
     public void deleteById(Integer id) {
@@ -37,7 +37,6 @@ public class UsuariosServicios {
     }
 
     public void crearUsuario(UsuarioDTO dto) {
-
         if (usuariosRepository.existsByNicknameIgnoreCase(dto.getNickname())) {
             throw new ElementoExistenteException("nickname",
                     "El nombre de usuario '" + dto.getNickname() + "' ya está en uso."
@@ -51,7 +50,6 @@ public class UsuariosServicios {
         }
 
         Usuarios usuario = new Usuarios();
-
         usuario.setNombreCompleto(dto.getNombreCompleto());
         usuario.setEmail(dto.getEmail());
         usuario.setNickname(dto.getNickname());
@@ -60,19 +58,18 @@ public class UsuariosServicios {
         usuariosRepository.save(usuario);
     }
 
-    public UsuarioDTO  consultarPerfilUsuario(Integer id) {
+    public UsuarioDTO consultarPerfilUsuario(Integer id) {
 
         Usuarios usuario = usuariosRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuario no encontrado con ID: " + id));
+                // CORRECCIÓN 2: ESTA ES LA QUE HACÍA FALLAR TU TEST
+                .orElseThrow(() -> new ElementoNoEncontradoException("Usuario no encontrado con ID: " + id));
 
         UsuarioDTO dto = new UsuarioDTO();
-
         dto.setNombreCompleto(usuario.getNombreCompleto());
         dto.setEmail(usuario.getEmail());
         dto.setNickname(usuario.getNickname());
         dto.setPasswordHash(usuario.getPasswordHash());
         return dto;
-
     }
 
     public List<UsuarioActivosDTO> findUsuarioConMasAceptados() {
@@ -81,10 +78,8 @@ public class UsuariosServicios {
         return resultados.stream()
                 .map(row -> new UsuarioActivosDTO(
                         (String) row[0],
-                        ((Number) row [1]).longValue())
+                        ((Number) row[1]).longValue())
                 )
                 .collect(Collectors.toList());
     }
-
-
 }

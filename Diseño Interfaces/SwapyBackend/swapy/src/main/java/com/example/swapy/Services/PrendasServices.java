@@ -6,10 +6,12 @@ import com.example.swapy.dto.*;
 import com.example.swapy.models.*;
 import com.example.swapy.repositories.*;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 import java.time.LocalDate;
 import java.util.Collections;
@@ -19,6 +21,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
+@Validated
 @AllArgsConstructor
 public class PrendasServices {
 
@@ -53,7 +56,7 @@ public class PrendasServices {
     @Autowired
     private ColoresServices coloresServices;
 
-    public PrendasDTO crearPrenda(PublicarPrendas dto) {
+    public PrendasDTO crearPrenda(@Valid PublicarPrendas dto) {
 
         Prendas prenda = prendasMapper.toEntity(dto);
 

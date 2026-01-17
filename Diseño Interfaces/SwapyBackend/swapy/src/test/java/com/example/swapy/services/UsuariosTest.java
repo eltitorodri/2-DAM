@@ -1,6 +1,7 @@
-package com.example.swapy.services; // 1. Corregido el paquete
+package com.example.swapy.services;
 
 import com.example.swapy.Exceptions.ElementoExistenteException;
+import com.example.swapy.Exceptions.ElementoNoEncontradoException;
 import com.example.swapy.dto.UsuarioDTO;
 import com.example.swapy.models.Usuarios;
 import com.example.swapy.repositories.UsuariosRepository;
@@ -13,7 +14,6 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-// 2. IMPORT CORRECTO DE JUNIT 5
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -28,6 +28,8 @@ public class UsuariosTest {
     @Autowired
     private UsuariosRepository repository;
 
+    private Integer idUsuario;
+
     @BeforeEach
     void cargarDatos() {
         repository.deleteAll();
@@ -38,7 +40,8 @@ public class UsuariosTest {
         usuario.setEmail("testeo@gmail.com");
         usuario.setPasswordHash("123456");
 
-        repository.saveAndFlush(usuario);
+        usuario = repository.saveAndFlush(usuario);
+        idUsuario = usuario.getId();
     }
 
     @Test
@@ -46,15 +49,15 @@ public class UsuariosTest {
     public void crearUsuarioTest() {
         // Given
         UsuarioDTO usuarioDTO = new UsuarioDTO();
-        usuarioDTO.setNombreCompleto("Nuevo Usuario"); 
+        usuarioDTO.setNombreCompleto("Nuevo Usuario");
         usuarioDTO.setNickname("nuevo123");
         usuarioDTO.setEmail("nuevo@gmail.com");
         usuarioDTO.setPasswordHash("123456");
 
-        // Then
+        // When
         service.crearUsuario(usuarioDTO);
 
-        // When
+        // Then
         Usuarios guardado = repository.findByNombreCompletoIgnoreCase("Nuevo Usuario");
 
         assertNotNull(guardado, "El usuario no fue guardado en la base de datos");
@@ -62,35 +65,50 @@ public class UsuariosTest {
     }
 
     @Test
-    @DisplayName("Crear Usuario -> Caso Negativo (Email Duplicado) ")
+    @DisplayName("Crear Usuario -> Caso Negativo (Email Duplicado)")
     public void crearUsuarioNegativoTest() {
-
-        //Given
-
+        // Given
         UsuarioDTO usuarioDTO = new UsuarioDTO();
         usuarioDTO.setNombreCompleto("Intento Fallido");
         usuarioDTO.setNickname("intento123");
         usuarioDTO.setEmail("testeo@gmail.com");
         usuarioDTO.setPasswordHash("123456");
 
-        //Then y When
-
+        // When & Then
         assertThrows(ElementoExistenteException.class, () -> {
             service.crearUsuario(usuarioDTO);
-        }, "Deberia haber fallado porque el email ya esta registrado" );
+        }, "Deberia haber fallado porque el email ya esta registrado");
     }
 
-    private Integer usuarioIdGenerado;
+    @Test
+    @DisplayName("Consultar Usuario por id -> Caso Positivo")
+    public void consultarUsuarioTest() {
 
-    @BeforeEach
-    void cargarDatosDos() {
-        repository.deleteAll();
+        //Given
 
-        Usuarios usuario = new Usuarios();
-        usuario.setNombreCompleto("Usuario De Testeo");
-        usuario.setNickname("testeo");
-        usuario.setEmail("testeo@gmail.com");
-        usuario.setPasswordHash("123456");
+        //When
+
+        UsuarioDTO resultado = service.consultarPerfilUsuario(idUsuario);
+
+        //Then
+
+        assertNotNull(resultado, "El usuario deberia existir");
+        assertEquals("testeo", resultado.getNickname(), "El nickname deberia existir");
+        assertEquals("testeo@gmail.com", resultado.getEmail(), "El email deberia existir");
+
+    }
+
+    @Test
+    @DisplayName("Consultar Usuario por id -> Caso Negativo")
+    public void consultarUsuarioNegativoTest() {
+
+        // Given
+        Integer idInexistente = 9999;
+
+        // When & Then
+        assertThrows(ElementoNoEncontradoException.class, () -> {
+            service.consultarPerfilUsuario(idInexistente);
+        }, "Deberia lanzar excepcion si el ID no existe");
 
     }
 

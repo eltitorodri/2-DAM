@@ -2,6 +2,8 @@ package com.example.swapy.dto;
 
 import com.example.swapy.models.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,22 +32,22 @@ public class PrendasDTO {
     @NotBlank(message = "Debes de indicar como lo has guardado. (Pendiente o Guardado)")
     private String tipoGuardado;
 
-    @NotBlank(message = "Debes de indicar alguna categoría")
+    @NotNull(message = "Debes de indicar alguna categoría")
     private Categorias categorias;
 
-    @NotBlank(message = "Debes de indicar alguna marca")
+    @NotNull(message = "Debes de indicar alguna marca")
     private Marcas marcas;
 
-    @NotBlank(message = "Debes de indicar algun tipo de prendas")
+    @NotNull(message = "Debes de indicar algun tipo de prendas")
     private PrendasTipos prendasTipo;
 
-    @NotBlank(message = "Debes de indicar un id usuario")
+    @NotNull(message = "Debes de indicar un id usuario")
     private Usuarios usuario;
 
-    @NotBlank(message = "Debes de indicar un id de alguna imagen")
+    @NotNull(message = "Debes de indicar un id de alguna imagen")
     private Imagenes imagen;
 
-    @NotBlank(message = "Debes de indicar algun color")
+    @NotEmpty(message = "Debes de indicar algun color")
     private List<Colores> colores;
 
 }
