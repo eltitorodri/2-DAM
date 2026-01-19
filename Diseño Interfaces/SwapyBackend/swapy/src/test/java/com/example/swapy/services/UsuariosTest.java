@@ -45,7 +45,7 @@ public class UsuariosTest {
     }
 
     @Test
-    @DisplayName("Crear Usuario -> Caso Positivo")
+    @DisplayName("[TEST INTEGRACION] Crear Usuario -> Caso Positivo")
     public void crearUsuarioTest() {
         // Given
         UsuarioDTO usuarioDTO = new UsuarioDTO();
