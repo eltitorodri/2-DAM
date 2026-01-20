@@ -1,5 +1,6 @@
 package com.example.swapy.services;
 
+import com.example.swapy.Convertidores.UsuarioMapper;
 import com.example.swapy.Exceptions.ElementoExistenteException;
 import com.example.swapy.Exceptions.ElementoNoEncontradoException; // Asegúrate de que está importada
 import com.example.swapy.dto.UsuarioActivosDTO;
@@ -17,6 +18,7 @@ public class UsuariosServicios {
 
     @Autowired
     private UsuariosRepository usuariosRepository;
+    private UsuarioMapper usuarioMapper;
 
     public List<Usuarios> findAll() {
         return usuariosRepository.findAll();

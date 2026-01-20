@@ -32,6 +32,8 @@ public interface PrendasRepository extends JpaRepository<Prendas, Integer> {
 
     List<Prendas> findByTitulo(String titulo);
 
+    Prendas findByTituloUnitario(String titulo);
+
     List<Prendas> findAllByTitulo(String titulo);
 
     List<Prendas> findByEstadoIgnoreCaseAndTipoGuardadoIgnoreCase(String estado, String tipoGuardado);

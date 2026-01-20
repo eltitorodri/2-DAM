@@ -1,9 +1,10 @@
 package com.example.swapy.services.Unitario;
 
+import com.example.swapy.Exceptions.ElementoNoEncontradoException;
 import com.example.swapy.dto.UsuarioDTO;
 import com.example.swapy.models.Usuarios;
+import com.example.swapy.repositories.UsuariosRepository;
 import com.example.swapy.services.UsuariosServicios;
-import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,8 +14,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @AutoConfigureTestDatabase
@@ -27,7 +27,7 @@ public class UsuarioServiceTest {
     private UsuariosServicios service;
 
     @Autowired
-    private EntityManager entityManager;
+    private UsuariosRepository repository;
 
     @BeforeAll
     void cargarDatos() {
@@ -36,7 +36,7 @@ public class UsuarioServiceTest {
         u.setEmail("jose@safareyes.es");
         u.setNombreCompleto("Jose Fuentes Laborda");
         u.setNickname("joselaborda");
-        u.setPasswordHash(1234);
+        u.setPasswordHash("1234");
 
         Usuarios u2 = new Usuarios();
         u2.setEmail("ruben@safareyes.es");
@@ -44,17 +44,15 @@ public class UsuarioServiceTest {
         u2.setNickname("rubenRomero");
         u2.setPasswordHash("1234");
 
-        entityManager.persist(u);
-        entityManager.persist(u2);
-        entityManager.flush();
+        repository.save(u);
+        repository.save(u2);
+        repository.flush();
 
     }
-
 
     @Test
     @DisplayName("[TEST UNITARIO] Crear usuario --> Caso Positivo")
     public void crearUsuarioPositivo() {
-
 
         UsuarioDTO usuarioDTO = new UsuarioDTO();
         usuarioDTO.setEmail("rbernalgomez@safareyes.es");
@@ -62,13 +60,52 @@ public class UsuarioServiceTest {
         usuarioDTO.setNombreCompleto("Rodrigo Bernal Gómez");
         usuarioDTO.setPasswordHash("1234");
 
-        UsuarioDTO resultado = service.crearUsuario(usuarioDTO);
+        service.crearUsuario(usuarioDTO);
+
+        Usuarios resultado = repository.findByNombreCompletoIgnoreCase("Rodrigo Bernal Gómez");
 
         assertNotNull(resultado, "El objeto no deberia de ser nulo");
         assertNotNull(resultado.getEmail(), "El email no deberia de ser nulo");
-        assertEquals("Usuario Creado", resultado.getNickname(), "El nickname no coincide");
+        assertEquals("eltitorodri", resultado.getNickname(), "El nickname no coincide");
 
     }
 
+    @Test
+    @DisplayName("[TEST UNITARIO] Crear usuario --> Caso Negativo")
+    public void crearUsuarioNegativo() {
+
+
+        UsuarioDTO usuarioDuplicado = new UsuarioDTO();
+        usuarioDuplicado.setEmail("jose@safareyes.es");
+        usuarioDuplicado.setNickname("TheRedBoy");
+        usuarioDuplicado.setNombreCompleto("Jose Fuentes Loborda");
+        usuarioDuplicado.setPasswordHash("12345");
+
+        assertThrows(Exception.class, () -> {
+            service.crearUsuario(usuarioDuplicado);
+        }, "Deberia de haber saltado un error por usuario con email duplicado");
+
+    }
+
+    @Test
+    @DisplayName("[TEST UNITARIO] Buscar por ID --> Caso Positivo")
+    public void consultarUsuarioPositivo() {
+
+
+        UsuarioDTO dto = service.consultarPerfilUsuario(1);
+
+        assertNotNull(dto, "El usuario que se ha intentado buscar deberia existir");
+        assertEquals(dto.getEmail(), "jose@safareyes.es", "El email del usuario buscado no coincide");
+
+
+    }
+
+    @Test
+    @DisplayName("[TEST UNITARIO] Buscar por ID --> Caso Positivo")
+    public void consultarUsuarioNegativo() {
+
+        assertThrows(ElementoNoEncontradoException.class, () -> service.consultarPerfilUsuario(9999), "Deberia lanzar excepcion por ID no encontrado");
+
+    }
 
 }
