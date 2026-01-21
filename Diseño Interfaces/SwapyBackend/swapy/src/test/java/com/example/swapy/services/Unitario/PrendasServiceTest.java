@@ -1,5 +1,6 @@
 package com.example.swapy.services.Unitario;
 
+import com.example.swapy.dto.PrendasDTO;
 import com.example.swapy.dto.PublicarPrendas;
 import com.example.swapy.models.*;
 import com.example.swapy.repositories.CategoriasRepository;
@@ -19,8 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @AutoConfigureTestDatabase
@@ -152,10 +152,178 @@ public class PrendasServiceTest {
 
         service.crearPrenda(dto);
 
+        repository.flush();
+
         Prendas guardada = repository.findByTituloUnitario(dto.getTitulo());
 
         assertNotNull(guardada, "La prenda deberia no ser nula");
         assertEquals("Prenda de Homero Tomillo", guardada.getTitulo(), "El titulo deberia coincidir");
+    }
+
+    @Test
+    @DisplayName("[TEST UNITARIO] Crear Prenda --> Caso Negativo")
+    public void crearPrendaNegativo() {
+
+
+        Categorias categoria = new Categorias();
+        categoria.setNombre("Joyas");
+        categoriasRepository.save(categoria);
+
+        Marcas marca = new Marcas();
+        marca.setNombre("Adidas");
+        marcasRepository.save(marca);
+
+        PrendasTipos prendasTipos = new PrendasTipos();
+        prendasTipos.setNombre("Traje");
+        prendasTiposRepository.save(prendasTipos);
+
+        Usuarios usuario = new Usuarios();
+        usuario.setEmail("jose@safareyes.es");
+        usuario.setNombreCompleto("Jose Fuentes Laborda");
+        usuario.setNickname("joselaborda");
+        usuario.setPasswordHash("1234");
+        usuariosRepository.save(usuario);
+
+        Colores color = new Colores();
+        color.setNombreColor("Rojo");
+        coloresRepository.save(color);
+
+        Colores color2 = new Colores();
+        color2.setNombreColor("Azul");
+        coloresRepository.save(color2);
+
+        List<Colores> colores = new ArrayList<>();
+        colores.add(color);
+        colores.add(color2);
+
+        Imagenes imagen = new Imagenes();
+        imagen.setUrl_imagen("http://ejemplo.com/foto.jpg");
+        imagen.setOrden(2);
+        imagenesRepository.save(imagen);
+
+        PublicarPrendas prenda = new PublicarPrendas();
+        prenda.setTitulo("Prenda de Joshep Fontains");
+        prenda.setCategorias(categoria.getId());
+        prenda.setMarcas(marca.getId());
+        prenda.setPrendasTipo(prendasTipos.getId());
+        prenda.setDescripcion("Camiseta deportiva");
+        prenda.setEstado("Pendiente");
+        prenda.setTipoGuardado("Pendiente");
+        prenda.setUsuario(usuario.getId());
+        prenda.setColores(colores.stream().map(Colores::getId).toList());
+        prenda.setImagen(imagen.getId());
+
+        assertThrows(Exception.class, () -> {
+                service.crearPrenda(prenda);
+                repository.flush();
+            }, "Deberia de haber saltado un error por titulo duplicado");
+    }
+
+    @Test
+    @DisplayName("[TEST UNITARIO] Listar Prendas por filtros --> Caso Positivo")
+    public void listarPrendasFiltrosPositivo() {
+
+        Categorias categoria = new Categorias();
+        categoria.setNombre("Joyas");
+        categoriasRepository.save(categoria);
+
+        Marcas marca = new Marcas();
+        marca.setNombre("Adidas");
+        marcasRepository.save(marca);
+
+        PrendasTipos prendasTipos = new PrendasTipos();
+        prendasTipos.setNombre("Traje");
+        prendasTiposRepository.save(prendasTipos);
+
+        Usuarios usuario = new Usuarios();
+        usuario.setEmail("jose@safareyes.es");
+        usuario.setNombreCompleto("Jose Fuentes Laborda");
+        usuario.setNickname("joselaborda");
+        usuario.setPasswordHash("1234");
+        usuariosRepository.save(usuario);
+
+        Colores color = new Colores();
+        color.setNombreColor("Rojo");
+        coloresRepository.save(color);
+
+        Colores color2 = new Colores();
+        color2.setNombreColor("Azul");
+        coloresRepository.save(color2);
+
+        List<Colores> colores = new ArrayList<>();
+        colores.add(color);
+        colores.add(color2);
+
+        Imagenes imagen = new Imagenes();
+        imagen.setUrl_imagen("http://ejemplo.com/foto.jpg");
+        imagen.setOrden(2);
+        imagenesRepository.save(imagen);
+
+        PrendasDTO prenda = new PrendasDTO();
+        prenda.setTitulo("Prenda de Joshep Fontains");
+        prenda.setCategorias(categoria);
+        prenda.setMarcas(marca);
+        prenda.setPrendasTipo(prendasTipos);
+        prenda.setDescripcion("Camiseta deportiva");
+        prenda.setEstado("Pendiente");
+        prenda.setTipoGuardado("Pendiente");
+        prenda.setUsuario(usuario);
+        prenda.setColores(colores);
+        prenda.setImagen(imagen);
+
+        List<PrendasDTO> dtos = new ArrayList<>();
+        dtos.add(prenda);
+
+        PrendasDTO resultado = service.listarPrendasByEstadoAndTipoGuardado(dtos.get(0).getEstado(), dtos.get(0).getTipoGuardado()).get(0);
+
+        assertNotNull(resultado, "El objeto no deberia de ser nulo");
+        assertEquals("Pendiente", resultado.getEstado(),  "El estado deberia coincidir");
+        assertEquals("Pendiente", resultado.getTipoGuardado(),  "El tipo de guardado deberia coincidir");
+
+    }
+
+    @Test
+    @DisplayName("[TEST UNITARIO] Listar Prendas por filtros --> Caso Negativo")
+    public void listarPrendasFiltrosNegativo() {
+
+        Categorias categoria = new Categorias();
+        categoria.setNombre("Ropa Interior");
+        categoria = categoriasRepository.save(categoria);
+
+        Marcas marca = new Marcas();
+        marca.setNombre("Nike");
+        marca = marcasRepository.save(marca);
+
+        PrendasTipos prendasTipos = new PrendasTipos();
+        prendasTipos.setNombre("Bañador");
+        prendasTipos = prendasTiposRepository.save(prendasTipos);
+
+        Usuarios usuario = new Usuarios();
+        usuario.setEmail("negativo@safareyes.es");
+        usuario.setNombreCompleto("Usuario Negativo");
+        usuario.setNickname("usenegativo");
+        usuario.setPasswordHash("0000");
+        usuario = usuariosRepository.save(usuario);
+
+        Prendas prenda = new Prendas();
+        prenda.setTitulo("Bañador de Prueba");
+        prenda.setCategorias(categoria);
+        prenda.setMarcas(marca);
+        prenda.setPrendasTipo(prendasTipos);
+        prenda.setDescripcion("Bañador azul");
+        prenda.setUsuario(usuario);
+
+        prenda.setEstado("Vendido");
+        prenda.setTipoGuardado("Archivado");
+
+        repository.save(prenda);
+        repository.flush();
+
+        List<PrendasDTO> resultado = service.listarPrendasByEstadoAndTipoGuardado("Pendiente", "Pendiente");
+
+        assertNotNull(resultado, "La lista no debería ser nula (debería ser una lista vacía)");
+        assertTrue(resultado.isEmpty(), "La lista debería estar vacía porque no existen prendas con esos filtros");
+        assertEquals(0, resultado.size(), "El tamaño de la lista debe ser 0");
 
     }
 

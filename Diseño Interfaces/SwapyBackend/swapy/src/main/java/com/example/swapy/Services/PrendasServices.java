@@ -101,7 +101,7 @@ public class PrendasServices {
         List<Prendas> prendas = prendasRepository
                 .findByEstadoIgnoreCaseAndTipoGuardadoIgnoreCase(estado, tipoGuardado);
 
-        System.out.println("Prendas encontradas: " + prendas.size()); // debug rápido
+        System.out.println("Prendas encontradas: " + prendas.size());
 
         return prendas.stream()
                 .map(prendasMapper::toDTO)
