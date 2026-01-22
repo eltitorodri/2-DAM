@@ -1,5 +1,6 @@
 package com.example.swapy.services.Unitario;
 
+import com.example.swapy.dto.ActualizarPrendasDTO;
 import com.example.swapy.dto.PrendasDTO;
 import com.example.swapy.dto.PublicarPrendas;
 import com.example.swapy.models.*;
@@ -8,6 +9,7 @@ import com.example.swapy.repositories.PrendasRepository;
 import com.example.swapy.services.CategoriasService;
 import com.example.swapy.repositories.*;
 import com.example.swapy.services.PrendasServices;
+import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -40,6 +42,8 @@ public class PrendasServiceTest {
     @Autowired private UsuariosRepository usuariosRepository;
     @Autowired private ColoresRepository coloresRepository;
     @Autowired private ImagenesRepository imagenesRepository;
+
+    @Autowired private EntityManager entityManager;
 
     @BeforeAll
     void cargarDatos() {
@@ -158,6 +162,7 @@ public class PrendasServiceTest {
 
         assertNotNull(guardada, "La prenda deberia no ser nula");
         assertEquals("Prenda de Homero Tomillo", guardada.getTitulo(), "El titulo deberia coincidir");
+
     }
 
     @Test
@@ -286,44 +291,64 @@ public class PrendasServiceTest {
     @DisplayName("[TEST UNITARIO] Listar Prendas por filtros --> Caso Negativo")
     public void listarPrendasFiltrosNegativo() {
 
-        Categorias categoria = new Categorias();
-        categoria.setNombre("Ropa Interior");
-        categoria = categoriasRepository.save(categoria);
+        List<PrendasDTO> dto = service.listarPrendasByEstadoAndTipoGuardado("Vendido", "Archivado");
 
-        Marcas marca = new Marcas();
-        marca.setNombre("Nike");
-        marca = marcasRepository.save(marca);
+        assertNotNull(dto, "El objeto no deberia de ser nulo");
 
-        PrendasTipos prendasTipos = new PrendasTipos();
-        prendasTipos.setNombre("Bañador");
-        prendasTipos = prendasTiposRepository.save(prendasTipos);
+        assertTrue(dto.isEmpty(), "El objeto deberia estar vacio");
+        assertEquals(0, dto.size(), "El objeto deberia estar vacio");
 
-        Usuarios usuario = new Usuarios();
-        usuario.setEmail("negativo@safareyes.es");
-        usuario.setNombreCompleto("Usuario Negativo");
-        usuario.setNickname("usenegativo");
-        usuario.setPasswordHash("0000");
-        usuario = usuariosRepository.save(usuario);
+    }
 
-        Prendas prenda = new Prendas();
-        prenda.setTitulo("Bañador de Prueba");
-        prenda.setCategorias(categoria);
-        prenda.setMarcas(marca);
-        prenda.setPrendasTipo(prendasTipos);
-        prenda.setDescripcion("Bañador azul");
-        prenda.setUsuario(usuario);
+    @Test
+    @DisplayName("[TEST UNITARIO] Editar Prenda --> Caso Positivo")
+    public void editarPrendaPositivo() {
 
-        prenda.setEstado("Vendido");
-        prenda.setTipoGuardado("Archivado");
 
-        repository.save(prenda);
+        Prendas prendaExistente = repository.findByTituloUnitario("Prenda de Joshep Fontains");
+        assertNotNull(prendaExistente, "La prenda deberia existir");
+
+        Integer id = prendaExistente.getId();
+
+        ActualizarPrendasDTO dto = new ActualizarPrendasDTO();
+        dto.setTitulo("Prenda de Rodrigo Bernal");
+        dto.setDescripcion("Camiseta deportiva");
+        dto.setEstado("Intercambio");
+        dto.setTipoGuardado("Pendiente");
+        dto.setCategorias(prendaExistente.getCategorias().getId());
+        dto.setPrendasTipo(prendaExistente.getPrendasTipo().getId());
+        dto.setMarcas(prendaExistente.getMarcas().getId());
+        dto.setColores(prendaExistente.getColores().stream().map(Colores::getId).toList());
+        dto.setUsuario(prendaExistente.getUsuario().getId());
+        dto.setImagen(prendaExistente.getImagen().getId());
+
+        service.actualizarPrendas(id, dto);
+
+
         repository.flush();
+        entityManager.clear();
 
-        List<PrendasDTO> resultado = service.listarPrendasByEstadoAndTipoGuardado("Pendiente", "Pendiente");
+        Prendas prendaActualizada = repository.findById(id).orElse(null);
 
-        assertNotNull(resultado, "La lista no debería ser nula (debería ser una lista vacía)");
-        assertTrue(resultado.isEmpty(), "La lista debería estar vacía porque no existen prendas con esos filtros");
-        assertEquals(0, resultado.size(), "El tamaño de la lista debe ser 0");
+        assertNotNull(prendaActualizada);
+        assertEquals("Prenda de Rodrigo Bernal", prendaActualizada.getTitulo());
+        assertEquals("Intercambio", prendaActualizada.getEstado(), "El estado de la prenda deberia ser [PENDIENTE]");
+
+    }
+
+    @Test
+    @DisplayName("[TEST UNITARIO] Editar Prenda --> Caso Negativo")
+    public void editarPrendaNegativo() {
+
+        Integer idFalso = 999;
+
+        ActualizarPrendasDTO dto = new ActualizarPrendasDTO();
+        dto.setTitulo("No importa");
+
+        assertThrows(Exception.class, () -> {
+            service.actualizarPrendas(idFalso, dto);
+
+        }, "Deberia fallar al no encontrar el ID");
 
     }
 

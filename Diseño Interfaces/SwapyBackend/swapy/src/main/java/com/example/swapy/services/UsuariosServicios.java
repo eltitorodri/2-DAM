@@ -3,6 +3,7 @@ package com.example.swapy.services;
 import com.example.swapy.Convertidores.UsuarioMapper;
 import com.example.swapy.Exceptions.ElementoExistenteException;
 import com.example.swapy.Exceptions.ElementoNoEncontradoException; // Asegúrate de que está importada
+import com.example.swapy.dto.CrearCalificacionDTO;
 import com.example.swapy.dto.UsuarioActivosDTO;
 import com.example.swapy.dto.UsuarioDTO;
 import com.example.swapy.models.Usuarios;
@@ -83,5 +84,9 @@ public class UsuariosServicios {
                         ((Number) row[1]).longValue())
                 )
                 .collect(Collectors.toList());
+    }
+
+    public void assertNotNull(CrearCalificacionDTO dto, String deberiaDeHaberAlgunaCalificacion) {
+
     }
 }
