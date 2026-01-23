@@ -59,6 +59,8 @@ public class EstadisticasServiceTest {
     @Autowired
     private PrendasServices prendasServices;
 
+
+
     @Test
     @DisplayName("[TEST UNITARIO] Estadisticas --> Prenda mas popular")
     public void obtenerPrendasPopularTest() {
