@@ -109,7 +109,7 @@ public class IntercambioServiceTest {
     }
 
     @Test
-    @DisplayName("[TEST UNITARIO] Solicitar Intercambio --> Caso Positivo")
+    @DisplayName("[TEST UNITARIO 6] Solicitar Intercambio --> Caso Positivo")
     public void intercambioTest() {
 
 
@@ -182,7 +182,7 @@ public class IntercambioServiceTest {
     }
 
     @Test
-    @DisplayName("[TEST UNITARIO] Solicitar Intercambio --> Caso Negativo")
+    @DisplayName("[TEST UNITARIO 6] Solicitar Intercambio --> Caso Negativo")
     public void intercambioNegativoTest() {
 
         Usuarios usuario = new Usuarios();
@@ -207,7 +207,7 @@ public class IntercambioServiceTest {
     }
 
     @Test
-    @DisplayName("[TEST UNITARIO] Actualizar estado del intercambio --> Caso Positivo")
+    @DisplayName("[TEST UNITARIO 7] Actualizar estado del intercambio --> Caso Positivo")
     public void actualizarEstadoIntercambioTest() {
 
         Usuarios u = new Usuarios();
@@ -276,7 +276,7 @@ public class IntercambioServiceTest {
 
 
     @Test
-    @DisplayName("[TEST UNITARIO] Actualizar estado del intercambio --> Caso Positivo")
+    @DisplayName("[TEST UNITARIO 7] Actualizar estado del intercambio --> Caso Negativo")
     public void actualizarEstadoIntercambioTestNegativo() {
 
             Usuarios u = new Usuarios();
@@ -340,7 +340,7 @@ public class IntercambioServiceTest {
             ActualizarPrendasDTO dto = new ActualizarPrendasDTO();
             dto.setEstado(EstadoTransaccion.Finalizada.toString());
 
-            service.actualizarEstado(idTrans, EstadoTransaccion.Aceptada, idTrans);
+            service.actualizarEstado(u.getId(), EstadoTransaccion.Aceptada, u.getId());
             repository.flush();
 
             Transacciones resultado = repository.findById(idTrans).get();

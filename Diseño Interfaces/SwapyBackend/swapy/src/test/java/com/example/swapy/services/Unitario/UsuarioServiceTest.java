@@ -51,7 +51,7 @@ public class UsuarioServiceTest {
     }
 
     @Test
-    @DisplayName("[TEST UNITARIO] Crear usuario --> Caso Positivo")
+    @DisplayName("[TEST UNITARIO 1] Crear usuario --> Caso Positivo")
     public void crearUsuarioPositivo() {
 
         UsuarioDTO usuarioDTO = new UsuarioDTO();
@@ -71,7 +71,7 @@ public class UsuarioServiceTest {
     }
 
     @Test
-    @DisplayName("[TEST UNITARIO] Crear usuario --> Caso Negativo")
+    @DisplayName("[TEST UNITARIO 1] Crear usuario --> Caso Negativo")
     public void crearUsuarioNegativo() {
 
 
@@ -88,7 +88,7 @@ public class UsuarioServiceTest {
     }
 
     @Test
-    @DisplayName("[TEST UNITARIO] Buscar por ID --> Caso Positivo")
+    @DisplayName("[TEST UNITARIO 2] Buscar por ID --> Caso Positivo")
     public void consultarUsuarioPositivo() {
 
 
@@ -101,7 +101,7 @@ public class UsuarioServiceTest {
     }
 
     @Test
-    @DisplayName("[TEST UNITARIO] Buscar por ID --> Caso Positivo")
+    @DisplayName("[TEST UNITARIO 2] Buscar por ID --> Caso Positivo")
     public void consultarUsuarioNegativo() {
 
         assertThrows(ElementoNoEncontradoException.class, () -> service.consultarPerfilUsuario(9999), "Deberia lanzar excepcion por ID no encontrado");

@@ -64,7 +64,6 @@ public class UsuariosServicios {
     public UsuarioDTO consultarPerfilUsuario(Integer id) {
 
         Usuarios usuario = usuariosRepository.findById(id)
-                // CORRECCIÓN 2: ESTA ES LA QUE HACÍA FALLAR TU TEST
                 .orElseThrow(() -> new ElementoNoEncontradoException("Usuario no encontrado con ID: " + id));
 
         UsuarioDTO dto = new UsuarioDTO();
@@ -89,4 +88,22 @@ public class UsuariosServicios {
     public void assertNotNull(CrearCalificacionDTO dto, String deberiaDeHaberAlgunaCalificacion) {
 
     }
+
+
+    public List<UsuarioActivosDTO> findUsuarioConMasAceptados2() {
+        List<Object[]> resultados = ejecutarConsultaBD();
+
+        return resultados.stream()
+                .map(row -> new UsuarioActivosDTO(
+                        (String) row[0],
+                        ((Number) row[1]).longValue())
+                )
+                .collect(Collectors.toList());
+    }
+
+    protected List<Object[]> ejecutarConsultaBD() {
+        return usuariosRepository.findUsuarioConMasAceptados();
+    }
+
+
 }

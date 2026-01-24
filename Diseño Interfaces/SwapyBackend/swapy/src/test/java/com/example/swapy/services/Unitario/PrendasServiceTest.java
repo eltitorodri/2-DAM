@@ -102,7 +102,7 @@ public class PrendasServiceTest {
     }
 
     @Test
-    @DisplayName("[TEST UNITARIO] Crear Prenda --> Caso Positivo")
+    @DisplayName("[TEST UNITARIO 3] Crear Prenda --> Caso Positivo")
     public void crearPrendaPositivo() {
 
         PublicarPrendas dto = new PublicarPrendas();
@@ -166,7 +166,7 @@ public class PrendasServiceTest {
     }
 
     @Test
-    @DisplayName("[TEST UNITARIO] Crear Prenda --> Caso Negativo")
+    @DisplayName("[TEST UNITARIO 3] Crear Prenda --> Caso Negativo")
     public void crearPrendaNegativo() {
 
 
@@ -225,7 +225,7 @@ public class PrendasServiceTest {
     }
 
     @Test
-    @DisplayName("[TEST UNITARIO] Listar Prendas por filtros --> Caso Positivo")
+    @DisplayName("[TEST UNITARIO 4] Listar Prendas por filtros --> Caso Positivo")
     public void listarPrendasFiltrosPositivo() {
 
         Categorias categoria = new Categorias();
@@ -288,7 +288,7 @@ public class PrendasServiceTest {
     }
 
     @Test
-    @DisplayName("[TEST UNITARIO] Listar Prendas por filtros --> Caso Negativo")
+    @DisplayName("[TEST UNITARIO 4] Listar Prendas por filtros --> Caso Negativo")
     public void listarPrendasFiltrosNegativo() {
 
         List<PrendasDTO> dto = service.listarPrendasByEstadoAndTipoGuardado("Vendido", "Archivado");
@@ -301,7 +301,7 @@ public class PrendasServiceTest {
     }
 
     @Test
-    @DisplayName("[TEST UNITARIO] Editar Prenda --> Caso Positivo")
+    @DisplayName("[TEST UNITARIO 5] Editar Prenda --> Caso Positivo")
     public void editarPrendaPositivo() {
 
 
@@ -337,7 +337,7 @@ public class PrendasServiceTest {
     }
 
     @Test
-    @DisplayName("[TEST UNITARIO] Editar Prenda --> Caso Negativo")
+    @DisplayName("[TEST UNITARIO 5] Editar Prenda --> Caso Negativo")
     public void editarPrendaNegativo() {
 
         Integer idFalso = 999;

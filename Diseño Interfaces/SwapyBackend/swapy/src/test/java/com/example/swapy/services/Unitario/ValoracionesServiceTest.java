@@ -49,7 +49,7 @@ public class ValoracionesServiceTest {
     @Autowired private TransaccionesRepository transaccionesRepository;
 
     @Test
-    @DisplayName("[TEST UNITARIO] Crear una valoracion --> Caso Positivo")
+    @DisplayName("[TEST UNITARIO 8] Crear una valoracion --> Caso Positivo")
     public void crearValoracionPositivo() {
 
         Usuarios usuarioEmisor = new Usuarios();
@@ -145,7 +145,7 @@ public class ValoracionesServiceTest {
 
 
     @Test
-    @DisplayName("[TEST UNITARIO] Crear una valoracion --> Caso Negativo")
+    @DisplayName("[TEST UNITARIO 8] Crear una valoracion --> Caso Negativo")
     public void crearValoracionNegativo() {
 
         Usuarios usuarioEmisor = new Usuarios();
