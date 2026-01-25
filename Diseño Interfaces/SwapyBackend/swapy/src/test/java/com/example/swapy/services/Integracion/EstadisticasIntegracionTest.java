@@ -44,7 +44,7 @@ public class EstadisticasIntegracionTest {
 
     @Test
     @DisplayName("[TEST INTEGRACION 9] Estadisticas Prendas --> Caso Negativo")
-    public void obtenerPrendasNegativoTest() {
+    public void obtenerPrendasNegativoTestIntegracion() {
 
         Mockito.when(prendasRepository.findTop5PrendasPopulares()).thenReturn(new ArrayList<>());
 
@@ -57,7 +57,7 @@ public class EstadisticasIntegracionTest {
 
     @Test
     @DisplayName("[TEST INTEGRACION 10] Estadisticas Usuarios --> Caso Negativo (Lista Vacia)")
-    public void usuarioActivoVacioTest() {
+    public void usuarioActivoVacioTestIntegracion() {
 
         Mockito.when(usuariosServices.findUsuarioConMasAceptados2()).thenReturn(List.of());
 

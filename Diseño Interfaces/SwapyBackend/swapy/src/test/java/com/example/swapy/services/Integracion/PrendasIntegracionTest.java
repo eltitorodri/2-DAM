@@ -50,7 +50,7 @@ public class PrendasIntegracionTest {
 
     @Test
     @DisplayName("[TEST INTEGRACION 3] Crear Prenda --> Caso Positivo")
-    public void crearPrendaPositivo() {
+    public void crearPrendaPositivoIntegracion() {
 
 
         Categorias cat = new Categorias();
@@ -123,7 +123,7 @@ public class PrendasIntegracionTest {
 
     @Test
     @DisplayName("[TEST INTEGRACION 4] Listar Prendas por filtros --> Caso Positivo")
-    public void listarPrendasFiltrosPositivo() {
+    public void listarPrendasFiltrosPositivoIntegracion() {
 
 
         Categorias cat = new Categorias();

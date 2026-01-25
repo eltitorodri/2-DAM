@@ -271,6 +271,14 @@ public class IntercambioServiceTest {
         ActualizarPrendasDTO actPrenda = new ActualizarPrendasDTO();
         actPrenda.setEstado(EstadoTransaccion.Finalizada.toString());
 
+        service.actualizarEstado(idTrans, EstadoTransaccion.Aceptada, u.getId());
+        repository.flush();
+
+        Transacciones resultado = repository.findById(idTrans).orElse(null);
+
+        assertNotNull(resultado);
+        assertEquals(EstadoTransaccion.Aceptada, resultado.getEstado());
+
     }
 
 

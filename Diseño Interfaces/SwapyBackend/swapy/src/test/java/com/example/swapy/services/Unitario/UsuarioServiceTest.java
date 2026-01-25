@@ -101,7 +101,7 @@ public class UsuarioServiceTest {
     }
 
     @Test
-    @DisplayName("[TEST UNITARIO 2] Buscar por ID --> Caso Positivo")
+    @DisplayName("[TEST UNITARIO 2] Buscar por ID --> Caso Negativo")
     public void consultarUsuarioNegativo() {
 
         assertThrows(ElementoNoEncontradoException.class, () -> service.consultarPerfilUsuario(9999), "Deberia lanzar excepcion por ID no encontrado");

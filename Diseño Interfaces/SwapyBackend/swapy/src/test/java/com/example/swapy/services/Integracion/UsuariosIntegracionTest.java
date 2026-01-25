@@ -7,8 +7,6 @@ import com.example.swapy.repositories.UsuariosRepository;
 import com.example.swapy.services.UsuariosServicios;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,8 +17,6 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 @SpringBootTest
 @Transactional
@@ -35,7 +31,7 @@ public class UsuariosIntegracionTest {
 
     @Test
     @DisplayName("[TEST INTEGRACION 1] Crear Usuario --> Caso Positivo")
-    public void crearUsuarioPositivo() {
+    public void crearUsuarioPositivoIntegracion() {
 
 
         //GIVEN
@@ -86,6 +82,7 @@ public class UsuariosIntegracionTest {
         UsuarioDTO dto = servicio.consultarPerfilUsuario(1);
 
         Mockito.verify(repository).findById(1);
+
         assertNotNull(dto, "El usuario buscado no deberia ser nulo");
         assertEquals(dto.getEmail(), "rbernalgomez@safareyes.es", "El email del usuario no coincide");
 

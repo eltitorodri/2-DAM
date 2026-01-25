@@ -46,7 +46,7 @@ public class ValoracionesIntegracionTest {
 
     @Test
     @DisplayName("[TEST INTEGRACION 8] Crear una valoracion --> Caso Negativo")
-    public void crearValoracionNegativo() {
+    public void crearValoracionNegativoIntegracion() {
 
         Integer idEmisor = 1;
         Integer idReceptor = 2;
