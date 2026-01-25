@@ -1,12 +1,14 @@
 package com.example.swapy.services.Unitario;
 
 
+import com.example.swapy.dto.CrearTransaccionDTO;
 import com.example.swapy.dto.PrendaPopularDTO;
 import com.example.swapy.dto.UsuarioActivosDTO;
 import com.example.swapy.models.*;
 import com.example.swapy.repositories.*;
 import com.example.swapy.services.CalificacionService;
 import com.example.swapy.services.PrendasServices;
+import com.example.swapy.services.TransaccionesServices;
 import com.example.swapy.services.UsuariosServicios;
 import jakarta.transaction.TransactionScoped;
 import jakarta.transaction.Transactional;
@@ -17,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,6 +56,9 @@ public class EstadisticasServiceTest {
     private TransaccionesRepository transaccionesRepository;
 
     @Autowired
+    private TransaccionesServices transaccionesServices;
+
+    @Autowired
     private CalificacionRepository calificacionRepository;
 
     @Autowired
@@ -79,6 +85,7 @@ public class EstadisticasServiceTest {
         }
 
     }
+
 
     @Test
     @DisplayName("[TEST UNITARIO 9] Estadisticas --> Caso Negativo")

@@ -9,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
@@ -50,7 +51,7 @@ public class UsuariosIntegracionTest {
         usuarioSimulado.setNickname("eltitorodri");
         usuarioSimulado.setNombreCompleto("Rodrigo Bernal Gómez");
 
-        when(repository.findByNombreCompletoIgnoreCase("Rodrigo Bernal Gómez")).thenReturn(usuarioSimulado);
+        Mockito.when(repository.findByNombreCompletoIgnoreCase("Rodrigo Bernal Gómez")).thenReturn(usuarioSimulado);
 
         //WHEN
 
@@ -58,7 +59,7 @@ public class UsuariosIntegracionTest {
 
         //THEN
 
-        verify(repository).save(any(Usuarios.class));
+        Mockito.verify(repository).save(any(Usuarios.class));
 
         Usuarios resultado = repository.findByNombreCompletoIgnoreCase("Rodrigo Bernal Gómez");
 
@@ -80,11 +81,11 @@ public class UsuariosIntegracionTest {
         usuario.setEmail("rbernalgomez@safareyes.es");
         usuario.setNombreCompleto("Rodrigo Bernal");
 
-        when(repository.findById(1)).thenReturn(Optional.of(usuario));
+        Mockito.when(repository.findById(1)).thenReturn(Optional.of(usuario));
 
         UsuarioDTO dto = servicio.consultarPerfilUsuario(1);
 
-        verify(repository).findById(1);
+        Mockito.verify(repository).findById(1);
         assertNotNull(dto, "El usuario buscado no deberia ser nulo");
         assertEquals(dto.getEmail(), "rbernalgomez@safareyes.es", "El email del usuario no coincide");
 
