@@ -66,8 +66,6 @@ public class EstadisticasServiceTest {
     @Autowired
     private PrendasServices prendasServices;
 
-
-
     @Test
     @DisplayName("[TEST UNITARIO 9] Estadisticas --> Caso Positivo")
     public void obtenerPrendasPopularTest() {
