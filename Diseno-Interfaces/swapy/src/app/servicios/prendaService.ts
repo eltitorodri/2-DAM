@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PrendasItem } from '../se-modelos/PrendasItem';
+import { environment } from '../../environments/environment'; // Ruta ajustada
 
 @Injectable({
   providedIn: 'root'
@@ -9,38 +10,26 @@ import { PrendasItem } from '../se-modelos/PrendasItem';
 export class PrendaService {
 
   private http = inject(HttpClient);
+  // Esta variable tomará el valor de localhost en tu PC y de Render en la nube
+  private apiUrl = environment.apiUrl; 
 
-  /**
-   * consultar todos +
-   * 
-   * Crear
-   * 
-   * Editar
-   * 
-   * Eliminar  +
-   *
-   */
-  
   obtenerPrendas(): Observable<PrendasItem[]> {
-
-    return this.http.get<PrendasItem[]>("http://localhost:8080/prendas/itemsPrendas")
-
+    return this.http.get<PrendasItem[]>(`${this.apiUrl}/prendas/itemsPrendas`);
   }
 
   eliminarPrenda(titulo: string): Observable<any> {
-  return this.http.delete(`http://localhost:8080/prendas/borrar/${encodeURIComponent(titulo)}`);
+    return this.http.delete(`${this.apiUrl}/prendas/borrar/${encodeURIComponent(titulo)}`);
   }
 
   editarPrenda(id: number | string, prendaActualizada: any): Observable<any> {
-   return this.http.put(`http://localhost:8080/prendas/actualizarprenda/${id}`, prendaActualizada);
- }
+    return this.http.put(`${this.apiUrl}/prendas/actualizarprenda/${id}`, prendaActualizada);
+  }
 
   actualizarPrenda(prenda: any): Observable<any> {
-      return this.http.put(`http://localhost:8080/prendas/actualizarprenda/${prenda.id}`, prenda); 
+    return this.http.put(`${this.apiUrl}/prendas/actualizarprenda/${prenda.id}`, prenda); 
   }
 
   crearPrenda(prenda: any): Observable<any> {
-      return this.http.post(`http://localhost:8080/prendas/crearPrenda`, prenda);
+    return this.http.post(`${this.apiUrl}/prendas/crearPrenda`, prenda);
   }
-
 }

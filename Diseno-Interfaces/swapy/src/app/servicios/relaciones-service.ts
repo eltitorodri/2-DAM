@@ -1,8 +1,8 @@
 // Archivo: src/app/servicios/relaciones.service.ts
-
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment'; // Importación añadida
 
 export interface Relacion {
     id: number;
@@ -14,7 +14,9 @@ export interface Relacion {
 })
 export class RelacionesService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:8080'; 
+  
+  // Ahora usa la configuración automática
+  private apiUrl = environment.apiUrl; 
 
   obtenerCategorias(): Observable<Relacion[]> {
     return this.http.get<Relacion[]>(`${this.apiUrl}/categorias/todas`); 
