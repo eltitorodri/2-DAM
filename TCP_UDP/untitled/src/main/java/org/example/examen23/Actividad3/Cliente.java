@@ -2,7 +2,6 @@ package org.example.examen23.Actividad3;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
 import java.util.Scanner;
