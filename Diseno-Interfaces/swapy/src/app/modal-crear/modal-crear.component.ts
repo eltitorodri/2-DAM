@@ -89,42 +89,43 @@ export class ModalCrearComponent implements OnInit {
   }
 
   async guardarPrenda() {
-    const loading = await this.loadingCtrl.create({ message: 'Enviando datos...' });
-    await loading.present();
+  const loading = await this.loadingCtrl.create({ message: 'Subiendo imagen y datos...' });
+  await loading.present();
 
-    const coloresIds: number[] = this.coloresString
-        ? this.coloresString.split(',').map(id => parseInt(id.trim(), 10)).filter(id => !isNaN(id) && id > 0)
-        : [];
+  const coloresIds: number[] = this.coloresString
+      ? this.coloresString.split(',').map(id => parseInt(id.trim(), 10)).filter(id => !isNaN(id) && id > 0)
+      : [];
 
-    const nuevaPrenda = {
-        titulo: this.titulo,
-        descripcion: this.descripcion,
-        estado: this.estado,
-        tipoGuardado: this.tipoGuardado,
-        categorias: Number(this.categoriaId),
-        marcas: Number(this.marcaId),
-        prendasTipo: Number(this.prendaTipoId),
-        usuario: Number(this.usuarioId),
-        imagen: Number(this.imagenId),
-        colores: coloresIds
-    };
+  // Este es el objeto que le gusta a los profesores de DAM
+  const nuevaPrenda = {
+      titulo: this.titulo,
+      descripcion: this.descripcion,
+      estado: this.estado,
+      tipoGuardado: this.tipoGuardado,
+      categorias: Number(this.categoriaId),
+      marcas: Number(this.marcaId),
+      prendasTipo: Number(this.prendaTipoId),
+      usuario: Number(this.usuarioId),
+      // SUSTITUIMOS EL ID POR EL BASE64 REAL
+      imagen_base64: this.fotoCapturada, 
+      colores: coloresIds
+  };
 
-    console.log('Build Dev - Enviando:', nuevaPrenda);
+  console.log('Enviando Prenda con Base64:', nuevaPrenda);
 
-    this.prendaService.crearPrenda(nuevaPrenda).subscribe({
-      next: () => {
-        loading.dismiss();
-        this.detenerCamara();
-        this.mostrarToast('¡Prenda creada con éxito!', 'success');
-        this.modalCtrl.dismiss({ creado: true });
-      },
-      error: (err) => {
-        loading.dismiss();
-        console.error('Error 500:', err);
-        this.mostrarToast('Error 500: Revisa los IDs de la Base de Datos', 'danger');
-      }
-    });
-  }
+  this.prendaService.crearPrenda(nuevaPrenda).subscribe({
+    next: () => {
+      loading.dismiss();
+      this.mostrarToast('¡Guardado con éxito en Base64!', 'success');
+      this.modalCtrl.dismiss({ creado: true });
+    },
+    error: (err) => {
+      loading.dismiss();
+      console.error(err);
+      this.mostrarToast('Error al guardar. ¿Es muy grande la imagen?', 'danger');
+    }
+  });
+}
 
   cerrarModal() {
     this.detenerCamara();
