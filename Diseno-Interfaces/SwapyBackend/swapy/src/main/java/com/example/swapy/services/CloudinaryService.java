@@ -2,20 +2,32 @@ package com.example.swapy.services;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Map;
 
 @Service
 public class CloudinaryService {
 
-    @Autowired
-    private Cloudinary cloudinary;
+    private final Cloudinary cloudinary;
 
-    public String uploadImage(String base64Image) throws Exception {
-        // Cloudinary entiende directamente el Base64 si lleva el prefijo data:image/jpeg;base64,...
-        Map uploadResult = cloudinary.uploader().upload(base64Image, ObjectUtils.emptyMap());
-        return uploadResult.get("url").toString(); // Esta es la URL que guardarás en tu tabla
+    public CloudinaryService() {
+        // REEMPLAZA CON TUS CREDENCIALES DE CLOUDINARY
+        this.cloudinary = new Cloudinary(ObjectUtils.asMap(
+                "cloud_name", "TU_CLOUD_NAME",
+                "api_key", "TU_API_KEY",
+                "api_secret", "TU_API_SECRET"
+        ));
+    }
+
+    public String subirImagen(MultipartFile file) {
+        try {
+            Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
+            return (String) uploadResult.get("url"); // Obtenemos la URL pública
+        } catch (IOException e) {
+            throw new RuntimeException("Error al subir imagen a Cloudinary", e);
+        }
     }
 }

@@ -16,8 +16,8 @@ import org.springframework.validation.annotation.Validated;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import org.springframework.web.multipart.MultipartFile;
+import com.example.swapy.models.Imagenes;
 import java.util.stream.Collectors;
 
 @Service
@@ -77,6 +77,50 @@ public class PrendasServices {
 
         return prendasMapper.toDTO(prendaGuardada);
 
+    }
+
+    private final CloudinaryService cloudinaryService;
+    private final ImagenesRepository imagenesRepository;
+
+    public PrendasDTO crearPrendaConImagen(PublicarPrendas dto, MultipartFile file) {
+
+        // 1. Mapear datos básicos del DTO a la Entidad
+        Prendas prenda = prendasMapper.toEntity(dto);
+        prenda.setFechaAgregado(LocalDate.now());
+
+        // 2. Asignar relaciones existentes (Marcas, Usuario, Categoría, Tipo)
+        prenda.setMarcas(marcasServices.findById(dto.getMarcas()));
+        prenda.setUsuario(usuariosServicios.findById(dto.getUsuario()));
+        prenda.setCategorias(categoriasService.findById(dto.getCategorias()));
+        prenda.setPrendasTipo(prendasTiposService.findbyId(dto.getPrendasTipo())); // Ojo: revisa si es findById o findbyId en tu servicio
+
+        // 3. LÓGICA DE LA IMAGEN (Cloudinary)
+        if (file != null && !file.isEmpty()) {
+            // A) Subir a Cloudinary
+            String url = cloudinaryService.subirImagen(file);
+
+            // B) Crear nueva entidad Imagenes y guardar URL
+            Imagenes nuevaImagen = new Imagenes();
+            nuevaImagen.setUrl_imagen(url);
+            nuevaImagen.setOrden(1); // O el valor por defecto que quieras
+
+            // C) Guardar la imagen en la tabla 'imagenes' primero
+            Imagenes imagenGuardada = imagenesRepository.save(nuevaImagen);
+
+            // D) Asignar la imagen guardada a la prenda
+            prenda.setImagen(imagenGuardada);
+        }
+
+        // 4. Asignar Colores
+        if(dto.getColores() != null && !dto.getColores().isEmpty()) {
+            List<Colores> coloresEncontrados = coloresServices.findAllByIds(dto.getColores());
+            prenda.setColores(coloresEncontrados);
+        }
+
+        // 5. Guardar la Prenda
+        Prendas prendaGuardada = prendasRepository.save(prenda);
+
+        return prendasMapper.toDTO(prendaGuardada);
     }
 
     public List<PrendasDTO> listarPrendasByEstado() {

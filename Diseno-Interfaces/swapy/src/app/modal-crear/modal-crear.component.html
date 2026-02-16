@@ -10,18 +10,23 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <div class="camera-box">
-    <video #video autoplay playsinline [hidden]="fotoCapturadaSafe"></video>
-    <img [src]="fotoCapturadaSafe" *ngIf="fotoCapturadaSafe" class="preview-img" />
+  
+  <div class="camera-box" style="text-align: center; margin-bottom: 20px;">
+    <video #video autoplay playsinline [hidden]="fotoCapturadaSafe" style="width: 100%; max-height: 300px; background: black;"></video>
+    
+    <img [src]="fotoCapturadaSafe" *ngIf="fotoCapturadaSafe" class="preview-img" style="width: 100%; max-height: 300px; object-fit: contain;" />
+    
     <canvas #canvas style="display: none;"></canvas>
 
-    <div class="camera-controls">
+    <div class="camera-controls" style="margin-top: 10px;">
       <ion-button *ngIf="!stream && !fotoCapturadaSafe" (click)="iniciarCamara()" color="tertiary">
         <ion-icon name="camera" slot="start"></ion-icon> Abrir Cámara
       </ion-button>
+      
       <ion-button *ngIf="stream && !fotoCapturadaSafe" (click)="tomarFoto()" color="secondary">
         <ion-icon name="aperture" slot="start"></ion-icon> Capturar
       </ion-button>
+      
       <ion-button *ngIf="fotoCapturadaSafe" (click)="reintentarFoto()" color="warning" size="small">
         <ion-icon name="refresh" slot="start"></ion-icon> Nueva Foto
       </ion-button>
@@ -74,15 +79,11 @@
     </ion-item>
 
     <ion-item>
-      <ion-input type="number" label="ID Imagen" label-placement="floating" [(ngModel)]="imagenId"></ion-input>
-    </ion-item>
-
-    <ion-item>
       <ion-input label="IDs Colores (ej: 1, 2)" label-placement="floating" [(ngModel)]="coloresString"></ion-input>
     </ion-item>
   </ion-list>
 
-  <ion-button expand="block" color="success" (click)="guardarPrenda()">
+  <ion-button expand="block" color="success" (click)="guardarPrenda()" class="ion-margin-top">
     Publicar Prenda
   </ion-button>
 </ion-content>

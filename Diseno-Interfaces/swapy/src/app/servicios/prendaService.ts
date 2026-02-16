@@ -29,7 +29,8 @@ export class PrendaService {
     return this.http.put(`${this.apiUrl}/prendas/actualizarprenda/${prenda.id}`, prenda); 
   }
 
-  crearPrenda(prenda: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/prendas/crearPrenda`, prenda);
+  // En prenda.service.ts
+  crearPrenda(datos: FormData): Observable<any> {
+      return this.http.post(`${this.apiUrl}/prendas/crearPrenda`, datos);
   }
 }

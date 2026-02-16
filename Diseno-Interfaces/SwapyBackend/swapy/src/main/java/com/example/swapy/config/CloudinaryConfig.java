@@ -2,31 +2,32 @@ package com.example.swapy.config;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.HashMap;
+import java.io.IOException;
 import java.util.Map;
 
-@Configuration
+@Service
 public class CloudinaryConfig {
 
-    @Value("${cloudinary.cloud_name}")
-    private String cloudName;
+    private final Cloudinary cloudinary;
 
-    @Value("${cloudinary.api_key}")
-    private String apiKey;
+    public CloudinaryConfig() {
+        // REEMPLAZA CON TUS CREDENCIALES DE CLOUDINARY
+        this.cloudinary = new Cloudinary(ObjectUtils.asMap(
+                "cloud_name", "TU_CLOUD_NAME",
+                "api_key", "TU_API_KEY",
+                "api_secret", "TU_API_SECRET"
+        ));
+    }
 
-    @Value("${cloudinary.api_secret}")
-    private String apiSecret;
-
-    @Bean
-    public Cloudinary cloudinary() {
-        Map<String, String> config = new HashMap<>();
-        config.put("cloud_name", cloudName);
-        config.put("api_key", apiKey);
-        config.put("api_secret", apiSecret);
-        return new Cloudinary(config);
+    public String subirImagen(MultipartFile file) {
+        try {
+            Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
+            return (String) uploadResult.get("url"); // Obtenemos la URL pública
+        } catch (IOException e) {
+            throw new RuntimeException("Error al subir imagen a Cloudinary", e);
+        }
     }
 }
